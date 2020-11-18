@@ -13,23 +13,14 @@ namespace chessGame.model
         private PiecesColor _piecesColor;
         public PiecesColor PiecesColor { get => _piecesColor; }
 
-        private List<Piece> _pieces;
-        public List<Piece> Pieces { get => _pieces; set => _pieces = value; }
+        //private List<Piece> _pieces;
+        //public List<Piece> Pieces { get => _pieces; set => _pieces = value; }
 
 
-        public Player(int id, PiecesColor piecesColor) : this(id, piecesColor, new List<Piece>() { })
-        {
-        }
-        public Player(int id, PiecesColor piecesColor, List<Piece> pieces)
+        public Player(int id, PiecesColor piecesColor) //: this(id, piecesColor, new List<Piece>() { })
         {
             _id = id;
             _piecesColor = piecesColor;
-            _pieces = pieces;
-        }
-
-        public void RemovePiece(Piece piece)
-        {
-            // todo : remove piece
         }
     }
 }

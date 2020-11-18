@@ -58,8 +58,6 @@ namespace chessGame.pieces
             _player = player;
         }
 
-        //public abstract 
-
         public override string ToString()
         {
             return base.ToString()
