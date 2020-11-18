@@ -1,4 +1,5 @@
-﻿using System;
+﻿using chessGame.model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,10 +7,10 @@ namespace chessGame.pieces
 {
     public class King : Piece
     {
-        public King(int id) : this(id, PieceColor.white, Player.one)
+        public King(int id) : this(id, PiecesColor.white, new Player(0, PiecesColor.white))
         {
         }
-        public King(int id, PieceColor pieceColor, Player player) : base(id, pieceColor, player)
+        public King(int id, PiecesColor pieceColor, Player player) : base(id, pieceColor, player)
         {
             this._pieceType = PieceType.king;
         }
@@ -17,10 +18,10 @@ namespace chessGame.pieces
 
     public class Queen : Piece
     {
-        public Queen(int id) : this(id, PieceColor.white, Player.one)
+        public Queen(int id) : this(id, PiecesColor.white, new Player(0, PiecesColor.white))
         {
         }
-        public Queen(int id, PieceColor pieceColor, Player player) : base(id, pieceColor, player)
+        public Queen(int id, PiecesColor pieceColor, Player player) : base(id, pieceColor, player)
         {
             this._pieceType = PieceType.queen;
         }
@@ -28,10 +29,10 @@ namespace chessGame.pieces
 
     public class Rook : Piece
     {
-        public Rook(int id) : this(id, PieceColor.white, Player.one)
+        public Rook(int id) : this(id, PiecesColor.white, new Player(0, PiecesColor.white))
         {
         }
-        public Rook(int id, PieceColor pieceColor, Player player) : base(id, pieceColor, player)
+        public Rook(int id, PiecesColor pieceColor, Player player) : base(id, pieceColor, player)
         {
             this._pieceType = PieceType.Rook;
         }
@@ -39,10 +40,10 @@ namespace chessGame.pieces
 
     public class Bishop : Piece
     {
-        public Bishop(int id) : this(id, PieceColor.white, Player.one)
+        public Bishop(int id) : this(id, PiecesColor.white, new Player(0, PiecesColor.white))
         {
         }
-        public Bishop(int id, PieceColor pieceColor, Player player) : base(id, pieceColor, player)
+        public Bishop(int id, PiecesColor pieceColor, Player player) : base(id, pieceColor, player)
         {
             this._pieceType = PieceType.bishop;
         }
@@ -50,10 +51,10 @@ namespace chessGame.pieces
 
     public class Knight : Piece
     {
-        public Knight(int id) : this(id, PieceColor.white, Player.one)
+        public Knight(int id) : this(id, PiecesColor.white, new Player(0, PiecesColor.white))
         {
         }
-        public Knight(int id, PieceColor pieceColor, Player player) : base(id, pieceColor, player)
+        public Knight(int id, PiecesColor pieceColor, Player player) : base(id, pieceColor, player)
         {
             this._pieceType = PieceType.knight;
         }
@@ -61,10 +62,10 @@ namespace chessGame.pieces
 
     public class Pawn : Piece
     {
-        public Pawn(int id) : this(id, PieceColor.white, Player.one)
+        public Pawn(int id) : this(id, PiecesColor.white, new Player(0, PiecesColor.white))
         {
         }
-        public Pawn(int id, PieceColor pieceColor, Player player) : base(id, pieceColor, player)
+        public Pawn(int id, PiecesColor pieceColor, Player player) : base(id, pieceColor, player)
         {
             this._pieceType = PieceType.pawn;
         }

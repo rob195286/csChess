@@ -1,4 +1,5 @@
-﻿using System;
+﻿using chessGame.model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,16 +15,10 @@ namespace chessGame.pieces
         pawn
     }
 
-    public enum PieceColor
+    public enum PiecesColor
     {
         white,
         black
-    }
-
-    public enum Player
-    {
-        one,
-        two
     }
 
     public abstract class Piece
@@ -40,8 +35,8 @@ namespace chessGame.pieces
             get => _pieceType;
         }
 
-        protected PieceColor _pieceColor;
-        public virtual PieceColor pieceColor
+        protected PiecesColor _pieceColor;
+        public virtual PiecesColor pieceColor
         {
             get => _pieceColor;
         }
@@ -56,7 +51,7 @@ namespace chessGame.pieces
         //private Moves _moves;
         //private Moves _moves;
 
-        protected Piece(int id, PieceColor pieceColor, Player player)
+        protected Piece(int id, PiecesColor pieceColor, Player player)
         {
             _id = id;
             _pieceColor = pieceColor;

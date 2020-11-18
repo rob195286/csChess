@@ -1,4 +1,5 @@
-﻿using chessGame.pieces;
+﻿using chessGame.model.board;
+using chessGame.pieces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,44 +8,14 @@ namespace chessGame.model
 {
     public class Board
     {
-        
-        private List<King> _kings;
-        public List<King> kings
-        {
-            get => _kings;
-        }
-         
-        private List<Rook> _rooks;
-        public List<Rook> rooks
-        {
-            get => _rooks;
-        }
+        private Dictionary<List<int>, List<char>> _board;
+        public Dictionary<List<int>, List<char>> board { get => _board; }
 
-        private List<Bishop> _bishops;
-        public List<Bishop> bishops
-        {
-            get => _bishops;
-        }
+        private List<Coord> _coordAvailable;
+        public List<Coord> coordAvailable { get => _coordAvailable; }
 
-        private List<Queen> _queens;
-        public List<Queen> queens
-        {
-            get => _queens;
-        }
-
-        private List<Knight> _knights;
-        public List<Knight> knights
-        {
-            get => _knights;
-        }
-
-        private List<Pawn> _pawns;
-        public List<Pawn> pawns
-        {
-            get => _pawns;
-        }
-
-       // private Dictionary<int, char>
+        private Dictionary<Coord, Piece> _pieces;
+        public Dictionary<Coord, Piece> pieces { get => _pieces; }
 
         // todo : faire en builder dans le controller ou dans une classe
         public Board(List<King> kings,
@@ -52,13 +23,21 @@ namespace chessGame.model
                      List<Bishop> bishops,
                      List<Queen> queens,
                      List<Knight> knights,
-                     List<Pawn> pawns)
+                     List<Pawn> pawns,
+                     List<int> rows,
+                     List<char> columns)
         {
-            this._rooks = rooks;
-            this._bishops = bishops;
-            this._queens = queens;
-            this._knights = knights;
-            this._pawns = pawns;
+            _board = new Dictionary<List<int>, List<char>>() { };
+            _board.Add(rows, columns);
+            //_board.Add(rooks);
+        }
+
+        private void BuildBoard(List<Piece> pieces, Coord coord)
+        {
+            foreach(Piece piece in pieces)
+            {
+                //_board.Add(coord, piece);
+            }
         }
 
         public void MovePiece(Dictionary<int, char> pieceCoord)
@@ -75,14 +54,7 @@ namespace chessGame.model
 
         public override string ToString()
         {
-            return base.ToString() 
-                + "Piece in game : \n"
-                + "     kings" + _kings
-                + "     rooks" + _rooks
-                + "     bishops" + _bishops
-                + "     queens" + _queens
-                + "     knights" + _knights
-                + "     pawns" + _pawns;
+            return base.ToString();
         }
     }
 }
