@@ -141,6 +141,6 @@ namespace chessGame.model.board
         object IEnumerator.Current
         {
             get { return Current; }
-        }
+        }    
     }
 }

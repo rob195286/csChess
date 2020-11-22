@@ -1,4 +1,5 @@
-﻿using chessGame.pieces;
+﻿using chessGame.model.board;
+using chessGame.pieces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
@@ -7,28 +8,30 @@ namespace chessGame.model.Tests
     [TestClass()]
     public class ChessBoardTests
     {
-        ChessBoard chessBoard;
         List<char> fakeListChar;
+        ChessBoard chessBoard;
 
-        Piece piece1;
+        King king1;
+        Coord coord1;
 
         [TestInitialize()]
         public void testsInitialize()
         {
             fakeListChar = new List<char>() { 'r', 't', 'a' };
-            chessBoard = new ChessBoard(5, fakeListChar);
-        }
+            chessBoard = new ChessBoard();
 
-        [TestMethod()]
-        public void ChessBoardTest()
-        {
-            Assert.AreEqual(0, 0);
+            king1 = new King(PiecesColor.black);
+            coord1 = new Coord();
         }
 
         [TestMethod()]
         public void CreationBoardTest()
         {
-            //Assert.AreEqual(5, chessBoard.board.Count);
+            ChessBoardBuilder chessBoardBuilder = new ChessBoardBuilder();
+            chessBoardBuilder.SetDefaultBoard();
+            chessBoard = chessBoardBuilder.GetChessBoard();
+
+            Assert.AreEqual(5, chessBoard.board);
         }
 
         [TestMethod()]
@@ -40,7 +43,10 @@ namespace chessGame.model.Tests
         [TestMethod()]
         public void AddPiecesTest()
         {
-            Assert.AreEqual(0, 0);
+            Assert.AreEqual(0, chessBoard.pieces);
+            chessBoard.AddPieces(king1, coord1);
+            Assert.AreEqual(1, chessBoard.pieces);
+            Assert.AreEqual(1, chessBoard.pieces.);
         }
     }
 

@@ -13,14 +13,12 @@ namespace chessGame
         {
             //ChessBoard b = new ChessBoard(5, new List<char>() { 'r', 't', 'a' });
             List<char> alphanum = new List<char>() { };
-            ColumnCollection col = new ColumnCollection(8);
-            
-            foreach (char c in col)
-            {
+            int i = 0;
+            Console.WriteLine(i++);
+            Console.WriteLine(i);
+            Console.WriteLine(++i);
+            Console.WriteLine(i);
 
-                Console.WriteLine(c);
-            }
-            
             /*
             Console.WriteLine("-------------------");
             Console.WriteLine(col[3]);

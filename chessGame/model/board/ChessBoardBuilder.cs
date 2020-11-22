@@ -15,7 +15,7 @@ namespace chessGame.model.board
         /// </summary>
         /// <param name="rows"> Nombre de lignes qu'aura le board. </param>
         /// <param name="columns"> Nombre de colonnes qu'aura le board. </param>
-        public void SetBoard(int rows, List<char> columns)
+        public void SetDimensions(int rows, List<char> columns)
         {
             foreach (int rowNumber in Enumerable.Range(1, rows))
                 _chessBoard.board.Add(rowNumber, columns);
@@ -34,33 +34,54 @@ namespace chessGame.model.board
         }
         
         /// <summary>
-        /// Configure le board comme le jeu officiel. Les lignes et colonnes sont au nombres de 8,
+        /// Configure le board comme le jeu de base. Les lignes et colonnes sont au nombres de 8,
         ///     le nimbre de pièces est de 2x8 etc..
         /// </summary>
         public void SetDefaultBoard()
         {
             List<char> defaultColumn = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
-            PiecesColor piecesColor = PiecesColor.white;
-            Player player = new Player(1, piecesColor);
-            SetBoard(8, defaultColumn);
+            SetDimensions(8, defaultColumn);
             King kingW = new King();
-            Rook RookW = new Rook();
+            Rook rookW = new Rook();
+            Bishop bishopW = new Bishop();
+            Queen queenW = new Queen();
+            Knight knightW = new Knight();
+            Pawn pawnW = new Pawn();
 
-            List<Piece> pieces = new List<Piece>() { };
-            Coord coord = new Coord();
-            char column = 'x';
+
+            SetPieceAtCoord(kingW, new Coord(1, 'e'));
+
+            SetPieceAtCoord(rookW, new Coord(1, 'a'));
+            SetPieceAtCoord(rookW, new Coord(1, 'h'));
+            
+            SetPieceAtCoord(bishopW, new Coord(1, 'c'));
+            SetPieceAtCoord(bishopW, new Coord(1, 'f'));
+
+            SetPieceAtCoord(queenW, new Coord(1, 'd'));
+
+            SetPieceAtCoord(knightW, new Coord(1, 'b'));
+            SetPieceAtCoord(knightW, new Coord(1, 'g'));
+
+            for (int i = 0; i<8; i++)
+                SetPieceAtCoord(pawnW, new Coord(2, defaultColumn.ElementAt(i)));
+
+            CopySide();
+        }
+
+        public void CopySide()
+        {
             int i = 0;
-
-            foreach (Piece piece in pieces)
+            int distance = 0;
+            int min = 0;
+            foreach(KeyValuePair<Piece, Coord> pieceNcoord in _chessBoard.pieces)
             {
-                if(piece is Pawn)
-                {
-                    column = defaultColumn.ElementAt(i);
-                    coord = new Coord(2, column);
-                    _chessBoard.AddPieces(piece, coord);
-                }
-                //_chessBoard.AddPieces(piece, coord);
+                min = _chessBoard.board.Count - pieceNcoord.Value.Row;
+                //if (_chessBoard.board.Count - pieceNcoord.Value.Row > _chessBoard.board.Count / 2)
+                    //distance = min;
+                //else
+                    //distance = 0;
 
+                SetPieceAtCoord(pieceNcoord.Key, new Coord(min, pieceNcoord.Value.Column));
             }
         }
 
