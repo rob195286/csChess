@@ -20,7 +20,6 @@ namespace chessGame.model
         public Dictionary<Piece, Coord> pieces { get => _pieces; }
 
 
-        // todo : faire en builder dans le controller ou dans une classe
 /*public ChessBoard(List<King> kings,
              List<Rook> rooks,
              List<Bishop> bishops,
@@ -36,22 +35,14 @@ namespace chessGame.model
         public ChessBoard(int rows, List<char> columns)
         {
             _pieces = new Dictionary<Piece, Coord>() { };
-            //InitBoard(rows, columns);
-            InitCoordAvailable();
-        }
-
-        private void InitBoard(int rows, List<char> columns)
-        {
-            // todo : virer si inutile
             _board = new Dictionary<int, List<char>>() { };
-            foreach (int rowNumber in Enumerable.Range(1, rows))
-                board.Add(rowNumber, columns);
+            InitCoordAvailable();
         }
 
         private void InitCoordAvailable()
         {
             // todo : en faire une fonction qui renvois les coord dynamiquement, enlever var.
-            _coordAvailable = new List<Coord>() { };
+            _coordAvailable = new List<Coord>() { }; // todo : déplacer ça dans constructeur.
             foreach(KeyValuePair<int, List<char>> rowsAndColumns in _board)
                 foreach(char column in rowsAndColumns.Value)
                     _coordAvailable.Add(new Coord(rowsAndColumns.Key, column));
@@ -66,7 +57,7 @@ namespace chessGame.model
 
         public void MovePiece(Dictionary<int, char> pieceCoord)
         {
-
+            // todo : finnir
         }
 
         public override string ToString()

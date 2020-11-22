@@ -5,16 +5,6 @@ using System.Text;
 
 namespace chessGame.pieces
 {
-    public enum PieceType
-    {
-        king,
-        Rook,
-        bishop,
-        queen,
-        knight,
-        pawn
-    }
-
     public enum PiecesColor
     {
         white,
@@ -23,48 +13,37 @@ namespace chessGame.pieces
 
     public abstract class Piece
     {
-        protected int _id;
+        protected static int _id = 0;
+        protected int _pieceId;
         public int id
         {
-            get => _id;
+            get => _pieceId;
         }
 
-        protected PieceType _pieceType;
-        public virtual PieceType pieceType
+        protected PiecesColor _color;
+        public virtual PiecesColor color
         {
-            get => _pieceType;
+            get => _color;
         }
 
-        protected PiecesColor _pieceColor;
-        public virtual PiecesColor pieceColor
+
+        protected Piece() : this(PiecesColor.white)
         {
-            get => _pieceColor;
         }
-
-        protected Player _player;
-        public virtual Player player
+        protected Piece(PiecesColor pieceColor)
         {
-            get => _player;
+            _id++;
+            _pieceId = _id;
+            _color = pieceColor;
         }
 
-        // todo : implement move in piece
-        //private Moves _moves;
-        //private Moves _moves;
-
-        protected Piece(int id, PiecesColor pieceColor, Player player)
-        {
-            _id = id;
-            _pieceColor = pieceColor;
-            _player = player;
-        }
 
         public override string ToString()
         {
             return base.ToString()
-                + "id" + _id
-                + "Piece Type" + _pieceType
-                + "Piece Color" + _pieceColor
-                + "Player" + _player;
+                + "piece id" + this._pieceId
+                + "Piece Type" + this.GetType()
+                + "Piece Color" + this._color;
         }
     }
 }

@@ -4,10 +4,10 @@ A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chessGame\bin\D
 A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chessGame\bin\Debug\netcoreapp3.1\chessGame.runtimeconfig.dev.json
 A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chessGame\bin\Debug\netcoreapp3.1\chessGame.dll
 A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chessGame\bin\Debug\netcoreapp3.1\chessGame.pdb
-A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chessGame\obj\Debug\netcoreapp3.1\chessGame.csprojAssemblyReference.cache
 A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chessGame\obj\Debug\netcoreapp3.1\chessGame.AssemblyInfoInputs.cache
 A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chessGame\obj\Debug\netcoreapp3.1\chessGame.AssemblyInfo.cs
 A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chessGame\obj\Debug\netcoreapp3.1\chessGame.csproj.CoreCompileInputs.cache
 A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chessGame\obj\Debug\netcoreapp3.1\chessGame.dll
 A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chessGame\obj\Debug\netcoreapp3.1\chessGame.pdb
 A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chessGame\obj\Debug\netcoreapp3.1\chessGame.genruntimeconfig.cache
+A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chessGame\obj\Debug\netcoreapp3.1\chessGame.csprojAssemblyReference.cache

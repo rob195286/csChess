@@ -12,8 +12,25 @@ namespace chessGame
         static void Main(string[] args)
         {
             //ChessBoard b = new ChessBoard(5, new List<char>() { 'r', 't', 'a' });
-            King p = new King(1);
-            Console.WriteLine(p is Piece);
+            List<char> alphanum = new List<char>() { };
+            ColumnCollection col = new ColumnCollection(8);
+            
+            foreach (char c in col)
+            {
+
+                Console.WriteLine(c);
+            }
+            
+            /*
+            Console.WriteLine("-------------------");
+            Console.WriteLine(col[3]);
+            
+            Console.WriteLine("-------------------");
+            col.Next();
+            Console.WriteLine(col[3]);
+            Console.WriteLine(col[4]);
+
+            */
 
         }
     }

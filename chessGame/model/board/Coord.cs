@@ -13,6 +13,9 @@ namespace chessGame.model.board
         public char Column { get => _column; set => _column = value; }
 
 
+        public Coord():this(0 , ' ')
+        {
+        }
         public Coord(int row, char column)
         {
             _row = row;
