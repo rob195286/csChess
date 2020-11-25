@@ -11,31 +11,29 @@ namespace chessGame.model
     // todo : demander si on peut faire une classe static avec une fonction reset pour faire une nouvelle partie.
     public class ChessBoard
     {
-        private Dictionary<int, List<char>> _board;
-        public Dictionary<int, List<char>> board { get => _board; set => _board = value; }
+        public Dictionary<int, List<char>> board { get; set; }
 
         public List<Coord> coordAvailable
         { 
             get 
             {
                 List<Coord> coord = new List<Coord>() { };
-                foreach (KeyValuePair<int, List<char>> rowsAndColumns in _board)
+                foreach (KeyValuePair<int, List<char>> rowsAndColumns in board)
                     foreach (char column in rowsAndColumns.Value)
                         coord.Add(new Coord(rowsAndColumns.Key, column));
                 return coord; 
             }
         }
 
-        private Dictionary<Piece, Coord> _pieces;
-        public Dictionary<Piece, Coord> pieces { get => _pieces; }
+        public Dictionary<Piece, Coord> pieces { get; }
 
-        public int getNumberOfPieces { get => _pieces.Count; }
+        public int getNumberOfPieces { get => pieces.Count; }
 
 
         public ChessBoard()
         {
-            _pieces = new Dictionary<Piece, Coord>() { };
-            _board = new Dictionary<int, List<char>>() { };
+            pieces = new Dictionary<Piece, Coord>() { };
+            board = new Dictionary<int, List<char>>() { };
         }
 
 
@@ -48,9 +46,8 @@ namespace chessGame.model
         {
             // todo : faire erreur lorsqu'on ajoute une pièce à un mauvais endroit
             piece.id = getNumberOfPieces + 1;
-            //if(piece in _pieces.)
-                _pieces.Add(piece, coord);
-            //coordAvailable.Remove(coord);
+            //if(piece not in _pieces.)
+                pieces.Add(piece, coord);
         }
         
         public void AddPieces(List<Piece> pieces, List<Coord> coord)
@@ -63,7 +60,7 @@ namespace chessGame.model
         public Piece GetPieceByID(int id)
         {
             Piece piece = null;
-            foreach (Piece p in _pieces.Keys)
+            foreach (Piece p in pieces.Keys)
             {
                 if (p.id == id)
                     piece = p;
@@ -82,9 +79,9 @@ namespace chessGame.model
         public override string ToString()
         {
             return base.ToString() + " : \n"
-                + "    keys/rows : " + String.Join(", ", _board.Keys) + "\n"
-                + "    values/columns : " + String.Join(", ",_board.Values.ElementAt(0)) + "\n"
-                + "    values/columns : " + String.Join(", ",_board.Values.ElementAt(0)) + "\n"
+                + "    keys/rows : " + String.Join(", ", board.Keys) + "\n"
+                + "    values/columns : " + String.Join(", ",board.Values.ElementAt(0)) + "\n"
+                + "    values/columns : " + String.Join(", ",board.Values.ElementAt(0)) + "\n"
                 + "    coords available : " + String.Join(" , ", coordAvailable) + "\n";
         }
     }

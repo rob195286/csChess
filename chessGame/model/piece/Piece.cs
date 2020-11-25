@@ -13,18 +13,9 @@ namespace chessGame.pieces
 
     public abstract class Piece
     {
-        protected int _id;
-        public int id
-        {
-            get => _id;
-            set => _id = value;
-        }
+        public int id { get; set; }
 
-        protected PiecesColor _color;
-        public virtual PiecesColor color
-        {
-            get => _color;
-        }
+        public virtual PiecesColor color { get; }
 
 
         protected Piece() : this(PiecesColor.white)
@@ -32,8 +23,8 @@ namespace chessGame.pieces
         }
         protected Piece(PiecesColor pieceColor)
         {
-            _id = 0;
-            _color = pieceColor;
+            id = 0;
+            color = pieceColor;
         }
 
 
@@ -48,7 +39,7 @@ namespace chessGame.pieces
             Piece piece = (Piece)obj;
 
             //if (_id == piece.id && _color == piece._color && this.GetType() == piece.GetType())
-            if (_id == piece.id && this.GetType() == piece.GetType())
+            if (id == piece.id && this.GetType() == piece.GetType())
                 isEqual = true;
 
             return isEqual;
@@ -67,9 +58,9 @@ namespace chessGame.pieces
         public override string ToString()
         {
             return base.ToString()
-                + "\n   piece id : " + this._id
+                + "\n   piece id : " + this.id
                 + "\n   Piece Type : " + this.GetType()
-                + "\n   Piece Color : " + this._color;
+                + "\n   Piece Color : " + this.color;
         }
     }
 }

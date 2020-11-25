@@ -18,13 +18,14 @@ namespace chessGame
             ChessBoard chessBoard = chessBoardBuilder.GetChessBoard();
             */
 
-
+            
 
             Console.WriteLine("-------------------------------------");
-            Console.WriteLine();
+            Console.WriteLine(i);
 
            // Console.WriteLine(chessBoard.board.Count);
 
         }
+
     }
 }
