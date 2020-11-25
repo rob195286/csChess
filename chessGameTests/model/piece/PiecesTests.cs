@@ -11,11 +11,15 @@ namespace chessGame.pieces.Tests
     public class PiecesTests
     {
         King king;
+        Queen queen;
+        Queen queen2;
 
         [TestInitialize()]
         public void testsInitialize()
         {
             king = new King();
+            queen = new Queen();
+            queen2 = new Queen();
         }
         
         [TestMethod()]
@@ -25,6 +29,18 @@ namespace chessGame.pieces.Tests
 
             king = new King(PiecesColor.black);
             Assert.AreEqual(PiecesColor.black, king.color);
+        }
+
+        [TestMethod()]
+        public void ObjectsComparaisonTest()
+        {
+            Assert.AreEqual(true, queen==queen2);
+            queen.id = 5;
+            queen2.id = 5;
+            Assert.AreEqual(true, queen==queen2);
+            queen.id = 0;
+            queen2.id = 5;
+            Assert.AreEqual(false, queen==queen2);
         }
     }
 }

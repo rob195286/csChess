@@ -38,6 +38,11 @@ namespace chessGame.model
         }
 
 
+        private void ChangeCoordPiece(Piece piece)
+        {
+            // todo : finnir
+        }
+
         public void AddPieces(Piece piece, Coord coord)
         {
             // todo : faire erreur lorsqu'on ajoute une pièce à un mauvais endroit
@@ -65,8 +70,8 @@ namespace chessGame.model
                     piece = null;
             }
             return piece;
-        }
-
+        }    
+        
         public void MovePiece(Dictionary<int, char> pieceCoord)
         {
             // todo : finnir

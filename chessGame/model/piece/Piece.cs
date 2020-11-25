@@ -37,7 +37,32 @@ namespace chessGame.pieces
         }
 
 
-       // public abstract Piece ShallowCopy();
+        // public abstract Piece ShallowCopy();
+
+        public override bool Equals(object obj)
+        {
+            bool isEqual = false;
+            if (!(obj is Piece))
+                return false;
+
+            Piece piece = (Piece)obj;
+
+            //if (_id == piece.id && _color == piece._color && this.GetType() == piece.GetType())
+            if (_id == piece.id && this.GetType() == piece.GetType())
+                isEqual = true;
+
+            return isEqual;
+        }
+
+        public static bool operator ==(Piece x, Piece y)
+        {
+            return x.Equals(y);
+        }
+
+        public static bool operator !=(Piece x, Piece y)
+        {
+            return !(x.Equals(y));
+        }
 
         public override string ToString()
         {
