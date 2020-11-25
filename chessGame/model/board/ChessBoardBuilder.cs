@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+
 
 namespace chessGame.model.board
 {
@@ -37,13 +37,13 @@ namespace chessGame.model.board
         /// Configure le board comme le jeu de base. Les lignes et colonnes sont au nombres de 8,
         ///     le nimbre de pièces est de 2x8 etc..
         /// </summary>
-        public void SetDefaultBoard()
+        public void SetDefaultChessBoard()
         {
             List<char> defaultColumn = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };          
             SetDimensions(8, defaultColumn);
 
             SetPieceAtCoord(new King(), new Coord(1, 'e'));
-
+            
             SetPieceAtCoord(new Rook(), new Coord(1, 'a'));
             SetPieceAtCoord(new Rook(), new Coord(1, 'h'));
             
@@ -63,18 +63,16 @@ namespace chessGame.model.board
 
         public void CopySide()
         {
-            int i = 0;
-            int distance = 0;
             int min = 0;
             foreach(KeyValuePair<Piece, Coord> pieceNcoord in _chessBoard.pieces)
             {
                 min = _chessBoard.board.Count - pieceNcoord.Value.Row;
-                //if (_chessBoard.board.Count - pieceNcoord.Value.Row > _chessBoard.board.Count / 2)
-                    //distance = min;
-                //else
-                    //distance = 0;
-                Piece piece = (pieceNcoord.Key.GetType())new Piece();
-                SetPieceAtCoord(pieceNcoord.Key, new Coord(min, pieceNcoord.Value.Column));
+                Piece piece = pieceNcoord.Key;
+                // todo : suite demander au prof
+                // il faut faire un new de la pièce qui sera ajout" seulement on ne connais
+                //  pas le type à l'avance
+                SetPieceAtCoord(piece, new Coord(min, pieceNcoord.Value.Column));
+                //SetPieceAtCoord(pieceNcoord.Key, new Coord(min, pieceNcoord.Value.Column));
             }
         }
 

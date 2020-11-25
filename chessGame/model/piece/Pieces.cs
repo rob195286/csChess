@@ -14,6 +14,13 @@ namespace chessGame.pieces
         public King(PiecesColor pieceColor) : base(pieceColor)
         {
         }
+
+        // todo : enlever shallowcopy
+        public King ShallowCopy()
+        {
+            return (King)this.MemberwiseClone();
+        }
+
     }
     
     public class Queen : Piece
@@ -23,6 +30,11 @@ namespace chessGame.pieces
         }
         public Queen(PiecesColor pieceColor) : base(pieceColor)
         {
+        }
+
+        public Queen ShallowCopy()
+        {
+            return (Queen)this.MemberwiseClone();
         }
     }
 
@@ -34,6 +46,11 @@ namespace chessGame.pieces
         public Rook(PiecesColor pieceColor) : base(pieceColor)
         {
         }
+
+        public Rook ShallowCopy()
+        {
+            return (Rook)this.MemberwiseClone();
+        }
     }
 
     public class Bishop : Piece
@@ -43,6 +60,12 @@ namespace chessGame.pieces
         }
         public Bishop(PiecesColor pieceColor) : base(pieceColor)
         {
+        }
+
+
+        public Bishop ShallowCopy()
+        {
+            return (Bishop)this.MemberwiseClone();
         }
     }
 
@@ -54,6 +77,12 @@ namespace chessGame.pieces
         public Knight(PiecesColor pieceColor) : base(pieceColor)
         {
         }
+
+
+        public Knight ShallowCopy()
+        {
+            return (Knight)this.MemberwiseClone();
+        }
     }
 
     public class Pawn : Piece
@@ -64,5 +93,11 @@ namespace chessGame.pieces
         public Pawn(PiecesColor pieceColor) : base(pieceColor)
         {
         }
+
+        public Pawn ShallowCopy()
+        {
+            return (Pawn)this.MemberwiseClone();
+        }
     }
+    
 }

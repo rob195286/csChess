@@ -1,0 +1,15 @@
+chessGame/.vs*
+chessGame/bin*
+chessGame/obj*
+chessGame/chessGame.csproj
+chessGame/chessGame.sln
+
+chessGameTests/bin*
+chessGameTests/obj*
+chessGameTests/chessGameTests.csproj
+
+
+
+
+
+

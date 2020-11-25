@@ -12,24 +12,18 @@ namespace chessGame
         static void Main(string[] args)
         {
             int i = 0;
-
-            ChessBoardBuilder chessBoardBuilder = new ChessBoardBuilder();
-            chessBoardBuilder.SetDefaultBoard();
-            ChessBoard chessBoard = chessBoardBuilder.GetChessBoard();
-
-
-            Console.WriteLine(chessBoard.board.Count);
-
             /*
-            Console.WriteLine("-------------------");
-            Console.WriteLine(col[3]);
-            
-            Console.WriteLine("-------------------");
-            col.Next();
-            Console.WriteLine(col[3]);
-            Console.WriteLine(col[4]);
-
+            ChessBoardBuilder chessBoardBuilder = new ChessBoardBuilder();
+            chessBoardBuilder.SetDefaultChessBoard();
+            ChessBoard chessBoard = chessBoardBuilder.GetChessBoard();
             */
+
+
+
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine();
+
+           // Console.WriteLine(chessBoard.board.Count);
 
         }
     }

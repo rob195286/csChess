@@ -37,6 +37,8 @@ namespace chessGame.pieces
         }
 
 
+       // public abstract Piece ShallowCopy();
+
         public override string ToString()
         {
             return base.ToString()

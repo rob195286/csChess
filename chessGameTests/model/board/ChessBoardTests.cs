@@ -13,6 +13,7 @@ namespace chessGame.model.Tests
         ChessBoard chessBoard;
 
         King king1;
+        King king2;
         Coord coord1;
 
         [TestInitialize()]
@@ -21,8 +22,8 @@ namespace chessGame.model.Tests
             fakeListChar = new List<char>() { 'r', 't', 'a' };
             chessBoard = new ChessBoard();
 
-            king1 = new King(PiecesColor.black);
             king1 = new King();
+            king2 = new King(PiecesColor.black);
             coord1 = new Coord();
         }
 
@@ -30,7 +31,7 @@ namespace chessGame.model.Tests
         public void CreationBoardTest()
         {
             ChessBoardBuilder chessBoardBuilder = new ChessBoardBuilder();
-            chessBoardBuilder.SetDefaultBoard();
+            chessBoardBuilder.SetDefaultChessBoard();
             chessBoard = chessBoardBuilder.GetChessBoard();
 
             Assert.AreEqual(8, chessBoard.board.Count);
@@ -41,6 +42,7 @@ namespace chessGame.model.Tests
         [TestMethod()]
         public void MovePieceTest()
         {
+            // todo : finir
             Assert.AreEqual(0, 0);
         }
 
@@ -50,15 +52,16 @@ namespace chessGame.model.Tests
             Assert.AreEqual(0, chessBoard.getNumberOfPieces);
             chessBoard.AddPieces(king1, coord1);
             Assert.AreEqual(1, chessBoard.getNumberOfPieces);
-            //todo : terminer
-            //Assert.AreEqual(1, chessBoard.GetPieceByID(1));
+            Assert.AreEqual(king1, chessBoard.GetPieceByID(1));
         }
 
         [TestMethod()]
         public void GetPieceByIDTest()
         {
-            int id = king1.id; 
-            Assert.AreEqual(4, id);
+            chessBoard.AddPieces(new List<Piece>() { king1, king2 }, 
+                                new List<Coord>() { coord1, coord1 });
+            Assert.AreEqual(1, king1.id);
+            Assert.AreEqual(2, king2.id);
         }
     }
 
