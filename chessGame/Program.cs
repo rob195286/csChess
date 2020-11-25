@@ -11,13 +11,14 @@ namespace chessGame
     {
         static void Main(string[] args)
         {
-            //ChessBoard b = new ChessBoard(5, new List<char>() { 'r', 't', 'a' });
-            List<char> alphanum = new List<char>() { };
             int i = 0;
-            Console.WriteLine(i++);
-            Console.WriteLine(i);
-            Console.WriteLine(++i);
-            Console.WriteLine(i);
+
+            ChessBoardBuilder chessBoardBuilder = new ChessBoardBuilder();
+            chessBoardBuilder.SetDefaultBoard();
+            ChessBoard chessBoard = chessBoardBuilder.GetChessBoard();
+
+
+            Console.WriteLine(chessBoard.board.Count);
 
             /*
             Console.WriteLine("-------------------");

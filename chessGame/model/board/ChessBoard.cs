@@ -28,6 +28,8 @@ namespace chessGame.model
         private Dictionary<Piece, Coord> _pieces;
         public Dictionary<Piece, Coord> pieces { get => _pieces; }
 
+        public int getNumberOfPieces { get => _pieces.Count; }
+
 
         public ChessBoard()
         {
@@ -39,8 +41,10 @@ namespace chessGame.model
         public void AddPieces(Piece piece, Coord coord)
         {
             // todo : faire erreur lorsqu'on ajoute une pièce à un mauvais endroit
-            _pieces.Add(piece, coord);
-            coordAvailable.Remove(coord);
+            piece.id = getNumberOfPieces + 1;
+            //if(piece in _pieces.)
+                _pieces.Add(piece, coord);
+            //coordAvailable.Remove(coord);
         }
         
         public void AddPieces(List<Piece> pieces, List<Coord> coord)

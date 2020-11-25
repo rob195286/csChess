@@ -39,32 +39,25 @@ namespace chessGame.model.board
         /// </summary>
         public void SetDefaultBoard()
         {
-            List<char> defaultColumn = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
+            List<char> defaultColumn = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };          
             SetDimensions(8, defaultColumn);
-            King kingW = new King();
-            Rook rookW = new Rook();
-            Bishop bishopW = new Bishop();
-            Queen queenW = new Queen();
-            Knight knightW = new Knight();
-            Pawn pawnW = new Pawn();
 
+            SetPieceAtCoord(new King(), new Coord(1, 'e'));
 
-            SetPieceAtCoord(kingW, new Coord(1, 'e'));
-
-            SetPieceAtCoord(rookW, new Coord(1, 'a'));
-            SetPieceAtCoord(rookW, new Coord(1, 'h'));
+            SetPieceAtCoord(new Rook(), new Coord(1, 'a'));
+            SetPieceAtCoord(new Rook(), new Coord(1, 'h'));
             
-            SetPieceAtCoord(bishopW, new Coord(1, 'c'));
-            SetPieceAtCoord(bishopW, new Coord(1, 'f'));
+            SetPieceAtCoord(new Bishop(), new Coord(1, 'c'));
+            SetPieceAtCoord(new Bishop(), new Coord(1, 'f'));
 
-            SetPieceAtCoord(queenW, new Coord(1, 'd'));
+            SetPieceAtCoord(new Queen(), new Coord(1, 'd'));
 
-            SetPieceAtCoord(knightW, new Coord(1, 'b'));
-            SetPieceAtCoord(knightW, new Coord(1, 'g'));
+            SetPieceAtCoord(new Knight(), new Coord(1, 'b'));
+            SetPieceAtCoord(new Knight(), new Coord(1, 'g'));
 
             for (int i = 0; i<8; i++)
-                SetPieceAtCoord(pawnW, new Coord(2, defaultColumn.ElementAt(i)));
-
+                SetPieceAtCoord(new Pawn(), new Coord(2, defaultColumn.ElementAt(i)));
+            
             CopySide();
         }
 
@@ -80,7 +73,7 @@ namespace chessGame.model.board
                     //distance = min;
                 //else
                     //distance = 0;
-
+                Piece piece = (pieceNcoord.Key.GetType())new Piece();
                 SetPieceAtCoord(pieceNcoord.Key, new Coord(min, pieceNcoord.Value.Column));
             }
         }

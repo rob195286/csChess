@@ -15,10 +15,10 @@ namespace chessGame.pieces
         {
         }
     }
-
+    
     public class Queen : Piece
     {
-        public Queen() : this(PiecesColor.white)
+        public Queen() : base()
         {
         }
         public Queen(PiecesColor pieceColor) : base(pieceColor)
@@ -28,7 +28,7 @@ namespace chessGame.pieces
 
     public class Rook : Piece
     {
-        public Rook() : this(PiecesColor.white)
+        public Rook() : base()
         {
         }
         public Rook(PiecesColor pieceColor) : base(pieceColor)
@@ -38,7 +38,7 @@ namespace chessGame.pieces
 
     public class Bishop : Piece
     {
-        public Bishop() : this(PiecesColor.white)
+        public Bishop() : base()
         {
         }
         public Bishop(PiecesColor pieceColor) : base(pieceColor)
@@ -48,7 +48,7 @@ namespace chessGame.pieces
 
     public class Knight : Piece
     {
-        public Knight() : this(PiecesColor.white)
+        public Knight() : base()
         {
         }
         public Knight(PiecesColor pieceColor) : base(pieceColor)
@@ -58,7 +58,7 @@ namespace chessGame.pieces
 
     public class Pawn : Piece
     {
-        public Pawn() : this(PiecesColor.white)
+        public Pawn() : base()
         {
         }
         public Pawn(PiecesColor pieceColor) : base(pieceColor)

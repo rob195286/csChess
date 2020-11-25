@@ -13,11 +13,11 @@ namespace chessGame.pieces
 
     public abstract class Piece
     {
-        protected static int _id = 0;
-        protected int _pieceId;
+        protected int _id;
         public int id
         {
-            get => _pieceId;
+            get => _id;
+            set => _id = value;
         }
 
         protected PiecesColor _color;
@@ -32,8 +32,7 @@ namespace chessGame.pieces
         }
         protected Piece(PiecesColor pieceColor)
         {
-            _id++;
-            _pieceId = _id;
+            _id = 0;
             _color = pieceColor;
         }
 
@@ -41,9 +40,9 @@ namespace chessGame.pieces
         public override string ToString()
         {
             return base.ToString()
-                + "piece id" + this._pieceId
-                + "Piece Type" + this.GetType()
-                + "Piece Color" + this._color;
+                + "\n   piece id : " + this._id
+                + "\n   Piece Type : " + this.GetType()
+                + "\n   Piece Color : " + this._color;
         }
     }
 }

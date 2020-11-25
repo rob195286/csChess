@@ -11,20 +11,11 @@ namespace chessGame.pieces.Tests
     public class PiecesTests
     {
         King king;
-        King king2;
 
         [TestInitialize()]
         public void testsInitialize()
         {
             king = new King();
-            king2 = new King();
-        }
-
-        [TestMethod()]
-        public void KingIDTest()
-        {
-            Assert.AreEqual(1, king.id);
-            Assert.AreEqual(2, king2.id);
         }
         
         [TestMethod()]

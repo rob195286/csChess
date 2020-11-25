@@ -1,4 +1,5 @@
-﻿using chessGame.model.board;
+﻿using chessGame.model;
+using chessGame.model.board;
 using chessGame.pieces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace chessGame.model.Tests
             chessBoard = new ChessBoard();
 
             king1 = new King(PiecesColor.black);
+            king1 = new King();
             coord1 = new Coord();
         }
 
@@ -31,7 +33,9 @@ namespace chessGame.model.Tests
             chessBoardBuilder.SetDefaultBoard();
             chessBoard = chessBoardBuilder.GetChessBoard();
 
-            Assert.AreEqual(5, chessBoard.board);
+            Assert.AreEqual(8, chessBoard.board.Count);
+            Assert.AreEqual(8, chessBoard.board.Values.Count);
+            Assert.AreEqual(16, chessBoard.getNumberOfPieces);
         }
 
         [TestMethod()]
@@ -43,10 +47,18 @@ namespace chessGame.model.Tests
         [TestMethod()]
         public void AddPiecesTest()
         {
-            Assert.AreEqual(0, chessBoard.pieces);
+            Assert.AreEqual(0, chessBoard.getNumberOfPieces);
             chessBoard.AddPieces(king1, coord1);
-            Assert.AreEqual(1, chessBoard.pieces);
-            Assert.AreEqual(1, chessBoard.pieces.);
+            Assert.AreEqual(1, chessBoard.getNumberOfPieces);
+            //todo : terminer
+            //Assert.AreEqual(1, chessBoard.GetPieceByID(1));
+        }
+
+        [TestMethod()]
+        public void GetPieceByIDTest()
+        {
+            int id = king1.id; 
+            Assert.AreEqual(4, id);
         }
     }
 

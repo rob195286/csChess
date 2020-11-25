@@ -13,7 +13,7 @@ namespace chessGame.model.board
         public char Column { get => _column; set => _column = value; }
 
 
-        public Coord():this(0 , ' ')
+        public Coord():this(0 , '?')
         {
         }
         public Coord(int row, char column)
@@ -24,7 +24,7 @@ namespace chessGame.model.board
 
         public override string ToString()
         {
-            return base.ToString()+" "+string.Format("[{0},{1}]",_row, _column);
+            return string.Format(" [{0},{1}]",_row, _column);
         }
     }
 }
