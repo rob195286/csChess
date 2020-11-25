@@ -1,4 +1,5 @@
 ﻿using chessGame.model.board;
+using chessGame.model.piece;
 using chessGame.pieces;
 using System;
 using System.Collections.Generic;
@@ -72,9 +73,10 @@ namespace chessGame.model
             return piece;
         }    
         
-        public void MovePiece(Dictionary<int, char> pieceCoord)
+        public void MovePiece(Piece piece, Move move)
         {
             // todo : finnir
+            // ChangeCoordPiece()
         }
 
         public override string ToString()
