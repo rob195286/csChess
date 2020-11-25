@@ -22,3 +22,8 @@ Cahier des charges :
 
 	unity :
 - implémenter vers la fin si possible
+
+------------------------------------------------------------
+Site utile :
+https://alternativeto.net/list/6695/list-of-c-and-net-game-engines-and-frameworks
+https://docs.microsoft.com/en-us/visualstudio/test/unit-test-your-code?view=vs-2019
