@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace chessGame.model.piece
+namespace chessGame.controller
 {
-    public class Move
+    class pr2
     {
-
     }
 }

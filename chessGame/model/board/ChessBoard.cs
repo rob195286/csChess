@@ -73,6 +73,7 @@ namespace chessGame.model
         public void MovePiece(Piece piece, Move move)
         {
             // todo : finnir
+
             // ChangeCoordPiece()
         }
 
