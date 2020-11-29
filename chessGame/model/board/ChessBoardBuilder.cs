@@ -41,7 +41,7 @@ namespace chessGame.model.board
         {
             List<char> defaultColumn = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };          
             SetDimensions(8, defaultColumn);
-
+            // todo : changer les lignes qui sont mauvaise
             SetPieceAtCoord(new King(), new Coord(1, 'e'));
             
             SetPieceAtCoord(new Rook(), new Coord(1, 'a'));
@@ -55,25 +55,27 @@ namespace chessGame.model.board
             SetPieceAtCoord(new Knight(), new Coord(1, 'b'));
             SetPieceAtCoord(new Knight(), new Coord(1, 'g'));
 
+            for (int i = 0; i < 8; i++)
+                SetPieceAtCoord(new Pawn(), new Coord(2, defaultColumn.ElementAt(i)));
+            //----------------------------------------------------------------------------------------------
+            /*
+            SetPieceAtCoord(new King(), new Coord(1, 'e'));
+            
+            SetPieceAtCoord(new Rook(), new Coord(0, 'a'));
+            SetPieceAtCoord(new Rook(), new Coord(1, 'h'));
+            
+            SetPieceAtCoord(new Bishop(), new Coord(1, 'c'));
+            SetPieceAtCoord(new Bishop(), new Coord(1, 'f'));
+
+            SetPieceAtCoord(new Queen(), new Coord(1, 'd'));
+
+            SetPieceAtCoord(new Knight(), new Coord(1, 'b'));
+            SetPieceAtCoord(new Knight(), new Coord(1, 'g'));
+         
+            // todo ; inverser l'endroit du board ou on les met
             for (int i = 0; i<8; i++)
                 SetPieceAtCoord(new Pawn(), new Coord(2, defaultColumn.ElementAt(i)));
-            
-            CopySide();
-        }
-
-        public void CopySide()
-        {
-            int min = 0;
-            foreach(KeyValuePair<Piece, Coord> pieceNcoord in _chessBoard.pieces)
-            {
-                min = _chessBoard.board.Count - pieceNcoord.Value.Row;
-                Piece piece = pieceNcoord.Key;
-                // todo : suite demander au prof
-                // il faut faire un new de la pièce qui sera ajout" seulement on ne connais
-                //  pas le type à l'avance
-                SetPieceAtCoord(piece, new Coord(min, pieceNcoord.Value.Column));
-                //SetPieceAtCoord(pieceNcoord.Key, new Coord(min, pieceNcoord.Value.Column));
-            }
+            */
         }
 
         public ChessBoard GetChessBoard()

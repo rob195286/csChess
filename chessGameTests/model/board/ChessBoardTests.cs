@@ -37,13 +37,42 @@ namespace chessGame.model.Tests
             Assert.AreEqual(8, chessBoard.board.Count);
             Assert.AreEqual(8, chessBoard.board.Values.Count);
             Assert.AreEqual(16, chessBoard.getNumberOfPieces);
+
+            int i = 0;
+            Piece p = null;
+            foreach(KeyValuePair<Piece, Coord> kv in chessBoard.pieces)
+            {
+                if(i < 16)
+                {
+                    if (kv.Key is King)
+                        p = new King();
+                    else if (kv.Key is Rook)
+                        p = new Rook();
+                    else if (kv.Key is Bishop)
+                        p = new Bishop();
+                    else if (kv.Key is Queen)
+                        p = new Queen();
+                    else if (kv.Key is Knight)
+                        p = new Knight();  
+                    else if (kv.Key is Pawn)
+                        p = new Pawn();
+
+                    p.id = ++i;
+                    Assert.AreEqual(p, kv.Key);
+                }
+            }
+            foreach (KeyValuePair<Piece, Coord> kv in chessBoard.pieces)
+            {
+                //Assert.AreEqual(new Coord(), kv.Value);
+            }
+
         }
 
         [TestMethod()]
         public void MovePieceTest()
         {
             // todo : finir
-            Assert.AreEqual(0, 0);
+            Assert.AreEqual(0, 10);
         }
 
         [TestMethod()]

@@ -7,18 +7,11 @@ namespace chessGame.pieces
 {
     public class King : Piece
     {
-        // todo PROF : demander si le mécanisme 'base/this' est bon.
         public King() : base()
         {
         }
         public King(PiecesColor pieceColor) : base(pieceColor)
         {
-        }
-
-        // todo : enlever shallowcopy
-        public King ShallowCopy()
-        {
-            return (King)this.MemberwiseClone();
         }
 
     }
@@ -32,10 +25,6 @@ namespace chessGame.pieces
         {
         }
 
-        public Queen ShallowCopy()
-        {
-            return (Queen)this.MemberwiseClone();
-        }
     }
 
     public class Rook : Piece
@@ -47,10 +36,6 @@ namespace chessGame.pieces
         {
         }
 
-        public Rook ShallowCopy()
-        {
-            return (Rook)this.MemberwiseClone();
-        }
     }
 
     public class Bishop : Piece
@@ -63,10 +48,6 @@ namespace chessGame.pieces
         }
 
 
-        public Bishop ShallowCopy()
-        {
-            return (Bishop)this.MemberwiseClone();
-        }
     }
 
     public class Knight : Piece
@@ -79,10 +60,6 @@ namespace chessGame.pieces
         }
 
 
-        public Knight ShallowCopy()
-        {
-            return (Knight)this.MemberwiseClone();
-        }
     }
 
     public class Pawn : Piece
@@ -94,10 +71,6 @@ namespace chessGame.pieces
         {
         }
 
-        public Pawn ShallowCopy()
-        {
-            return (Pawn)this.MemberwiseClone();
-        }
     }
     
 }

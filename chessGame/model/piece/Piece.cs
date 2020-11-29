@@ -28,8 +28,6 @@ namespace chessGame.pieces
         }
 
 
-        // public abstract Piece ShallowCopy();
-
         public override bool Equals(object obj)
         {
             bool isEqual = false;

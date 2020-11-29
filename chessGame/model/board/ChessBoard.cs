@@ -8,7 +8,6 @@ using System.Text;
 
 namespace chessGame.model
 {
-    // todo : demander si on peut faire une classe static avec une fonction reset pour faire une nouvelle partie.
     public class ChessBoard
     {
         public Dictionary<int, List<char>> board { get; set; }
