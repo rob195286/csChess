@@ -25,7 +25,7 @@ namespace chessGame.model.board
 
         public override string ToString()
         {
-            return string.Format(" [{0},{1}]",_row, _column);
+            return string.Format(" [{0}{1}]",_row, _column);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using chessGame.model;
 using chessGame.model.board;
+using chessGame.model.piece;
 using chessGame.pieces;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,10 @@ namespace chessGame
             ChessBoard chessBoard = chessBoardBuilder.GetChessBoard();
             */
 
-            
+            PossibleMoves m = new PossibleMoves(new Dictionary<EDirections, int>() { {EDirections.horizontal,5},{ EDirections.vertical, 1 } });
 
             Console.WriteLine("-------------------------------------");
-            Console.WriteLine(i);
+            Console.WriteLine(m);
 
            // Console.WriteLine(chessBoard.board.Count);
 

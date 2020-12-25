@@ -24,14 +24,14 @@ namespace chessGame.model
             }
         }
 
-        public Dictionary<Piece, Coord> pieces { get; }
+        public Dictionary<Coord, Piece> pieces { get; }
 
         public int getNumberOfPieces { get => pieces.Count; }
 
 
         public ChessBoard()
         {
-            pieces = new Dictionary<Piece, Coord>() { };
+            pieces = new Dictionary<Coord, Piece>() { };
             board = new Dictionary<int, List<char>>() { };
         }
 
@@ -46,7 +46,7 @@ namespace chessGame.model
             // todo : faire erreur lorsqu'on ajoute une pièce à un mauvais endroit
             piece.id = getNumberOfPieces + 1;
             //if(piece not in _pieces.)
-                pieces.Add(piece, coord);
+                pieces.Add(coord, piece);
         }
         
         public void AddPieces(List<Piece> pieces, List<Coord> coord)
@@ -59,7 +59,7 @@ namespace chessGame.model
         public Piece GetPieceByID(int id)
         {
             Piece piece = null;
-            foreach (Piece p in pieces.Keys)
+            foreach (Piece p in pieces.Values)
             {
                 if (p.id == id)
                     piece = p;
@@ -69,7 +69,7 @@ namespace chessGame.model
             return piece;
         }    
         
-        public void MovePiece(Piece piece, Move move)
+        public void MovePiece(Piece piece, PossibleMoves move)
         {
             // todo : finnir
 

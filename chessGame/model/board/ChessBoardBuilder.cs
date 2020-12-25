@@ -6,9 +6,15 @@ using System.Linq;
 
 namespace chessGame.model.board
 {
+    //todo : lfaire le builder dans son intégralité
     public class ChessBoardBuilder
     {
-        private ChessBoard _chessBoard = new ChessBoard();
+        private ChessBoard _chessBoard;
+
+        public ChessBoardBuilder()
+        {
+            _chessBoard = new ChessBoard();
+        }
 
         /// <summary>
         /// Initialise le board concernant les colonnes et les lignes.
@@ -30,6 +36,7 @@ namespace chessGame.model.board
         public void SetPieceAtCoord(Piece piece, Coord coord)
         {
             // todo : faire une except au cas ou on mettrais des pièces de couleurs différentes
+            //  ou en dehors du plateau
             _chessBoard.AddPieces(piece, coord);
         }
         
@@ -41,7 +48,7 @@ namespace chessGame.model.board
         {
             List<char> defaultColumn = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };          
             SetDimensions(8, defaultColumn);
-            // todo : changer les lignes qui sont mauvaise
+
             SetPieceAtCoord(new King(), new Coord(1, 'e'));
             
             SetPieceAtCoord(new Rook(), new Coord(1, 'a'));
@@ -58,24 +65,23 @@ namespace chessGame.model.board
             for (int i = 0; i < 8; i++)
                 SetPieceAtCoord(new Pawn(), new Coord(2, defaultColumn.ElementAt(i)));
             //----------------------------------------------------------------------------------------------
-            /*
-            SetPieceAtCoord(new King(), new Coord(1, 'e'));
             
-            SetPieceAtCoord(new Rook(), new Coord(0, 'a'));
-            SetPieceAtCoord(new Rook(), new Coord(1, 'h'));
+            SetPieceAtCoord(new King(PiecesColor.black), new Coord(8, 'e'));
             
-            SetPieceAtCoord(new Bishop(), new Coord(1, 'c'));
-            SetPieceAtCoord(new Bishop(), new Coord(1, 'f'));
+            SetPieceAtCoord(new Rook(PiecesColor.black), new Coord(8, 'a'));
+            SetPieceAtCoord(new Rook(PiecesColor.black), new Coord(8, 'h'));
+            
+            SetPieceAtCoord(new Bishop(PiecesColor.black), new Coord(8, 'c'));
+            SetPieceAtCoord(new Bishop(PiecesColor.black), new Coord(8, 'f'));
 
-            SetPieceAtCoord(new Queen(), new Coord(1, 'd'));
+            SetPieceAtCoord(new Queen(PiecesColor.black), new Coord(8, 'd'));
 
-            SetPieceAtCoord(new Knight(), new Coord(1, 'b'));
-            SetPieceAtCoord(new Knight(), new Coord(1, 'g'));
+            SetPieceAtCoord(new Knight(PiecesColor.black), new Coord(8, 'b'));
+            SetPieceAtCoord(new Knight(PiecesColor.black), new Coord(8, 'g'));
          
             // todo ; inverser l'endroit du board ou on les met
             for (int i = 0; i<8; i++)
-                SetPieceAtCoord(new Pawn(), new Coord(2, defaultColumn.ElementAt(i)));
-            */
+                SetPieceAtCoord(new Pawn(PiecesColor.black), new Coord(7, defaultColumn.ElementAt(i)));
         }
 
         public ChessBoard GetChessBoard()

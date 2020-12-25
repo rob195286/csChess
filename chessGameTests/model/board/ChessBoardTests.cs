@@ -15,6 +15,7 @@ namespace chessGame.model.Tests
         King king1;
         King king2;
         Coord coord1;
+        Coord coord2;
 
         [TestInitialize()]
         public void testsInitialize()
@@ -25,6 +26,7 @@ namespace chessGame.model.Tests
             king1 = new King();
             king2 = new King(PiecesColor.black);
             coord1 = new Coord();
+            coord2 = new Coord();
         }
 
         [TestMethod()]
@@ -36,36 +38,50 @@ namespace chessGame.model.Tests
 
             Assert.AreEqual(8, chessBoard.board.Count);
             Assert.AreEqual(8, chessBoard.board.Values.Count);
-            Assert.AreEqual(16, chessBoard.getNumberOfPieces);
+            Assert.AreEqual(32, chessBoard.getNumberOfPieces);
 
-            int i = 0;
+            int i = 1;
             Piece p = null;
-            foreach(KeyValuePair<Piece, Coord> kv in chessBoard.pieces)
+            foreach(KeyValuePair<Coord , Piece> kv in chessBoard.pieces)
             {
-                if(i < 16)
+                if (i <= 16)
                 {
-                    if (kv.Key is King)
+                    if (kv.Value is King)
                         p = new King();
-                    else if (kv.Key is Rook)
+                    else if (kv.Value is Rook)
                         p = new Rook();
-                    else if (kv.Key is Bishop)
+                    else if (kv.Value is Bishop)
                         p = new Bishop();
-                    else if (kv.Key is Queen)
+                    else if (kv.Value is Queen)
                         p = new Queen();
-                    else if (kv.Key is Knight)
-                        p = new Knight();  
-                    else if (kv.Key is Pawn)
+                    else if (kv.Value is Knight)
+                        p = new Knight();
+                    else if (kv.Value is Pawn)
                         p = new Pawn();
 
-                    p.id = ++i;
-                    Assert.AreEqual(p, kv.Key);
+                    p.id = i++;
+                    Assert.AreEqual(p, kv.Value);                    
                 }
-            }
-            foreach (KeyValuePair<Piece, Coord> kv in chessBoard.pieces)
-            {
-                //Assert.AreEqual(new Coord(), kv.Value);
-            }
+                
+                else if (i > 16)
+                {
+                    if (kv.Value is King)
+                        p = new King(PiecesColor.black);
+                    else if (kv.Value is Rook)
+                        p = new Rook(PiecesColor.black);
+                    else if (kv.Value is Bishop)
+                        p = new Bishop(PiecesColor.black);
+                    else if (kv.Value is Queen)
+                        p = new Queen(PiecesColor.black);
+                    else if (kv.Value is Knight)
+                        p = new Knight(PiecesColor.black);
+                    else if (kv.Value is Pawn)
+                        p = new Pawn(PiecesColor.black);
 
+                    p.id = i++;
+                    Assert.AreEqual(p, kv.Value);
+                }
+            }  
         }
 
         [TestMethod()]
@@ -88,7 +104,7 @@ namespace chessGame.model.Tests
         public void GetPieceByIDTest()
         {
             chessBoard.AddPieces(new List<Piece>() { king1, king2 }, 
-                                new List<Coord>() { coord1, coord1 });
+                                new List<Coord>() { coord1, coord2 });
             Assert.AreEqual(1, king1.id);
             Assert.AreEqual(2, king2.id);
         }

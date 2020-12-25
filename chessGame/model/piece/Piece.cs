@@ -37,7 +37,7 @@ namespace chessGame.pieces
             Piece piece = (Piece)obj;
 
             //if (_id == piece.id && _color == piece._color && this.GetType() == piece.GetType())
-            if (id == piece.id && this.GetType() == piece.GetType())
+            if (id == piece.id && this.GetType() == piece.GetType() && color == piece.color)
                 isEqual = true;
 
             return isEqual;
