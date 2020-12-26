@@ -7,30 +7,31 @@ namespace chessGame.model.piece.Tests
     [TestClass()]
     public class PossibleMovesTest
     {
-        PossibleMoves moves;
-        PossibleMoves movesL;
+        // todo : enelver si inutile
+        //PossibleMoves moves;
+       // PossibleMoves movesL;
 
         [TestInitialize()]
         public void testsInitialize()
         {
-            moves = new PossibleMoves(EDirections.diagonal, 2);
-            movesL = new PossibleMoves(new Dictionary<EDirections, int>() { { EDirections.horizontal, 5 }, { EDirections.vertical, 1 } });
+            //moves = new PossibleMoves(Directions.diagonal, 2);
+            //movesL = new PossibleMoves(new Dictionary<Directions, int>() { { Directions.horizontal, 5 }, { Directions.vertical, 1 } });
         }
 
         [TestMethod()]
         public void HasDirectionTest()
         {
-            Assert.AreEqual(true, moves.HasDirection(EDirections.diagonal));
-            Assert.AreEqual(false, moves.HasDirection(EDirections.vertical));
+            //Assert.AreEqual(true, moves.HasDirection(Directions.diagonal));
+            //Assert.AreEqual(false, moves.HasDirection(Directions.vertical));
         }
 
         [TestMethod()]
         public void CreationMoveTest()
         {
-            Assert.AreEqual(2, moves.moves[EDirections.diagonal]);
+            //Assert.AreEqual(2, moves.moves[Directions.diagonal]);
 
-            Assert.AreEqual(5, movesL.moves[EDirections.horizontal]);
-            Assert.AreEqual(1, movesL.moves[EDirections.vertical]);
+            //Assert.AreEqual(5, movesL.moves[Directions.horizontal]);
+           // Assert.AreEqual(1, movesL.moves[Directions.vertical]);
         }
     }
 }

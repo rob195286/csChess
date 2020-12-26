@@ -69,7 +69,7 @@ namespace chessGame.model
             return piece;
         }    
         
-        public void MovePiece(Piece piece, PossibleMoves move)
+        public void MovePiece(Piece piece)
         {
             // todo : finnir
 

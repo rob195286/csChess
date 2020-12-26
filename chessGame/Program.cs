@@ -19,10 +19,9 @@ namespace chessGame
             ChessBoard chessBoard = chessBoardBuilder.GetChessBoard();
             */
 
-            PossibleMoves m = new PossibleMoves(new Dictionary<EDirections, int>() { {EDirections.horizontal,5},{ EDirections.vertical, 1 } });
-
+           
             Console.WriteLine("-------------------------------------");
-            Console.WriteLine(m);
+            Console.WriteLine(5);
 
            // Console.WriteLine(chessBoard.board.Count);
 

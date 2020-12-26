@@ -29,6 +29,11 @@ namespace chessGame.pieces.Tests
 
             king = new King(PiecesColor.black);
             Assert.AreEqual(PiecesColor.black, king.color);
+
+            Assert.AreEqual(true, king.HasDirection(Directions.diagonal));
+            Assert.AreEqual(true, king.HasDirection(Directions.horizontal));
+            Assert.AreEqual(true, king.HasDirection(Directions.vertical));
+            Assert.AreEqual(false, king.HasDirection(Directions.verticalFront));
         }
 
         [TestMethod()]

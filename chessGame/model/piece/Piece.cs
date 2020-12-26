@@ -1,4 +1,5 @@
 ﻿using chessGame.model;
+using chessGame.model.piece;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,11 +12,21 @@ namespace chessGame.pieces
         black
     }
 
+    public enum Directions
+    {
+        diagonal,
+        horizontal,
+        vertical,
+        verticalFront
+    }
+
     public abstract class Piece
     {
-        public int id { get; set; }
+        protected List<Directions> _moves;
+        public List<Directions> moves { get => _moves; }
 
-        public virtual PiecesColor color { get; }
+        public int id { get; set; }
+        public PiecesColor color { get; }
 
 
         protected Piece() : this(PiecesColor.white)
@@ -27,6 +38,11 @@ namespace chessGame.pieces
             color = pieceColor;
         }
 
+
+        public bool HasDirection(Directions direction)
+        {
+            return this.moves.Contains(direction);
+        }
 
         public override bool Equals(object obj)
         {
