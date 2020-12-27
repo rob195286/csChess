@@ -88,8 +88,11 @@ namespace chessGame.model
             foreach (Piece p in pieces.Values)
             {
                 if (p.id == id)
+                {
                     piece = p;
-              // todo : implémenter une exception
+                    break;
+                }
+                // todo : implémenter une exception
             }
             return piece;
         }             

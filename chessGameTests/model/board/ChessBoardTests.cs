@@ -26,7 +26,7 @@ namespace chessGame.model.Tests
             king1 = new King();
             king2 = new King(PiecesColor.black);
             coord1 = new Coord();
-            coord2 = new Coord();
+            coord2 = new Coord(1,'e');
         }
 
         [TestMethod()]
