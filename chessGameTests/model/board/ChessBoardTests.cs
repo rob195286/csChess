@@ -91,8 +91,13 @@ namespace chessGame.model.Tests
             chessBoardBuilder.SetDefaultChessBoard();
             chessBoard = chessBoardBuilder.GetChessBoard();
 
-            //chessBoard.MovePiece(chessBoard.GetPieceA(1), new Coord());
-            Assert.AreEqual(0, 10);
+            Pawn p = (Pawn)chessBoard.GetPieceAtCoord(new Coord(2, 'e'));
+
+            Assert.AreEqual(true, chessBoard.pieces.ContainsKey(new Coord(2, 'e')));
+
+            chessBoard.MovePiece(chessBoard.GetPieceAtCoord(new Coord(2,'e')), new Coord(3,'a'));
+            Assert.AreEqual(p, chessBoard.GetPieceAtCoord(new Coord(3, 'a')));
+            Assert.AreEqual(false, chessBoard.pieces.ContainsKey(new Coord(2, 'e')));
         }
 
         [TestMethod()]

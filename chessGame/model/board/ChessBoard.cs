@@ -41,28 +41,41 @@ namespace chessGame.model
         }
 
 
-        public void AddPiece(Piece piece, Coord coord)
+        private void _ChangeCoordPiece(Piece p, Coord newc)
+        {
+            foreach(KeyValuePair<Coord, Piece> kv in pieces)
+            {
+                if(kv.Value == p)
+                {
+                    pieces.Remove(kv.Key);
+                    pieces.Add(newc, p);
+                    break;
+                }
+            }
+        }
+
+        public void AddPiece(Piece p, Coord c)
         {
             // todo : faire erreur lorsqu'on ajoute une pièce à un mauvais endroit
-            piece.id = getNumberOfPieces + 1;
+            p.id = getNumberOfPieces + 1;
             //if(piece not in _pieces.)
-                pieces.Add(coord, piece);
+                pieces.Add(c, p);
         }
         
-        public void AddPieces(List<Piece> pieces, List<Coord> coord)
+        public void AddPieces(List<Piece> pieces, List<Coord> c)
         {
             int i = 0;
             foreach(Piece p in pieces)
-                AddPiece(p, coord.ElementAt(i++));
+                AddPiece(p, c.ElementAt(i++));
         }
         /// <summary>
         /// Regarde dans le board si la pièce passée en paramètre existe.
         /// </summary>
         /// <param name="piece"> Pièce à chercher dans le board. </param>
         /// <returns> Retourne true si elle se trouve dans le board, false sinon. </returns>
-        public bool PieceExist(Piece piece)
+        public bool PieceExist(Piece p)
         {
-            return pieces.ContainsValue(piece);
+            return pieces.ContainsValue(p);
         }
         /// <summary>
         /// Retourne la piece correspondante à l'id donné.
@@ -100,11 +113,10 @@ namespace chessGame.model
             return piece;
         }    
         
-        public void MovePiece(Piece piece, Coord coord)
+        public void MovePiece(Piece p, Coord newc)
         {
-            // todo : finnir
-
-            // ChangeCoordPiece()
+            // todo : except
+            _ChangeCoordPiece(p, newc);
         }
 
         public override string ToString()

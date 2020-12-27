@@ -17,14 +17,21 @@ namespace chessGame
             chessBoardBuilder.SetDefaultChessBoard();
             ChessBoard chessBoard = chessBoardBuilder.GetChessBoard();
 
+            Dictionary<Coord, Piece> pi = new Dictionary<Coord, Piece>() { { new Coord(2, 'e'), new King() } };
 
             Console.WriteLine("-------------------------------------");
-            Console.WriteLine(chessBoard.pieces.Keys.ElementAt(0));
+            Console.WriteLine(pi.ContainsKey(new Coord(2, 'e')));
+            Console.WriteLine(pi.ContainsKey(new Coord(2, 'a')));
+            Console.WriteLine(pi.ContainsKey(new Coord(1, 'a')));
+            Console.WriteLine(pi.ContainsKey(new Coord(1, 'e')));
+            pi.Add(new Coord(1, 'e'), new King());
+            Console.WriteLine(pi.ContainsKey(new Coord(1, 'e')));
+
 
             //foreach(KeyValuePair<Coord, Piece> kv in chessBoard.pieces)
             //Console.WriteLine(ki);
 
-           // Console.WriteLine(chessBoard.board.Count);
+            // Console.WriteLine(chessBoard.board.Count);
 
         }
 

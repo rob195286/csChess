@@ -49,5 +49,10 @@ namespace chessGame.model.board
         {
             return string.Format(" [{0}{1}]",row, column);
         }
+
+        public override int GetHashCode()
+        {
+            return row.GetHashCode() + column.GetHashCode();
+        }
     }
 }
