@@ -19,7 +19,7 @@ namespace chessGame.pieces.Tests
         {
             king = new King();
             queen = new Queen();
-            queen2 = new Queen();
+            queen2 = new Queen(PiecesColor.white);
         }
         
         [TestMethod()]

@@ -37,7 +37,7 @@ namespace chessGame.model.board
         {
             // todo : faire une except au cas ou on mettrais des pièces de couleurs différentes
             //  ou en dehors du plateau
-            _chessBoard.AddPieces(piece, coord);
+            _chessBoard.AddPiece(piece, coord);
         }
         
         /// <summary>
@@ -46,6 +46,7 @@ namespace chessGame.model.board
         /// </summary>
         public void SetDefaultChessBoard()
         {
+            // todo : voir MemberwiseClone pour la copie automatique
             List<char> defaultColumn = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };          
             SetDimensions(8, defaultColumn);
 

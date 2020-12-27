@@ -10,8 +10,10 @@ namespace chessGame.model
 {
     public class ChessBoard
     {
+        /// <summary>
+        /// Retourne les dimensions du board (lignes et colonnes).
+        /// </summary>
         public Dictionary<int, List<char>> board { get; set; }
-
         public List<Coord> coordAvailable
         { 
             get 
@@ -23,7 +25,10 @@ namespace chessGame.model
                 return coord; 
             }
         }
-
+        /// <summary>
+        /// Retourne un dictinnaire contenant toutes les pièces dans le board,
+        ///     avec comme clé les coordonnées et comme valeur la pièce correspondante. 
+        /// </summary>
         public Dictionary<Coord, Piece> pieces { get; }
 
         public int getNumberOfPieces { get => pieces.Count; }
@@ -36,12 +41,7 @@ namespace chessGame.model
         }
 
 
-        private void ChangeCoordPiece(Piece piece)
-        {
-            // todo : finnir
-        }
-
-        public void AddPieces(Piece piece, Coord coord)
+        public void AddPiece(Piece piece, Coord coord)
         {
             // todo : faire erreur lorsqu'on ajoute une pièce à un mauvais endroit
             piece.id = getNumberOfPieces + 1;
@@ -53,9 +53,22 @@ namespace chessGame.model
         {
             int i = 0;
             foreach(Piece p in pieces)
-                AddPieces(p, coord.ElementAt(i++));
+                AddPiece(p, coord.ElementAt(i++));
         }
-
+        /// <summary>
+        /// Regarde dans le board si la pièce passée en paramètre existe.
+        /// </summary>
+        /// <param name="piece"> Pièce à chercher dans le board. </param>
+        /// <returns> Retourne true si elle se trouve dans le board, false sinon. </returns>
+        public bool PieceExist(Piece piece)
+        {
+            return pieces.ContainsValue(piece);
+        }
+        /// <summary>
+        /// Retourne la piece correspondante à l'id donné.
+        /// </summary>
+        /// <param name="id"> Id de la pièce à rechercher. </param>
+        /// <returns> Retourne la pièce trouvé. </returns>
         public Piece GetPieceByID(int id)
         {
             Piece piece = null;
@@ -63,13 +76,33 @@ namespace chessGame.model
             {
                 if (p.id == id)
                     piece = p;
+              // todo : implémenter une exception
+            }
+            return piece;
+        }             
+        /// <summary>
+        /// Retourne la piece correspondante aux coordonnées donné.
+        /// </summary>
+        /// <param name="c"> Coordonnées de la pièce à rechercher. </param>
+        /// <returns> Retourne la pièce trouvé ou nul si elle n'est pas trouvé. </returns>
+        public Piece GetPieceAtCoord(Coord c)
+        {
+            Piece piece = null;
+            if (pieces.ContainsValue(piece))
+            {
+
+            }/*
+            foreach (Piece p in pieces.Values)
+            {
+                if (p.id == id)
+                    piece = p;
                 else // todo : implémenter une exception
                     piece = null;
-            }
+            }*/
             return piece;
         }    
         
-        public void MovePiece(Piece piece)
+        public void MovePiece(Piece piece, Coord coord)
         {
             // todo : finnir
 

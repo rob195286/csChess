@@ -7,27 +7,23 @@ namespace chessGame.model
 {
     public class Player
     {
-        private int _id;
-        public int id { get => _id; }
+        public int id { get; }
 
-        private PiecesColor _piecesColor;
-        public PiecesColor PiecesColor { get => _piecesColor; }
-
-        //private List<Piece> _pieces;
-        //public List<Piece> Pieces { get => _pieces; set => _pieces = value; }
+        public PiecesColor piecesColor { get; }
 
 
-        public Player(int id, PiecesColor piecesColor) //: this(id, piecesColor, new List<Piece>() { })
+        public Player(int id, PiecesColor piecesColor)
         {
-            _id = id;
-            _piecesColor = piecesColor;
+            id = id;
+            piecesColor = piecesColor;
         }
+
 
         public override string ToString()
         {
             return base.ToString() + " : \n"
-                + "    id : " + _id
-                + "    pieces color : " + _piecesColor;
+                + "    id : " + id
+                + "    pieces color : " + piecesColor;
         }
 
         public override bool Equals(object obj)
@@ -38,7 +34,7 @@ namespace chessGame.model
 
             Player player = (Player)obj;
 
-            if (_id == player.id && _piecesColor == player._piecesColor)
+            if (id == player.id && piecesColor == player.piecesColor)
                 isEqual = true;
 
             return isEqual;

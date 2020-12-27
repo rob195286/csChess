@@ -2,6 +2,7 @@
 using chessGame.model.piece;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace chessGame.pieces
@@ -48,12 +49,14 @@ namespace chessGame.pieces
         {
             bool isEqual = false;
             if (!(obj is Piece))
-                return false;
+                return isEqual;
 
-            Piece piece = (Piece)obj;
+            Piece p = (Piece)obj;
 
-            //if (_id == piece.id && _color == piece._color && this.GetType() == piece.GetType())
-            if (id == piece.id && this.GetType() == piece.GetType() && color == piece.color)
+            if (id == p.id && 
+                        this.GetType() == p.GetType() &&
+                        color == p.color &&
+                        Enumerable.SequenceEqual(_moves, p.moves))
                 isEqual = true;
 
             return isEqual;
@@ -71,8 +74,7 @@ namespace chessGame.pieces
 
         public override string ToString()
         {
-            return base.ToString()
-                + "\n   piece id : " + this.id
+            return "\n   p id : " + this.id
                 + "\n   Piece Type : " + this.GetType()
                 + "\n   Piece Color : " + this.color;
         }

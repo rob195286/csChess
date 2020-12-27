@@ -6,10 +6,14 @@ using System.Text;
 
 namespace chessGame.pieces
 {
+    // todo : faire un refactor global
     public class King : Piece
     {
         public King() : base()
         {
+            this._moves = new List<Directions>() { Directions.horizontal,
+                                                   Directions.vertical,
+                                                   Directions.diagonal};
         }
         public King(PiecesColor pieceColor) : base(pieceColor)
         {/*
@@ -18,7 +22,7 @@ namespace chessGame.pieces
                                                     { Directions.vertical, 1 },
                                                     { Directions.diagonal, 1 } };
             this._possibleMoves = new PossibleMoves(tempDic);*/
-            this._moves = new List<Directions>() { Directions.horizontal, 
+            this._moves = new List<Directions>() { Directions.horizontal,
                                                    Directions.vertical,
                                                    Directions.diagonal};
         }
@@ -29,6 +33,9 @@ namespace chessGame.pieces
     {
         public Queen() : base()
         {
+            this._moves = new List<Directions>() { Directions.horizontal,
+                                                   Directions.vertical,
+                                                   Directions.diagonal};
         }
         public Queen(PiecesColor pieceColor) : base(pieceColor)
         {/*
@@ -48,6 +55,8 @@ namespace chessGame.pieces
     {
         public Rook() : base()
         {
+            this._moves = new List<Directions>() { Directions.horizontal,
+                                                   Directions.vertical};
         }
         public Rook(PiecesColor pieceColor) : base(pieceColor)
         {/*
@@ -65,6 +74,7 @@ namespace chessGame.pieces
     {
         public Bishop() : base()
         {
+            this._moves = new List<Directions>() { Directions.diagonal };
         }
         public Bishop(PiecesColor pieceColor) : base(pieceColor)
         {/*
@@ -80,6 +90,8 @@ namespace chessGame.pieces
     {
         public Knight() : base()
         {
+            this._moves = new List<Directions>() { Directions.horizontal,
+                                                   Directions.vertical };
         }
         public Knight(PiecesColor pieceColor) : base(pieceColor)
         {/*
@@ -98,6 +110,7 @@ namespace chessGame.pieces
     {
         public Pawn() : base()
         {
+            this._moves = new List<Directions>() { Directions.verticalFront };
         }
         public Pawn(PiecesColor pieceColor) : base(pieceColor)
         {/*
