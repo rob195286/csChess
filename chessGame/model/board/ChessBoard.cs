@@ -88,17 +88,15 @@ namespace chessGame.model
         public Piece GetPieceAtCoord(Coord c)
         {
             Piece piece = null;
-            if (pieces.ContainsValue(piece))
+            foreach (Coord coord in pieces.Keys)
             {
-
-            }/*
-            foreach (Piece p in pieces.Values)
-            {
-                if (p.id == id)
-                    piece = p;
-                else // todo : implémenter une exception
-                    piece = null;
-            }*/
+                if (coord == c)
+                {
+                    piece = pieces[coord];
+                    break;
+                }
+                 // todo : implémenter une exception dans le cas ou sa trouea pas
+            }
             return piece;
         }    
         
@@ -114,7 +112,8 @@ namespace chessGame.model
             return base.ToString() + " : \n"
                 + "    keys/rows : " + String.Join(", ", board.Keys) + "\n"
                 + "    values/columns : " + String.Join(", ",board.Values.ElementAt(0)) + "\n"
-                + "    values/columns : " + String.Join(", ",board.Values.ElementAt(0)) + "\n"
+                + "    pieces : " + String.Join(", ",pieces.Values) + "\n"
+                + "    coord take : " + String.Join(", ",pieces.Keys) + "\n"
                 + "    coords available : " + String.Join(" , ", coordAvailable) + "\n";
         }
     }

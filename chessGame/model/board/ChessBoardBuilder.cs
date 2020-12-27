@@ -35,8 +35,7 @@ namespace chessGame.model.board
         /// <param name="coord"> Coordonnées où placée les pièces. </param>
         public void SetPieceAtCoord(Piece piece, Coord coord)
         {
-            // todo : faire une except au cas ou on mettrais des pièces de couleurs différentes
-            //  ou en dehors du plateau
+            // todo : except pourt en dehors du plateau en dehors du plateau
             _chessBoard.AddPiece(piece, coord);
         }
         

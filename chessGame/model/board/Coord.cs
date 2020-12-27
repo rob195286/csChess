@@ -6,11 +6,9 @@ namespace chessGame.model.board
 {
     public class Coord
     {
-        private int _row;
-        public int Row { get => _row; set => _row = value; }
+        public int row { get; set; }
 
-        private char _column;
-        public char Column { get => _column; set => _column = value; }
+        public char column { get; set; }
 
 
         public Coord():this(0 , '?')
@@ -18,14 +16,38 @@ namespace chessGame.model.board
         }
         public Coord(int row, char column)
         {
-            _row = row;
-            _column = column;
+            this.row = row;
+            this.column = column;
         }
 
 
+        public override bool Equals(object obj)
+        {
+            bool isEqual = false;
+            if (!(obj is Coord))
+                return isEqual;
+
+            Coord c = (Coord)obj;
+
+            if (row == c.row && this.GetType() == c.GetType() && column == c.column)
+                isEqual = true;
+
+            return isEqual;
+        }
+
+        public static bool operator ==(Coord x, Coord y)
+        {
+            return x.Equals(y);
+        }
+
+        public static bool operator !=(Coord x, Coord y)
+        {
+            return !(x.Equals(y));
+        }
+
         public override string ToString()
         {
-            return string.Format(" [{0}{1}]",_row, _column);
+            return string.Format(" [{0}{1}]",row, column);
         }
     }
 }

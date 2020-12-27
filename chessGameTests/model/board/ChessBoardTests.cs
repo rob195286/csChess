@@ -121,6 +121,8 @@ namespace chessGame.model.Tests
             chessBoard = chessBoardBuilder.GetChessBoard();
 
             Assert.AreEqual(PiecesColor.white, ((Rook)chessBoard.GetPieceAtCoord(new Coord(1,'a'))).color);
+            Assert.AreEqual(PiecesColor.white, ((Pawn)chessBoard.GetPieceAtCoord(new Coord(2,'b'))).color);
+            Assert.AreEqual(PiecesColor.black, ((Queen)chessBoard.GetPieceAtCoord(new Coord(8,'d'))).color);
         }
     }
 
