@@ -29,29 +29,28 @@ namespace chessGame.model
         /// Retourne un dictinnaire contenant toutes les pièces dans le board,
         ///     avec comme clé les coordonnées et comme valeur la pièce correspondante. 
         /// </summary>
-        public Dictionary<Coord, Piece> pieces { get; }
+        public Dictionary<Coord, Piece> pieceAtCoord { get; }
 
-        public int getNumberOfPieces { get => pieces.Count; }
+        public int getNumberOfPieces { get => pieceAtCoord.Count; }
 
 
         public ChessBoard()
         {
-            pieces = new Dictionary<Coord, Piece>() { };
+            pieceAtCoord = new Dictionary<Coord, Piece>() { };
             board = new Dictionary<int, List<char>>() { };
         }
 
 
-        private void _ChangeCoordPiece(Piece p, Coord newc)
+        private void _RemovePieceAtCoord(Coord c)
         {
-            foreach(KeyValuePair<Coord, Piece> kv in pieces)
-            {
-                if(kv.Value == p)
-                {
-                    pieces.Remove(kv.Key);
-                    pieces.Add(newc, p);
-                    break;
-                }
-            }
+            pieceAtCoord.Remove(c);
+        }
+
+        private void _ChangeCoordPiece(Coord oldc, Coord newc)
+        {
+            Piece p = pieceAtCoord[oldc];
+            pieceAtCoord.Add(newc, p);
+            pieceAtCoord.Remove(oldc);
         }
 
         public void AddPiece(Piece p, Coord c)
@@ -59,7 +58,7 @@ namespace chessGame.model
             // todo : faire erreur lorsqu'on ajoute une pièce à un mauvais endroit
             p.id = getNumberOfPieces + 1;
             //if(piece not in _pieces.)
-                pieces.Add(c, p);
+                pieceAtCoord.Add(c, p);
         }
         
         public void AddPieces(List<Piece> pieces, List<Coord> c)
@@ -75,7 +74,7 @@ namespace chessGame.model
         /// <returns> Retourne true si elle se trouve dans le board, false sinon. </returns>
         public bool PieceExist(Piece p)
         {
-            return pieces.ContainsValue(p);
+            return pieceAtCoord.ContainsValue(p);
         }
         /// <summary>
         /// Retourne la piece correspondante à l'id donné.
@@ -85,7 +84,7 @@ namespace chessGame.model
         public Piece GetPieceByID(int id)
         {
             Piece piece = null;
-            foreach (Piece p in pieces.Values)
+            foreach (Piece p in pieceAtCoord.Values)
             {
                 if (p.id == id)
                 {
@@ -104,11 +103,11 @@ namespace chessGame.model
         public Piece GetPieceAtCoord(Coord c)
         {
             Piece piece = null;
-            foreach (Coord coord in pieces.Keys)
+            foreach (Coord coord in pieceAtCoord.Keys)
             {
                 if (coord == c)
                 {
-                    piece = pieces[coord];
+                    piece = pieceAtCoord[coord];
                     break;
                 }
                  // todo : implémenter une exception dans le cas ou sa trouea pas
@@ -116,10 +115,10 @@ namespace chessGame.model
             return piece;
         }    
         
-        public void MovePiece(Piece p, Coord newc)
+        public void MovePiece(Coord oldc, Coord newc)
         {
             // todo : except
-            _ChangeCoordPiece(p, newc);
+            _ChangeCoordPiece(oldc, newc);
         }
 
         public override string ToString()
@@ -127,8 +126,8 @@ namespace chessGame.model
             return base.ToString() + " : \n"
                 + "    keys/rows : " + String.Join(", ", board.Keys) + "\n"
                 + "    values/columns : " + String.Join(", ",board.Values.ElementAt(0)) + "\n"
-                + "    pieces : " + String.Join(", ",pieces.Values) + "\n"
-                + "    coord take : " + String.Join(", ",pieces.Keys) + "\n"
+                + "    pieceAtCoord : " + String.Join(", ",pieceAtCoord.Values) + "\n"
+                + "    coord take : " + String.Join(", ",pieceAtCoord.Keys) + "\n"
                 + "    coords available : " + String.Join(" , ", coordAvailable) + "\n";
         }
     }

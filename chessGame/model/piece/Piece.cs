@@ -12,7 +12,9 @@ namespace chessGame.pieces
         white,
         black
     }
-
+    /// <summary>
+    /// Contient toutes les directions que peuvent avoir les pieceAtCoord.
+    /// </summary>
     public enum Directions
     {
         diagonal,
@@ -40,6 +42,11 @@ namespace chessGame.pieces
         }
 
 
+        /// <summary>
+        /// Check si la pièce contient la direction fournise en argument.
+        /// </summary>
+        /// <param name="direction"> Direction qu'il faut checker. </param>
+        /// <returns> Retourne true s'il elle si trouve, false sinon. </returns>
         public bool HasDirection(Directions direction)
         {
             return this.moves.Contains(direction);

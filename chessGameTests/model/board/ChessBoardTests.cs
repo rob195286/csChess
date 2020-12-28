@@ -9,7 +9,6 @@ namespace chessGame.model.Tests
     [TestClass()]
     public class ChessBoardTests
     {
-        List<char> fakeListChar;
         ChessBoard chessBoard;
 
         King king1;
@@ -20,7 +19,6 @@ namespace chessGame.model.Tests
         [TestInitialize()]
         public void testsInitialize()
         {
-            fakeListChar = new List<char>() { 'r', 't', 'a' };
             chessBoard = new ChessBoard();
 
             king1 = new King();
@@ -42,7 +40,7 @@ namespace chessGame.model.Tests
 
             int i = 1;
             Piece p = null;
-            foreach(KeyValuePair<Coord , Piece> kv in chessBoard.pieces)
+            foreach(KeyValuePair<Coord , Piece> kv in chessBoard.pieceAtCoord)
             {
                 if (i <= 16)
                 {
@@ -93,11 +91,11 @@ namespace chessGame.model.Tests
 
             Pawn p = (Pawn)chessBoard.GetPieceAtCoord(new Coord(2, 'e'));
 
-            Assert.AreEqual(true, chessBoard.pieces.ContainsKey(new Coord(2, 'e')));
+            Assert.AreEqual(true, chessBoard.pieceAtCoord.ContainsKey(new Coord(2, 'e')));
 
-            chessBoard.MovePiece(chessBoard.GetPieceAtCoord(new Coord(2,'e')), new Coord(3,'a'));
+            chessBoard.MovePiece(new Coord(2, 'e'), new Coord(3,'a'));
             Assert.AreEqual(p, chessBoard.GetPieceAtCoord(new Coord(3, 'a')));
-            Assert.AreEqual(false, chessBoard.pieces.ContainsKey(new Coord(2, 'e')));
+            Assert.AreEqual(false, chessBoard.pieceAtCoord.ContainsKey(new Coord(2, 'e')));
         }
 
         [TestMethod()]

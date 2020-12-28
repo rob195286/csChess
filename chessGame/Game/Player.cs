@@ -23,7 +23,7 @@ namespace chessGame.model
         {
             return base.ToString() + " : \n"
                 + "    id : " + id
-                + "    pieces color : " + piecesColor;
+                + "    pieceAtCoord color : " + piecesColor;
         }
 
         public override bool Equals(object obj)

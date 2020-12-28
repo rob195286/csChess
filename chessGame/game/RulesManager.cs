@@ -17,7 +17,7 @@ namespace chessGame.game
         /// <param name="widthDimension"> Prend la taille en largeur du board. </param>
         /// <returns> Retourne un dictionnaire avec pour chaque type de direction (longueur, largeur, horizontal etc)
         ///     la valeur à laquel la pièce peut se déplacer. </returns>
-        public static Dictionary<Directions, int> GetPieceMove(Piece p, 
+        public static Dictionary<Directions, int> GetMoveOfPiece(Piece p, 
                                                                 int lengthDimension, 
                                                                 int widthDimension)
         {
