@@ -59,5 +59,7 @@ namespace chessGame.game
             }
             return casesNumber;
         }
+
+        //public static Pieces
     }
 }

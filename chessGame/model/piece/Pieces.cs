@@ -110,14 +110,20 @@ namespace chessGame.pieces
     {
         public Pawn() : base()
         {
-            this._moves = new List<Directions>() { Directions.verticalFront };
+            if(this.color == PiecesColor.white)
+                this._moves = new List<Directions>() { Directions.verticalFront }; 
+            if(this.color == PiecesColor.black)
+                this._moves = new List<Directions>() { Directions.verticalBack };
         }
         public Pawn(PiecesColor pieceColor) : base(pieceColor)
         {/*
             Dictionary<Directions, int> tempDic = new Dictionary<Directions, int>()
                                                     { { Directions.horizontal, 1 } };
             this._possibleMoves = new PossibleMoves(tempDic);*/
-            this._moves = new List<Directions>() { Directions.verticalFront };
+            if (this.color == PiecesColor.white)
+                this._moves = new List<Directions>() { Directions.verticalFront };
+            if (this.color == PiecesColor.black)
+                this._moves = new List<Directions>() { Directions.verticalBack };
         }
 
     }

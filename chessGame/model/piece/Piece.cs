@@ -20,7 +20,8 @@ namespace chessGame.pieces
         diagonal,
         horizontal,
         vertical,
-        verticalFront
+        verticalFront,
+        verticalBack
     }
 
     public abstract class Piece
