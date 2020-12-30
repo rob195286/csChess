@@ -48,12 +48,12 @@ namespace chessGame.game
                 casesNumber.Add(Directions.horizontal, widthDimension);
                 casesNumber.Add(Directions.vertical, lengthDimension);
             }
-            else if (p is King)
+            else if (p is Knight)
             {
                 casesNumber.Add(Directions.horizontal, 1);
                 casesNumber.Add(Directions.vertical, 2);
             }
-            else if (p is King)
+            else if (p is Pawn)
             {
                 casesNumber.Add(Directions.verticalFront, 1);
             }

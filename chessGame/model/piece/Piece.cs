@@ -86,5 +86,10 @@ namespace chessGame.pieces
                 + "\n   Piece Type : " + this.GetType()
                 + "\n   Piece Color : " + this.color;
         }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(moves, id, color);
+        }
     }
 }

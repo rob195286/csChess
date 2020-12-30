@@ -52,7 +52,7 @@ namespace chessGame.model.board
 
         public override int GetHashCode()
         {
-            return row.GetHashCode() + column.GetHashCode();
+            return HashCode.Combine(row, column);
         }
     }
 }

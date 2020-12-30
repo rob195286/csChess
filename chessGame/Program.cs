@@ -12,16 +12,21 @@ namespace chessGame
     {
         static void Main(string[] args)
         {
-            int i = 0;
             ChessBoardBuilder chessBoardBuilder = new ChessBoardBuilder();
             chessBoardBuilder.SetDefaultChessBoard();
             ChessBoard chessBoard = chessBoardBuilder.GetChessBoard();
 
-            Dictionary<Coord, Piece> pi = new Dictionary<Coord, Piece>() { { new Coord(2, 'e'), new King() } , { new Coord(20, 'a'), new Pawn() } };
+            Dictionary<Coord, Piece> pi = new Dictionary<Coord, Piece>() { { new Coord(2, 'e'), new King() } , 
+                { new Coord(20, 'a'), new Pawn() }  ,
+                { new Coord(2, 'a'), new Pawn() }};
 
             Console.WriteLine("-------------------------------------");
-            foreach (KeyValuePair<Coord, Piece> kv in pi)
-                Console.WriteLine(kv);
+            foreach (List<char> column in chessBoard.board.Values)
+            {
+                Console.WriteLine(column.Count);
+
+                    Console.WriteLine();
+            }
 
 
 

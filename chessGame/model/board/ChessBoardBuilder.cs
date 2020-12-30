@@ -79,7 +79,7 @@ namespace chessGame.model.board
             SetPieceAtCoord(new Knight(PiecesColor.black), new Coord(8, 'b'));
             SetPieceAtCoord(new Knight(PiecesColor.black), new Coord(8, 'g'));
          
-            // todo ; inverser l'endroit du board ou on les met
+            // todo : inverser l'endroit du board ou on les met
             for (int i = 0; i<8; i++)
                 SetPieceAtCoord(new Pawn(PiecesColor.black), new Coord(7, defaultColumn.ElementAt(i)));
         }

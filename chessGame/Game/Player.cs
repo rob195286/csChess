@@ -14,8 +14,8 @@ namespace chessGame.model
 
         public Player(int id, PiecesColor piecesColor)
         {
-            id = id;
-            piecesColor = piecesColor;
+            this.id = id;
+            this.piecesColor = piecesColor;
         }
 
 
@@ -38,6 +38,11 @@ namespace chessGame.model
                 isEqual = true;
 
             return isEqual;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(id, piecesColor);
         }
 
         public static bool operator ==(Player x, Player y)

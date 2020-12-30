@@ -41,9 +41,17 @@ namespace chessGame.model
         }
 
 
-        private void _RemovePieceAtCoord(Coord c)
+        private void _IfCoordIsInBoardRange(Coord c)
         {
-            pieceAtCoord.Remove(c);
+            if (c.row > board.Count)
+                throw new IndexOutOfRangeException();
+            // On regarde si la vaeur de la colonne est supérieur au dernier élément de la liste 
+            //    car comme ce sont des char, on a bien une valeur numérique.
+            foreach (List<char> column in board.Values)
+            {
+                if (c.column > column.Last())
+                    throw new IndexOutOfRangeException();
+            }
         }
 
         private void _ChangeCoordPiece(Coord oldc, Coord newc)
@@ -52,19 +60,24 @@ namespace chessGame.model
             pieceAtCoord.Add(newc, p);
             pieceAtCoord.Remove(oldc);
         }
+        
+        public void RemovePieceAtCoord(Coord c)
+        {
+            pieceAtCoord.Remove(c);
+        }
 
         public void AddPiece(Piece p, Coord c)
         {
-            // todo : faire erreur lorsqu'on ajoute une pièce à un mauvais endroit
+            // todo : vérifier except ou fairre la notre
+            _IfCoordIsInBoardRange(c);
             p.id = getNumberOfPieces + 1;
-            //if(piece not in _pieces.)
-                pieceAtCoord.Add(c, p);
+            pieceAtCoord.Add(c, p);
         }
         
-        public void AddPieces(List<Piece> pieces, List<Coord> c)
+        public void AddPieces(List<Piece> ps, List<Coord> c)
         {
             int i = 0;
-            foreach(Piece p in pieces)
+            foreach(Piece p in ps)
                 AddPiece(p, c.ElementAt(i++));
         }
         /// <summary>
@@ -117,7 +130,9 @@ namespace chessGame.model
         
         public void MovePiece(Coord oldc, Coord newc)
         {
-            // todo : except
+            // todo : vérifier ou modifier qu'on ne puisse pas faire nos propre exceptions.
+            _IfCoordIsInBoardRange(oldc);
+            _IfCoordIsInBoardRange(newc);
             _ChangeCoordPiece(oldc, newc);
         }
 
