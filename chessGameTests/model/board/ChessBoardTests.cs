@@ -27,10 +27,10 @@ namespace chessGame.model.Tests
 
             king1 = new King();
             king2 = new King(PiecesColor.black);
-            coord1 = new Coord(2,'a');
-            coord2 = new Coord(1,'e');
-            coord3 = new Coord(3,'a');
-            coord4 = new Coord(3,'b');
+            coord1 = new Coord(2, 'a');
+            coord2 = new Coord(1, 'e');
+            coord3 = new Coord(3, 'a');
+            coord4 = new Coord(3, 'b');
         }
 
         [TestMethod()]
@@ -47,7 +47,7 @@ namespace chessGame.model.Tests
 
         [TestMethod()]
         public void CreationBoardTest()
-        {            
+        {
             chessBoardBuilder.SetDefaultChessBoard();
             chessBoard = chessBoardBuilder.GetChessBoard();
 
@@ -57,7 +57,7 @@ namespace chessGame.model.Tests
 
             int i = 1;
             Piece p = null;
-            foreach(KeyValuePair<Coord , Piece> kv in chessBoard.pieceAtCoord)
+            foreach (KeyValuePair<Coord, Piece> kv in chessBoard.pieceAtCoord)
             {
                 if (i <= 16)
                 {
@@ -75,9 +75,9 @@ namespace chessGame.model.Tests
                         p = new Pawn();
 
                     p.id = i++;
-                    Assert.AreEqual(p, kv.Value);                    
+                    Assert.AreEqual(p, kv.Value);
                 }
-                
+
                 else if (i > 16)
                 {
                     if (kv.Value is King)
@@ -96,7 +96,7 @@ namespace chessGame.model.Tests
                     p.id = i++;
                     Assert.AreEqual(p, kv.Value);
                 }
-            }  
+            }
         }
 
         [TestMethod()]
@@ -125,16 +125,27 @@ namespace chessGame.model.Tests
             Assert.AreEqual(1, chessBoard.getNumberOfPieces);
             Assert.AreEqual(king1, chessBoard.GetPieceByID(1));
         }
-              
+
         [TestMethod()]
         public void GetPiecAtCoordTest()
         {
             chessBoardBuilder.SetDefaultChessBoard();
             chessBoard = chessBoardBuilder.GetChessBoard();
 
-            Assert.AreEqual(PiecesColor.white, ((Rook)chessBoard.GetPieceAtCoord(new Coord(1,'a'))).color);
-            Assert.AreEqual(PiecesColor.white, ((Pawn)chessBoard.GetPieceAtCoord(new Coord(2,'b'))).color);
-            Assert.AreEqual(PiecesColor.black, ((Queen)chessBoard.GetPieceAtCoord(new Coord(8,'d'))).color);
+            Assert.AreEqual(PiecesColor.white, ((Rook)chessBoard.GetPieceAtCoord(new Coord(1, 'a'))).color);
+            Assert.AreEqual(PiecesColor.white, ((Pawn)chessBoard.GetPieceAtCoord(new Coord(2, 'b'))).color);
+            Assert.AreEqual(PiecesColor.black, ((Queen)chessBoard.GetPieceAtCoord(new Coord(8, 'd'))).color);
+        }
+
+        [TestMethod()]
+        public void RemovePieceAtCoordTest()
+        {
+            chessBoardBuilder.SetDefaultChessBoard();
+            chessBoard = chessBoardBuilder.GetChessBoard();
+
+            Assert.AreEqual(typeof(Pawn), chessBoard.GetPieceAtCoord(coord1).GetType());
+            chessBoard.RemovePieceAtCoord(coord1);
+            Assert.AreEqual(null, chessBoard.GetPieceAtCoord(coord1));
         }
     }
 

@@ -68,7 +68,7 @@ namespace chessGame.model
 
         public void AddPiece(Piece p, Coord c)
         {
-            // todo : vérifier except ou fairre la notre
+            // todo : cr&er propre except
             _IfCoordIsInBoardRange(c);
             p.id = getNumberOfPieces + 1;
             pieceAtCoord.Add(c, p);
