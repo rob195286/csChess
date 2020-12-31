@@ -103,9 +103,10 @@ namespace chessGame.model
                 {
                     piece = p;
                     break;
-                }
-                // todo : implémenter une exception
+                }                
             }
+            if(piece == null)// todo : refaire exception
+                throw new IndexOutOfRangeException();
             return piece;
         }             
         /// <summary>
@@ -115,22 +116,28 @@ namespace chessGame.model
         /// <returns> Retourne la pièce trouvé ou nul si elle n'est pas trouvé. </returns>
         public Piece GetPieceAtCoord(Coord c)
         {
-            Piece piece = null;
+            Piece p = null;
+            bool flag = false;
             foreach (Coord coord in pieceAtCoord.Keys)
             {
                 if (coord == c)
                 {
-                    piece = pieceAtCoord[coord];
+                    p = pieceAtCoord[coord];
+                    flag = false;
                     break;
                 }
-                 // todo : implémenter une exception dans le cas ou sa trouea pas
+                // permet de voir si piece est à null car il y a un bug lorsla comparaison.
+                else
+                    flag = true;
             }
-            return piece;
+            if (flag)// todo : refaire exception
+                throw new NullReferenceException(c + Texts.pieceNotFound);
+            return p;
         }    
         
         public void MovePiece(Coord oldc, Coord newc)
         {
-            // todo : vérifier ou modifier qu'on ne puisse pas faire nos propre exceptions.
+            // todo : vérifier ou modifier pour faire nos propre exceptions.
             _IfCoordIsInBoardRange(oldc);
             _IfCoordIsInBoardRange(newc);
             _ChangeCoordPiece(oldc, newc);

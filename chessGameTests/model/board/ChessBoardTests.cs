@@ -2,6 +2,7 @@
 using chessGame.model.board;
 using chessGame.pieces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 
 namespace chessGame.model.Tests
@@ -11,6 +12,7 @@ namespace chessGame.model.Tests
     {
         ChessBoard chessBoard;
         ChessBoardBuilder chessBoardBuilder;
+        ChessBoardDirector ChessBoardDirector;
 
         King king1;
         King king2;
@@ -24,6 +26,7 @@ namespace chessGame.model.Tests
         {
             chessBoard = new ChessBoard();
             chessBoardBuilder = new ChessBoardBuilder();
+            ChessBoardDirector = new ChessBoardDirector();
 
             king1 = new King();
             king2 = new King(PiecesColor.black);
@@ -36,7 +39,7 @@ namespace chessGame.model.Tests
         [TestMethod()]
         public void GetPieceByIDTest()
         {
-            chessBoardBuilder.SetDefaultChessBoard();
+            ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
             chessBoard = chessBoardBuilder.GetChessBoard();
 
             chessBoard.AddPieces(new List<Piece>() { king1, king2 },
@@ -48,7 +51,7 @@ namespace chessGame.model.Tests
         [TestMethod()]
         public void CreationBoardTest()
         {
-            chessBoardBuilder.SetDefaultChessBoard();
+            ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
             chessBoard = chessBoardBuilder.GetChessBoard();
 
             Assert.AreEqual(8, chessBoard.board.Count);
@@ -102,7 +105,7 @@ namespace chessGame.model.Tests
         [TestMethod()]
         public void MovePieceTest()
         {
-            chessBoardBuilder.SetDefaultChessBoard();
+            ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
             chessBoard = chessBoardBuilder.GetChessBoard();
 
             Pawn p = (Pawn)chessBoard.GetPieceAtCoord(coord1);
@@ -129,7 +132,7 @@ namespace chessGame.model.Tests
         [TestMethod()]
         public void GetPiecAtCoordTest()
         {
-            chessBoardBuilder.SetDefaultChessBoard();
+            ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
             chessBoard = chessBoardBuilder.GetChessBoard();
 
             Assert.AreEqual(PiecesColor.white, ((Rook)chessBoard.GetPieceAtCoord(new Coord(1, 'a'))).color);
@@ -138,14 +141,16 @@ namespace chessGame.model.Tests
         }
 
         [TestMethod()]
+        [ExpectedException(typeof(NullReferenceException),
+        "La pièce n'a pas été trouvé.")]
         public void RemovePieceAtCoordTest()
         {
-            chessBoardBuilder.SetDefaultChessBoard();
+            ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
             chessBoard = chessBoardBuilder.GetChessBoard();
 
             Assert.AreEqual(typeof(Pawn), chessBoard.GetPieceAtCoord(coord1).GetType());
             chessBoard.RemovePieceAtCoord(coord1);
-            Assert.AreEqual(null, chessBoard.GetPieceAtCoord(coord1));
+            chessBoard.GetPieceAtCoord(coord1);
         }
     }
 

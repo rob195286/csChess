@@ -12,10 +12,13 @@ namespace chessGame
     {
         static void Main(string[] args)
         {
+            Piece p1 = null;
+            Console.WriteLine(p1 == null);
+            /*
             ChessBoardBuilder chessBoardBuilder = new ChessBoardBuilder();
             chessBoardBuilder.SetDefaultChessBoard();
             ChessBoard chessBoard = chessBoardBuilder.GetChessBoard();
-
+            
             Dictionary<Coord, Piece> pi = new Dictionary<Coord, Piece>() { { new Coord(2, 'e'), new King() } , 
                 { new Coord(20, 'a'), new Pawn() }  ,
                 { new Coord(2, 'a'), new Pawn() }};
@@ -28,7 +31,7 @@ namespace chessGame
                     Console.WriteLine();
             }
 
-
+            */
 
 
             //foreach(KeyValuePair<Coord, Piece> kv in chessBoard.pieceAtCoord)
