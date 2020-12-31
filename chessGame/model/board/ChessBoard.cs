@@ -14,6 +14,7 @@ namespace chessGame.model
         /// Retourne les dimensions du board (lignes et colonnes).
         /// </summary>
         public Dictionary<int, List<char>> board { get; set; }
+        /*
         public List<Coord> coordAvailable
         { 
             get 
@@ -24,7 +25,7 @@ namespace chessGame.model
                         coord.Add(new Coord(rowsAndColumns.Key, column));
                 return coord; 
             }
-        }
+        }*/
         /// <summary>
         /// Retourne un dictinnaire contenant toutes les pièces dans le board,
         ///     avec comme clé les coordonnées et comme valeur la pièce correspondante. 
@@ -41,16 +42,17 @@ namespace chessGame.model
         }
 
 
-        private void _IfCoordIsInBoardRange(Coord c)
+        private void _IsCoordInBoardRange(Coord c)
         {
+            // todo RE : refre ex
             if (c.row > board.Count)
-                throw new IndexOutOfRangeException();
+                throw new IndexOutOfRangeException(Texts.coordOutOfRange + c);
             // On regarde si la vaeur de la colonne est supérieur au dernier élément de la liste 
             //    car comme ce sont des char, on a bien une valeur numérique.
             foreach (List<char> column in board.Values)
             {
                 if (c.column > column.Last())
-                    throw new IndexOutOfRangeException();
+                throw new IndexOutOfRangeException(Texts.coordOutOfRange + c);
             }
         }
 
@@ -68,8 +70,10 @@ namespace chessGame.model
 
         public void AddPiece(Piece p, Coord c)
         {
-            // todo : cr&er propre except
-            _IfCoordIsInBoardRange(c);
+            // todo RE : cr&er propre except
+            _IsCoordInBoardRange(c);
+            if(pieceAtCoord.Keys.Contains(c))
+                throw new InvalidOperationException(Texts.pieceAlreadyInCase + c);
             p.id = getNumberOfPieces + 1;
             pieceAtCoord.Add(c, p);
         }
@@ -105,8 +109,8 @@ namespace chessGame.model
                     break;
                 }                
             }
-            if(piece == null)// todo : refaire exception
-                throw new IndexOutOfRangeException();
+            if(piece == null)// todo RE : refaire exception
+                throw new IndexOutOfRangeException(Texts.pieceByIDNotFound + id);
             return piece;
         }             
         /// <summary>
@@ -117,29 +121,23 @@ namespace chessGame.model
         public Piece GetPieceAtCoord(Coord c)
         {
             Piece p = null;
-            bool flag = false;
             foreach (Coord coord in pieceAtCoord.Keys)
             {
                 if (coord == c)
                 {
                     p = pieceAtCoord[coord];
-                    flag = false;
                     break;
                 }
-                // permet de voir si piece est à null car il y a un bug lorsla comparaison.
-                else
-                    flag = true;
             }
-            if (flag)// todo : refaire exception
-                throw new NullReferenceException(c + Texts.pieceNotFound);
+            if (p == null)// todo RE : refaire exception
+                throw new NullReferenceException(Texts.pieceAtCoordNotFound + c);
             return p;
         }    
         
         public void MovePiece(Coord oldc, Coord newc)
         {
-            // todo : vérifier ou modifier pour faire nos propre exceptions.
-            _IfCoordIsInBoardRange(oldc);
-            _IfCoordIsInBoardRange(newc);
+            _IsCoordInBoardRange(oldc);
+            _IsCoordInBoardRange(newc);
             _ChangeCoordPiece(oldc, newc);
         }
 

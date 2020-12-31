@@ -47,11 +47,15 @@ namespace chessGame.model
 
         public static bool operator ==(Player x, Player y)
         {
+            if (object.ReferenceEquals(x, null))
+                return object.ReferenceEquals(y, null);
             return x.Equals(y);
         }
 
         public static bool operator !=(Player x, Player y)
         {
+            if (!object.ReferenceEquals(x, null))
+                return !object.ReferenceEquals(y, null);
             return !(x.Equals(y));
         }
     }

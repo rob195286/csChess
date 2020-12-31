@@ -72,11 +72,15 @@ namespace chessGame.pieces
 
         public static bool operator ==(Piece x, Piece y)
         {
+            if (object.ReferenceEquals(x, null))
+                return object.ReferenceEquals(y, null);
             return x.Equals(y);
         }
 
         public static bool operator !=(Piece x, Piece y)
         {
+            if (!object.ReferenceEquals(x, null))
+                return !object.ReferenceEquals(y, null);
             return !(x.Equals(y));
         }
 

@@ -19,7 +19,6 @@ namespace chessGame.model.Tests
         Coord coord1;
         Coord coord2;
         Coord coord3;
-        Coord coord4;
 
         [TestInitialize()]
         public void testsInitialize()
@@ -31,9 +30,8 @@ namespace chessGame.model.Tests
             king1 = new King();
             king2 = new King(PiecesColor.black);
             coord1 = new Coord(2, 'a');
-            coord2 = new Coord(1, 'e');
-            coord3 = new Coord(3, 'a');
-            coord4 = new Coord(3, 'b');
+            coord2 = new Coord(3, 'a');
+            coord3 = new Coord(3, 'b');
         }
 
         [TestMethod()]
@@ -43,7 +41,7 @@ namespace chessGame.model.Tests
             chessBoard = chessBoardBuilder.GetChessBoard();
 
             chessBoard.AddPieces(new List<Piece>() { king1, king2 },
-                                new List<Coord>() { coord3, coord4 });
+                                new List<Coord>() { coord2, coord3 });
             Assert.AreEqual(king1, chessBoard.GetPieceByID(33));
             Assert.AreEqual(king2, chessBoard.GetPieceByID(34));
         }
@@ -112,8 +110,8 @@ namespace chessGame.model.Tests
 
             Assert.AreEqual(true, chessBoard.pieceAtCoord.ContainsKey(coord1));
 
-            chessBoard.MovePiece(coord1, coord3);
-            Assert.AreEqual(p, chessBoard.GetPieceAtCoord(coord3));
+            chessBoard.MovePiece(coord1, coord2);
+            Assert.AreEqual(p, chessBoard.GetPieceAtCoord(coord2));
             Assert.AreEqual(false, chessBoard.pieceAtCoord.ContainsKey(coord1));
         }
 
@@ -150,6 +148,7 @@ namespace chessGame.model.Tests
 
             Assert.AreEqual(typeof(Pawn), chessBoard.GetPieceAtCoord(coord1).GetType());
             chessBoard.RemovePieceAtCoord(coord1);
+            // Doit retourner une exception.
             chessBoard.GetPieceAtCoord(coord1);
         }
     }

@@ -37,11 +37,15 @@ namespace chessGame.model.board
 
         public static bool operator ==(Coord x, Coord y)
         {
+            if (object.ReferenceEquals(x, null))
+                return object.ReferenceEquals(y, null);
             return x.Equals(y);
         }
 
         public static bool operator !=(Coord x, Coord y)
         {
+            if (!object.ReferenceEquals(x, null))
+                return !object.ReferenceEquals(y, null);
             return !(x.Equals(y));
         }
 
