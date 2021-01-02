@@ -19,7 +19,7 @@ namespace chessGame.pieces.Tests
         {
             king = new King();
             queen = new Queen();
-            queen2 = new Queen(PiecesColor.white);
+            queen2 = new Queen(PiecesColor.white, new List<Directions>());
         }
         
         [TestMethod()]
@@ -27,13 +27,15 @@ namespace chessGame.pieces.Tests
         {            
             Assert.AreEqual(PiecesColor.white, king.color);
 
-            king = new King(PiecesColor.black);
+            king = new King(PiecesColor.black, new List<Directions>() { Directions.horizontal,
+                                                                        Directions.vertical,
+                                                                        Directions.diagonal});
             Assert.AreEqual(PiecesColor.black, king.color);
 
             Assert.AreEqual(true, king.HasDirection(Directions.diagonal));
             Assert.AreEqual(true, king.HasDirection(Directions.horizontal));
             Assert.AreEqual(true, king.HasDirection(Directions.vertical));
-            Assert.AreEqual(false, king.HasDirection(Directions.verticalFront));
+            Assert.AreEqual(false, king.HasDirection(Directions.verticalUP));
         }
 
         [TestMethod()]

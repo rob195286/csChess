@@ -55,7 +55,7 @@ namespace chessGame.game
             }
             else if (p is Pawn)
             {
-                casesNumber.Add(Directions.verticalFront, 1);
+                casesNumber.Add(Directions.verticalUP, 1);
             }
             return casesNumber;
         }

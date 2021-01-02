@@ -20,26 +20,25 @@ namespace chessGame.pieces
         diagonal,
         horizontal,
         vertical,
-        verticalFront,
-        verticalBack
+        verticalUP,
+        verticalDOWN
     }
 
     public abstract class Piece
     {
-        protected List<Directions> _moves;
-        public List<Directions> moves { get => _moves; }
-
+        public List<Directions> moves { get; }
         public int id { get; set; }
         public PiecesColor color { get; }
 
 
-        protected Piece() : this(PiecesColor.white)
+        protected Piece() : this(PiecesColor.white, new List<Directions>() {})
         {
         }
-        protected Piece(PiecesColor pieceColor)
+        protected Piece(PiecesColor pieceColor, List<Directions> directions)
         {
-            id = 0;
-            color = pieceColor;
+            this.id = 0;
+            this.color = pieceColor;
+            this.moves = directions;
         }
 
 
@@ -64,7 +63,7 @@ namespace chessGame.pieces
             if (id == p.id && 
                         this.GetType() == p.GetType() &&
                         color == p.color &&
-                        Enumerable.SequenceEqual(_moves, p.moves))
+                        Enumerable.SequenceEqual(moves, p.moves))
                 isEqual = true;
 
             return isEqual;
@@ -86,9 +85,11 @@ namespace chessGame.pieces
 
         public override string ToString()
         {
-            return "\n   p id : " + this.id
-                + "\n   Piece Type : " + this.GetType()
-                + "\n   Piece Color : " + this.color;
+            return "Piece : \n"
+                + "   id : " + this.id
+                + "\n   Type : " + this.GetType()
+                + "\n   Color : " + this.color
+                + "\n   directions : " + String.Join(", ", this.moves);
         }
 
         public override int GetHashCode()

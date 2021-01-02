@@ -28,7 +28,7 @@ namespace chessGame.model.Tests
             ChessBoardDirector = new ChessBoardDirector();
 
             king1 = new King();
-            king2 = new King(PiecesColor.black);
+            king2 = new King(PiecesColor.black, new List<Directions>() { });
             coord1 = new Coord(2, 'a');
             coord2 = new Coord(3, 'a');
             coord3 = new Coord(3, 'b');
@@ -60,6 +60,7 @@ namespace chessGame.model.Tests
         [TestMethod()]
         public void CreationBoardTest()
         {
+            PiecesColor piecesColor = PiecesColor.white;
             ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
             chessBoard = chessBoardBuilder.GetChessBoard();
 
@@ -74,17 +75,23 @@ namespace chessGame.model.Tests
                 if (i <= 16)
                 {
                     if (kv.Value is King)
-                        p = new King();
+                        p = new King(piecesColor, new List<Directions>() { Directions.horizontal,
+                                                                                   Directions.vertical,
+                                                                                   Directions.diagonal});
                     else if (kv.Value is Rook)
-                        p = new Rook();
+                        p = new Rook(piecesColor, new List<Directions>() { Directions.horizontal,
+                                                                                    Directions.vertical});
                     else if (kv.Value is Bishop)
-                        p = new Bishop();
+                        p = new Bishop(piecesColor, new List<Directions>() { Directions.diagonal });
                     else if (kv.Value is Queen)
-                        p = new Queen();
+                        p = new Queen(piecesColor, new List<Directions>() { Directions.horizontal,
+                                                                                   Directions.vertical,
+                                                                                   Directions.diagonal});
                     else if (kv.Value is Knight)
-                        p = new Knight();
+                        p = new Knight(piecesColor, new List<Directions>() { Directions.horizontal,
+                                                                                    Directions.vertical });
                     else if (kv.Value is Pawn)
-                        p = new Pawn();
+                        p = new Pawn(piecesColor, new List<Directions>() { Directions.verticalUP });
 
                     p.id = i++;
                     Assert.AreEqual(p, kv.Value);
@@ -92,18 +99,25 @@ namespace chessGame.model.Tests
 
                 else if (i > 16)
                 {
+                    piecesColor = PiecesColor.black;
                     if (kv.Value is King)
-                        p = new King(PiecesColor.black);
+                        p = new King(piecesColor, new List<Directions>() { Directions.horizontal,
+                                                                                   Directions.vertical,
+                                                                                   Directions.diagonal});
                     else if (kv.Value is Rook)
-                        p = new Rook(PiecesColor.black);
+                        p = new Rook(piecesColor, new List<Directions>() { Directions.horizontal,
+                                                                                    Directions.vertical});
                     else if (kv.Value is Bishop)
-                        p = new Bishop(PiecesColor.black);
+                        p = new Bishop(piecesColor, new List<Directions>() { Directions.diagonal });
                     else if (kv.Value is Queen)
-                        p = new Queen(PiecesColor.black);
+                        p = new Queen(piecesColor, new List<Directions>() { Directions.horizontal,
+                                                                                   Directions.vertical,
+                                                                                   Directions.diagonal});
                     else if (kv.Value is Knight)
-                        p = new Knight(PiecesColor.black);
+                        p = new Knight(piecesColor, new List<Directions>() { Directions.horizontal,
+                                                                                    Directions.vertical });
                     else if (kv.Value is Pawn)
-                        p = new Pawn(PiecesColor.black);
+                        p = new Pawn(piecesColor, new List<Directions>() { Directions.verticalDOWN });
 
                     p.id = i++;
                     Assert.AreEqual(p, kv.Value);

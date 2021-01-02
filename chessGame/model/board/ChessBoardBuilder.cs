@@ -56,39 +56,57 @@ namespace chessGame.model.board
             List<char> defaultColumn = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
             chessBoardBuilder.SetDimensions(8, defaultColumn);
             //---------------------------------------------------------------- set pieces
-            chessBoardBuilder.SetPieceAtCoord(new King(), new Coord(1, 'e'));
+            PiecesColor pc = PiecesColor.white;
+            chessBoardBuilder.SetPieceAtCoord(new King(pc, new List<Directions>() { Directions.horizontal,
+                                                                                   Directions.vertical,
+                                                                                   Directions.diagonal}), new Coord(1, 'e'));
 
-            chessBoardBuilder.SetPieceAtCoord(new Rook(), new Coord(1, 'a'));
-            chessBoardBuilder.SetPieceAtCoord(new Rook(), new Coord(1, 'h'));
+            chessBoardBuilder.SetPieceAtCoord(new Rook(pc, new List<Directions>() { Directions.horizontal,
+                                                                                    Directions.vertical}), new Coord(1, 'a'));
+            chessBoardBuilder.SetPieceAtCoord(new Rook(pc, new List<Directions>() { Directions.horizontal,
+                                                                                    Directions.vertical}), new Coord(1, 'h'));
 
-            chessBoardBuilder.SetPieceAtCoord(new Bishop(), new Coord(1, 'c'));
-            chessBoardBuilder.SetPieceAtCoord(new Bishop(), new Coord(1, 'f'));
+            chessBoardBuilder.SetPieceAtCoord(new Bishop(pc, new List<Directions>() { Directions.diagonal }), new Coord(1, 'c'));
+            chessBoardBuilder.SetPieceAtCoord(new Bishop(pc, new List<Directions>() { Directions.diagonal }), new Coord(1, 'f'));
 
-            chessBoardBuilder.SetPieceAtCoord(new Queen(), new Coord(1, 'd'));
+            chessBoardBuilder.SetPieceAtCoord(new Queen(pc, new List<Directions>() { Directions.horizontal,
+                                                                                   Directions.vertical,
+                                                                                   Directions.diagonal}), new Coord(1, 'd'));
 
-            chessBoardBuilder.SetPieceAtCoord(new Knight(), new Coord(1, 'b'));
-            chessBoardBuilder.SetPieceAtCoord(new Knight(), new Coord(1, 'g'));
+            chessBoardBuilder.SetPieceAtCoord(new Knight(pc, new List<Directions>() { Directions.horizontal,
+                                                                                    Directions.vertical }), new Coord(1, 'b'));
+            chessBoardBuilder.SetPieceAtCoord(new Knight(pc, new List<Directions>() { Directions.horizontal,
+                                                                                    Directions.vertical }), new Coord(1, 'g'));
 
             for (int i = 0; i < 8; i++)
-                chessBoardBuilder.SetPieceAtCoord(new Pawn(), new Coord(2, defaultColumn.ElementAt(i)));
+                chessBoardBuilder.SetPieceAtCoord(new Pawn(pc, new List<Directions>() { Directions.verticalUP }), new Coord(2, defaultColumn.ElementAt(i)));
             //----------------------------------------------------------------------------------------------
+            pc = PiecesColor.black;
 
-            chessBoardBuilder.SetPieceAtCoord(new King(PiecesColor.black), new Coord(8, 'e'));
+            chessBoardBuilder.SetPieceAtCoord(new King(pc, new List<Directions>() { Directions.horizontal,
+                                                                                   Directions.vertical,
+                                                                                   Directions.diagonal}), new Coord(8, 'e'));
 
-            chessBoardBuilder.SetPieceAtCoord(new Rook(PiecesColor.black), new Coord(8, 'a'));
-            chessBoardBuilder.SetPieceAtCoord(new Rook(PiecesColor.black), new Coord(8, 'h'));
+            chessBoardBuilder.SetPieceAtCoord(new Rook(pc, new List<Directions>() { Directions.horizontal,
+                                                                                    Directions.vertical}), new Coord(8, 'a'));
+            chessBoardBuilder.SetPieceAtCoord(new Rook(pc, new List<Directions>() { Directions.horizontal,
+                                                                                    Directions.vertical}), new Coord(8, 'h'));
 
-            chessBoardBuilder.SetPieceAtCoord(new Bishop(PiecesColor.black), new Coord(8, 'c'));
-            chessBoardBuilder.SetPieceAtCoord(new Bishop(PiecesColor.black), new Coord(8, 'f'));
+            chessBoardBuilder.SetPieceAtCoord(new Bishop(pc, new List<Directions>() { Directions.diagonal }), new Coord(8, 'c'));
+            chessBoardBuilder.SetPieceAtCoord(new Bishop(pc, new List<Directions>() { Directions.diagonal }), new Coord(8, 'f'));
 
-            chessBoardBuilder.SetPieceAtCoord(new Queen(PiecesColor.black), new Coord(8, 'd'));
+            chessBoardBuilder.SetPieceAtCoord(new Queen(pc, new List<Directions>() { Directions.horizontal,
+                                                                                    Directions.vertical,
+                                                                                    Directions.diagonal}), new Coord(8, 'd'));
 
-            chessBoardBuilder.SetPieceAtCoord(new Knight(PiecesColor.black), new Coord(8, 'b'));
-            chessBoardBuilder.SetPieceAtCoord(new Knight(PiecesColor.black), new Coord(8, 'g'));
+            chessBoardBuilder.SetPieceAtCoord(new Knight(pc, new List<Directions>() { Directions.horizontal,
+                                                                                    Directions.vertical }), new Coord(8, 'b'));
+            chessBoardBuilder.SetPieceAtCoord(new Knight(pc, new List<Directions>() { Directions.horizontal,
+                                                                                    Directions.vertical }), new Coord(8, 'g'));
 
             // todo : inverser l'endroit du board ou on les met
             for (int i = 0; i < 8; i++)
-                chessBoardBuilder.SetPieceAtCoord(new Pawn(PiecesColor.black), new Coord(7, defaultColumn.ElementAt(i)));
+                chessBoardBuilder.SetPieceAtCoord(new Pawn(pc, new List<Directions>() { Directions.verticalDOWN }), new Coord(7, defaultColumn.ElementAt(i)));
         }
     }
 

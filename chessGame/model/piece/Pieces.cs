@@ -10,21 +10,15 @@ namespace chessGame.pieces
     public class King : Piece
     {
         public King() : base()
-        {
-            this._moves = new List<Directions>() { Directions.horizontal,
-                                                   Directions.vertical,
-                                                   Directions.diagonal};
+        {           
         }
-        public King(PiecesColor pieceColor) : base(pieceColor)
+        public King(PiecesColor pieceColor, List<Directions> directions) : base(pieceColor, directions)
         {/*
             Dictionary<Directions, int> tempDic = new Dictionary<Directions, int>()
                                                     { { Directions.horizontal, 1 },
                                                     { Directions.vertical, 1 },
                                                     { Directions.diagonal, 1 } };
             this._possibleMoves = new PossibleMoves(tempDic);*/
-            this._moves = new List<Directions>() { Directions.horizontal,
-                                                   Directions.vertical,
-                                                   Directions.diagonal};
         }
 
     }
@@ -33,20 +27,14 @@ namespace chessGame.pieces
     {
         public Queen() : base()
         {
-            this._moves = new List<Directions>() { Directions.horizontal,
-                                                   Directions.vertical,
-                                                   Directions.diagonal};
         }
-        public Queen(PiecesColor pieceColor) : base(pieceColor)
+        public Queen(PiecesColor pieceColor, List<Directions> directions) : base(pieceColor, directions)
         {/*
             Dictionary<Directions, int> tempDic = new Dictionary<Directions, int>()
                                                     { { Directions.horizontal, 0 },
                                                     { Directions.vertical, 0 },
                                                     { Directions.diagonal, 0 } };
             this._possibleMoves = new PossibleMoves(tempDic);*/
-            this._moves = new List<Directions>() { Directions.horizontal,
-                                                   Directions.vertical,
-                                                   Directions.diagonal};
         }
 
     }
@@ -55,17 +43,13 @@ namespace chessGame.pieces
     {
         public Rook() : base()
         {
-            this._moves = new List<Directions>() { Directions.horizontal,
-                                                   Directions.vertical};
         }
-        public Rook(PiecesColor pieceColor) : base(pieceColor)
+        public Rook(PiecesColor pieceColor, List<Directions> directions) : base(pieceColor, directions)
         {/*
             Dictionary<Directions, int> tempDic = new Dictionary<Directions, int>()
                                                     { { Directions.horizontal, 0 },
                                                     { Directions.vertical, 0 } };
             this._possibleMoves = new PossibleMoves(tempDic);*/
-            this._moves = new List<Directions>() { Directions.horizontal,
-                                                   Directions.vertical};
         }
 
     }
@@ -74,14 +58,12 @@ namespace chessGame.pieces
     {
         public Bishop() : base()
         {
-            this._moves = new List<Directions>() { Directions.diagonal };
         }
-        public Bishop(PiecesColor pieceColor) : base(pieceColor)
+        public Bishop(PiecesColor pieceColor, List<Directions> directions) : base(pieceColor, directions)
         {/*
             Dictionary<Directions, int> tempDic = new Dictionary<Directions, int>()
                                                      { { Directions.diagonal, 0} };
             this._possibleMoves = new PossibleMoves(tempDic);*/
-            this._moves = new List<Directions>() { Directions.diagonal };
         }
 
     }
@@ -90,19 +72,14 @@ namespace chessGame.pieces
     {
         public Knight() : base()
         {
-            this._moves = new List<Directions>() { Directions.horizontal,
-                                                   Directions.vertical };
         }
-        public Knight(PiecesColor pieceColor) : base(pieceColor)
+        public Knight(PiecesColor pieceColor, List<Directions> directions) : base(pieceColor, directions)
         {/*
             Dictionary<Directions, int> tempDic = new Dictionary<Directions, int>()
                                                     { { Directions.horizontal, 1 },
                                                     { Directions.vertical, 2 }};
             this._possibleMoves = new PossibleMoves(tempDic);*/
-            this._moves = new List<Directions>() { Directions.horizontal,
-                                                   Directions.vertical };
         }
-
 
     }
 
@@ -110,20 +87,12 @@ namespace chessGame.pieces
     {
         public Pawn() : base()
         {
-            if(this.color == PiecesColor.white)
-                this._moves = new List<Directions>() { Directions.verticalFront }; 
-            if(this.color == PiecesColor.black)
-                this._moves = new List<Directions>() { Directions.verticalBack };
         }
-        public Pawn(PiecesColor pieceColor) : base(pieceColor)
+        public Pawn(PiecesColor pieceColor, List<Directions> directions) : base(pieceColor, directions)
         {/*
             Dictionary<Directions, int> tempDic = new Dictionary<Directions, int>()
                                                     { { Directions.horizontal, 1 } };
             this._possibleMoves = new PossibleMoves(tempDic);*/
-            if (this.color == PiecesColor.white)
-                this._moves = new List<Directions>() { Directions.verticalFront };
-            if (this.color == PiecesColor.black)
-                this._moves = new List<Directions>() { Directions.verticalBack };
         }
 
     }
