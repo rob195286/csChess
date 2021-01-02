@@ -47,6 +47,17 @@ namespace chessGame.model.Tests
         }
 
         [TestMethod()]
+        [ExpectedException(typeof(IndexOutOfRangeException),
+        "La pièce n'a pas été trouvé.")]
+        public void GetPieceByInexistingIDTest()
+        {
+            ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
+            chessBoard = chessBoardBuilder.GetChessBoard();
+            // Doit retourner une exception.
+            chessBoard.GetPieceByID(125);
+        }
+
+        [TestMethod()]
         public void CreationBoardTest()
         {
             ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);

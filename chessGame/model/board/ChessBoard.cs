@@ -42,18 +42,17 @@ namespace chessGame.model
         }
 
 
-        private void _IsCoordInBoardRange(Coord c)
+        private void _AreCoordInBoardRange(Coord c)
         {
             // todo RE : refre ex
             if (c.row > board.Count)
                 throw new IndexOutOfRangeException(Texts.coordOutOfRange + c);
-            // On regarde si la vaeur de la colonne est supérieur au dernier élément de la liste 
-            //    car comme ce sont des char, on a bien une valeur numérique.
-            foreach (List<char> column in board.Values)
-            {
-                if (c.column > column.Last())
+            // On regarde si la valeur de la colonne appartenant à la coordoonées
+            //      passé en paramètre se trouve dans une des colonnes dans le board
+            //      à la ligne données.
+            List<char> columnsAtRow = board[c.row];
+            if (!columnsAtRow.Contains(c.column))
                 throw new IndexOutOfRangeException(Texts.coordOutOfRange + c);
-            }
         }
 
         private void _ChangeCoordPiece(Coord oldc, Coord newc)
@@ -71,7 +70,7 @@ namespace chessGame.model
         public void AddPiece(Piece p, Coord c)
         {
             // todo RE : cr&er propre except
-            _IsCoordInBoardRange(c);
+            _AreCoordInBoardRange(c);
             if(pieceAtCoord.Keys.Contains(c))
                 throw new InvalidOperationException(Texts.pieceAlreadyInCase + c);
             p.id = getNumberOfPieces + 1;
@@ -132,12 +131,16 @@ namespace chessGame.model
             if (p == null)// todo RE : refaire exception
                 throw new NullReferenceException(Texts.pieceAtCoordNotFound + c);
             return p;
-        }    
-        
+        }
+        /// <summary>
+        /// Déplace une pièce d'une ancienne coordonnées à de nouvelle.
+        /// </summary>
+        /// <param name="oldc"> Prend les premières coordonnées. </param>
+        /// <param name="newc"> Prend les secondes coordonnées. </param>
         public void MovePiece(Coord oldc, Coord newc)
         {
-            _IsCoordInBoardRange(oldc);
-            _IsCoordInBoardRange(newc);
+            _AreCoordInBoardRange(oldc);
+            _AreCoordInBoardRange(newc);
             _ChangeCoordPiece(oldc, newc);
         }
 
@@ -145,10 +148,9 @@ namespace chessGame.model
         {
             return base.ToString() + " : \n"
                 + "    keys/rows : " + String.Join(", ", board.Keys) + "\n"
-                + "    values/columns : " + String.Join(", ",board.Values.ElementAt(0)) + "\n"
-                + "    pieceAtCoord : " + String.Join(", ",pieceAtCoord.Values) + "\n"
-                + "    coord take : " + String.Join(", ",pieceAtCoord.Keys) + "\n"
-                + "    coords available : " + String.Join(" , ", coordAvailable) + "\n";
+                + "    values/columns : " + String.Join(", ", board.Values.ElementAt(0)) + "\n"
+                + "    pieceAtCoord : " + String.Join(", ", pieceAtCoord.Values) + "\n"
+                + "    coord take : " + String.Join(", ", pieceAtCoord.Keys) + "\n";
         }
     }
 }

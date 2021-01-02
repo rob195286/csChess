@@ -21,9 +21,9 @@ namespace chessGame
                 { new Coord(20, 'a'), new Pawn() }  ,
                 { new Coord(2, 'a'), new Pawn() }};
             */
-            cb.AddPiece(new Pawn(), new Coord(2, 'a'));
             Console.WriteLine("-------------------------------------");
-            Console.WriteLine(cb);
+            foreach (Coord kv in cb.pieceAtCoord.Keys)
+                Console.WriteLine(kv);
             
 
             //foreach(KeyValuePair<Coord, Piece> kv in chessBoard.pieceAtCoord)

@@ -34,7 +34,6 @@ namespace chessGame.model.board
         /// <param name="coord"> Coordonnées où placée les pièces. </param>
         public void SetPieceAtCoord(Piece piece, Coord coord)
         {
-            // todo : except pourt en dehors du plateau en dehors du plateau
             _chessBoard.AddPiece(piece, coord);
         }
 
@@ -53,6 +52,7 @@ namespace chessGame.model.board
         public void ConstructDefaultChessBoard(IChessBoardBuilder chessBoardBuilder)
         {
             // todo : voir MemberwiseClone pour la copie automatique
+            //          ou créer un objet pour faire la conversion de type
             List<char> defaultColumn = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
             chessBoardBuilder.SetDimensions(8, defaultColumn);
             //---------------------------------------------------------------- set pieces

@@ -25,7 +25,6 @@ namespace chessGame.model.board
 
         public ColumnCollection(int columnNumber)
         {
-            // todo faire une exepction si > 26
             _columnCollection = new List<char>() { };
 
             for (int i = 0; i<columnNumber; i++)
