@@ -19,6 +19,10 @@ namespace chessGame.model.Tests
         Coord coord1;
         Coord coord2;
         Coord coord3;
+        Coord badCoord1;
+        Coord badCoord2;
+        Coord badCoord3;
+        Coord badCoord4;
 
         [TestInitialize()]
         public void testsInitialize()
@@ -32,6 +36,10 @@ namespace chessGame.model.Tests
             coord1 = new Coord(2, 'a');
             coord2 = new Coord(3, 'a');
             coord3 = new Coord(3, 'b');
+            badCoord1 = new Coord(9, 'b');
+            badCoord2 = new Coord(3, 'z');
+            badCoord3 = new Coord(-1, 'b');
+            badCoord4 = new Coord(2, 'z');
         }
 
         [TestMethod()]
@@ -49,12 +57,13 @@ namespace chessGame.model.Tests
         [TestMethod()]
         [ExpectedException(typeof(IndexOutOfRangeException),
         "La pièce n'a pas été trouvé.")]
-        public void GetPieceByInexistingIDTest()
+        public void GetPieceByBadIDTest()
         {
             ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
             chessBoard = chessBoardBuilder.GetChessBoard();
             // Doit retourner une exception.
             chessBoard.GetPieceByID(125);
+            chessBoard.GetPieceByID(-2);
         }
 
         [TestMethod()]
@@ -141,6 +150,27 @@ namespace chessGame.model.Tests
         }
 
         [TestMethod()]
+        [ExpectedException(typeof(IndexOutOfRangeException),
+        "La pièce n'a pas pu être déplacée.")]
+        public void MovePieceAtBadCoordTest()
+        {
+            ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
+            chessBoard = chessBoardBuilder.GetChessBoard();
+
+            Pawn p = (Pawn)chessBoard.GetPieceAtCoord(coord1);
+            // Doit retourner une execption.
+            chessBoard.MovePiece(coord1, badCoord1);
+            chessBoard.MovePiece(coord1, badCoord2);
+            chessBoard.MovePiece(coord1, badCoord3);
+            // Vérification que la piece n'as pas bougé.
+            Assert.AreEqual(p, chessBoard.GetPieceAtCoord(coord1));
+            // Vérification que les coord sont ok.
+            Assert.AreEqual(true, chessBoard.pieceAtCoord.ContainsKey(coord1));
+            // Doit retourner une execption.
+            chessBoard.MovePiece(coord1, badCoord4);          
+        }
+
+        [TestMethod()]
         public void AddPiecesTest()
         {
             chessBoardBuilder.SetDimensions(4, new List<char>() { 'a', 'b', 'c' });
@@ -161,6 +191,26 @@ namespace chessGame.model.Tests
             Assert.AreEqual(PiecesColor.white, ((Rook)chessBoard.GetPieceAtCoord(new Coord(1, 'a'))).color);
             Assert.AreEqual(PiecesColor.white, ((Pawn)chessBoard.GetPieceAtCoord(new Coord(2, 'b'))).color);
             Assert.AreEqual(PiecesColor.black, ((Queen)chessBoard.GetPieceAtCoord(new Coord(8, 'd'))).color);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(NullReferenceException),
+        "La pièce n'a pas été trouvé.")]
+        public void GetPiecAtBadCoordTest()
+        {
+            ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
+            chessBoard = chessBoardBuilder.GetChessBoard();
+
+            Pawn p = (Pawn)chessBoard.GetPieceAtCoord(coord1);
+            Assert.AreEqual(false, chessBoard.pieceAtCoord.ContainsKey(badCoord1));
+            Assert.AreEqual(false, chessBoard.pieceAtCoord.ContainsKey(badCoord2));
+            Assert.AreEqual(false, chessBoard.pieceAtCoord.ContainsKey(badCoord3));
+            Assert.AreEqual(false, chessBoard.pieceAtCoord.ContainsKey(badCoord4));
+            // Doit retourner une execption.
+            Assert.AreEqual(null, chessBoard.GetPieceAtCoord(badCoord1));
+            Assert.AreEqual(null, chessBoard.GetPieceAtCoord(badCoord2));
+            Assert.AreEqual(null, chessBoard.GetPieceAtCoord(badCoord3));
+            Assert.AreEqual(null, chessBoard.GetPieceAtCoord(badCoord4));
         }
 
         [TestMethod()]

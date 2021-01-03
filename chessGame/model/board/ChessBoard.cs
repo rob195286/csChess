@@ -62,9 +62,15 @@ namespace chessGame.model
             pieceAtCoord.Remove(oldc);
         }
         
-        public void RemovePieceAtCoord(Coord c)
+        public bool RemovePieceAtCoord(Coord c)
         {
-            pieceAtCoord.Remove(c);
+            bool flag = false;
+            if (pieceAtCoord.ContainsKey(c))
+            {
+                pieceAtCoord.Remove(c);
+                flag = true;
+            }
+            return flag;
         }
 
         public void AddPiece(Piece p, Coord c)
@@ -76,8 +82,14 @@ namespace chessGame.model
             p.id = getNumberOfPieces + 1;
             pieceAtCoord.Add(c, p);
         }
-        
-        public void AddPieces(List<Piece> ps, List<Coord> c)
+        /// <summary>
+        /// Ajoute des coordonnées et des pièces dans le board. La fonction prend
+        ///     par ordre chaque clé, encommencant par la première de chacune des listes 
+        ///     pour ajouter une pièece à une coordoonée dans le board.
+        /// </summary>
+        /// <param name="ps"> Liste de pièces. </param>
+        /// <param name="c"> Liste de coordonnées. </param>
+        public void AddPieces(List<Coord> c, List<Piece> ps)
         {
             int i = 0;
             foreach(Piece p in ps)
