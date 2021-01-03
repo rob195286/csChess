@@ -35,6 +35,11 @@ namespace chessGame.model.board
             return isEqual;
         }
 
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(row, column);
+        }
+
         public static bool operator ==(Coord x, Coord y)
         {
             if (object.ReferenceEquals(x, null))
@@ -52,11 +57,6 @@ namespace chessGame.model.board
         public override string ToString()
         {
             return string.Format(" [{0}{1}]",row, column);
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(row, column);
         }
     }
 }

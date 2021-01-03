@@ -21,7 +21,7 @@ namespace chessGame.game
                                                                 int lengthDimension, 
                                                                 int widthDimension)
         {
-            Dictionary<Directions, int> casesNumber = new Dictionary<Directions, int>() { };
+            Dictionary<Directions, int> move = new Dictionary<Directions, int>() { };
             // On enlève 1 car vu qu'on ne compte pas la case sur laquelle la pièce se trouve,
             //  cela donne bien la dimension du board - 1.
             lengthDimension -= 1;
@@ -29,35 +29,35 @@ namespace chessGame.game
 
             if (p is King)
             {
-                casesNumber.Add(Directions.diagonal, 1);
-                casesNumber.Add(Directions.horizontal, 1);
-                casesNumber.Add(Directions.vertical, 1);
+                move.Add(Directions.diagonal, 1);
+                move.Add(Directions.horizontal, 1);
+                move.Add(Directions.vertical, 1);
             }                
             else if (p is Rook)
             {
-                casesNumber.Add(Directions.horizontal, widthDimension);
-                casesNumber.Add(Directions.vertical, lengthDimension);
+                move.Add(Directions.horizontal, widthDimension);
+                move.Add(Directions.vertical, lengthDimension);
             }
             else if (p is Bishop)
             {
-                casesNumber.Add(Directions.diagonal, lengthDimension);
+                move.Add(Directions.diagonal, lengthDimension);
             }
             else if (p is Queen)
             {
-                casesNumber.Add(Directions.diagonal, lengthDimension);
-                casesNumber.Add(Directions.horizontal, widthDimension);
-                casesNumber.Add(Directions.vertical, lengthDimension);
+                move.Add(Directions.diagonal, lengthDimension);
+                move.Add(Directions.horizontal, widthDimension);
+                move.Add(Directions.vertical, lengthDimension);
             }
             else if (p is Knight)
             {
-                casesNumber.Add(Directions.horizontal, 1);
-                casesNumber.Add(Directions.vertical, 2);
+                move.Add(Directions.horizontal, 1);
+                move.Add(Directions.vertical, 2);
             }
             else if (p is Pawn)
             {
-                casesNumber.Add(Directions.verticalUP, 1);
+                move.Add(Directions.verticalUP, 1);
             }
-            return casesNumber;
+            return move;
         }
 
         //public static Pieces

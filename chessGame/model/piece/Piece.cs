@@ -17,6 +17,7 @@ namespace chessGame.pieces
     public enum Directions
     {
         diagonal,
+        diagonalUP,
         horizontal,
         vertical,
         verticalUP,

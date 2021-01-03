@@ -100,7 +100,7 @@ namespace chessGame.model.Tests
                         p = new Knight(piecesColor, new List<Directions>() { Directions.horizontal,
                                                                                     Directions.vertical });
                     else if (kv.Value is Pawn)
-                        p = new Pawn(piecesColor, new List<Directions>() { Directions.verticalUP });
+                        p = new Pawn(piecesColor, new List<Directions>() { Directions.verticalUP, Directions.diagonalUP });
 
                     p.id = i++;
                     Assert.AreEqual(p, kv.Value);
@@ -126,7 +126,7 @@ namespace chessGame.model.Tests
                         p = new Knight(piecesColor, new List<Directions>() { Directions.horizontal,
                                                                                     Directions.vertical });
                     else if (kv.Value is Pawn)
-                        p = new Pawn(piecesColor, new List<Directions>() { Directions.verticalDOWN });
+                        p = new Pawn(piecesColor, new List<Directions>() { Directions.verticalDOWN, Directions.diagonalUP });
 
                     p.id = i++;
                     Assert.AreEqual(p, kv.Value);

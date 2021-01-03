@@ -79,7 +79,7 @@ namespace chessGame.model.board
                                                                                     Directions.vertical }), new Coord(1, 'g'));
 
             for (int i = 0; i < 8; i++)
-                chessBoardBuilder.SetPieceAtCoord(new Pawn(pc, new List<Directions>() { Directions.verticalUP }), new Coord(2, defaultColumn.ElementAt(i)));
+                chessBoardBuilder.SetPieceAtCoord(new Pawn(pc, new List<Directions>() { Directions.verticalUP, Directions.diagonalUP }), new Coord(2, defaultColumn.ElementAt(i)));
             //----------------------------------------------------------------------------------------------
             pc = PiecesColor.black;
 
@@ -106,7 +106,7 @@ namespace chessGame.model.board
 
             // todo : inverser l'endroit du board ou on les met
             for (int i = 0; i < 8; i++)
-                chessBoardBuilder.SetPieceAtCoord(new Pawn(pc, new List<Directions>() { Directions.verticalDOWN }), new Coord(7, defaultColumn.ElementAt(i)));
+                chessBoardBuilder.SetPieceAtCoord(new Pawn(pc, new List<Directions>() { Directions.verticalDOWN, Directions.diagonalUP }), new Coord(7, defaultColumn.ElementAt(i)));
         }
     }
 
