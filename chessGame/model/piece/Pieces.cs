@@ -6,19 +6,13 @@ using System.Text;
 
 namespace chessGame.pieces
 {
-    // todo : faire un refactor global
     public class King : Piece
     {
         public King() : base()
         {           
         }
         public King(PiecesColor pieceColor, List<Directions> directions) : base(pieceColor, directions)
-        {/*
-            Dictionary<Directions, int> tempDic = new Dictionary<Directions, int>()
-                                                    { { Directions.horizontal, 1 },
-                                                    { Directions.vertical, 1 },
-                                                    { Directions.diagonal, 1 } };
-            this._possibleMoves = new PossibleMoves(tempDic);*/
+        {
         }
 
     }
@@ -29,12 +23,7 @@ namespace chessGame.pieces
         {
         }
         public Queen(PiecesColor pieceColor, List<Directions> directions) : base(pieceColor, directions)
-        {/*
-            Dictionary<Directions, int> tempDic = new Dictionary<Directions, int>()
-                                                    { { Directions.horizontal, 0 },
-                                                    { Directions.vertical, 0 },
-                                                    { Directions.diagonal, 0 } };
-            this._possibleMoves = new PossibleMoves(tempDic);*/
+        {
         }
 
     }
@@ -45,11 +34,7 @@ namespace chessGame.pieces
         {
         }
         public Rook(PiecesColor pieceColor, List<Directions> directions) : base(pieceColor, directions)
-        {/*
-            Dictionary<Directions, int> tempDic = new Dictionary<Directions, int>()
-                                                    { { Directions.horizontal, 0 },
-                                                    { Directions.vertical, 0 } };
-            this._possibleMoves = new PossibleMoves(tempDic);*/
+        {
         }
 
     }
@@ -60,10 +45,7 @@ namespace chessGame.pieces
         {
         }
         public Bishop(PiecesColor pieceColor, List<Directions> directions) : base(pieceColor, directions)
-        {/*
-            Dictionary<Directions, int> tempDic = new Dictionary<Directions, int>()
-                                                     { { Directions.diagonal, 0} };
-            this._possibleMoves = new PossibleMoves(tempDic);*/
+        {
         }
 
     }
@@ -74,11 +56,7 @@ namespace chessGame.pieces
         {
         }
         public Knight(PiecesColor pieceColor, List<Directions> directions) : base(pieceColor, directions)
-        {/*
-            Dictionary<Directions, int> tempDic = new Dictionary<Directions, int>()
-                                                    { { Directions.horizontal, 1 },
-                                                    { Directions.vertical, 2 }};
-            this._possibleMoves = new PossibleMoves(tempDic);*/
+        {
         }
 
     }
@@ -89,10 +67,7 @@ namespace chessGame.pieces
         {
         }
         public Pawn(PiecesColor pieceColor, List<Directions> directions) : base(pieceColor, directions)
-        {/*
-            Dictionary<Directions, int> tempDic = new Dictionary<Directions, int>()
-                                                    { { Directions.horizontal, 1 } };
-            this._possibleMoves = new PossibleMoves(tempDic);*/
+        { 
         }
 
     }

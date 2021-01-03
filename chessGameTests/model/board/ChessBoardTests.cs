@@ -48,8 +48,8 @@ namespace chessGame.model.Tests
             ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
             chessBoard = chessBoardBuilder.GetChessBoard();
 
-            chessBoard.AddPieces(new List<Piece>() { king1, king2 },
-                                new List<Coord>() { coord2, coord3 });
+            chessBoard.AddPieces(new List<Coord>() { coord2, coord3 },
+                                new List<Piece>() { king1, king2 });
             Assert.AreEqual(king1, chessBoard.GetPieceByID(33));
             Assert.AreEqual(king2, chessBoard.GetPieceByID(34));
         }

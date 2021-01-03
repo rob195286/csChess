@@ -41,7 +41,10 @@ namespace chessGame.model
             board = new Dictionary<int, List<char>>() { };
         }
 
-
+        /// <summary>
+        /// Vérifie que la coordonnée passé en paramètre est valide par rapport au board construit.
+        /// </summary>
+        /// <param name="c"> Coordonée à vérifier. </param>
         private void _AreCoordInBoardRange(Coord c)
         {
             // todo RE : refre ex
@@ -77,6 +80,7 @@ namespace chessGame.model
         {
             // todo RE : cr&er propre except
             _AreCoordInBoardRange(c);
+            // Si on ajoute une pièce à une coordoonnée qui existe déja, alors une exception se lève.
             if(pieceAtCoord.Keys.Contains(c))
                 throw new InvalidOperationException(Texts.pieceAlreadyInCase + c);
             p.id = getNumberOfPieces + 1;
