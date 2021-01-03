@@ -1,5 +1,4 @@
 ﻿using chessGame.model;
-using chessGame.model.piece;
 using System;
 using System.Collections.Generic;
 using System.Text;

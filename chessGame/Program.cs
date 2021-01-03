@@ -1,6 +1,5 @@
 ﻿using chessGame.model;
 using chessGame.model.board;
-using chessGame.model.piece;
 using chessGame.pieces;
 using System;
 using System.Collections.Generic;
