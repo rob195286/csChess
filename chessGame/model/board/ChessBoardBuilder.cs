@@ -20,7 +20,7 @@ namespace chessGame.model.board
         /// </summary>
         /// <param name="rows"> Nombre de lignes qu'aura le board. </param>
         /// <param name="columns"> Nombre de colonnes qu'aura le board. </param>
-        public void SetDimensions(int rows, List<char> columns)
+        public void SetSize(int rows, List<char> columns)
         {
             foreach (int rowNumber in Enumerable.Range(1, rows))
                 _chessBoard.board.Add(rowNumber, columns);
@@ -51,10 +51,11 @@ namespace chessGame.model.board
         /// </summary>
         public void ConstructDefaultChessBoard(IChessBoardBuilder chessBoardBuilder)
         {
-            // todo : voir MemberwiseClone pour la copie automatique
+            // todo : voir MemberwiseClone pour la copie automatique avec la covariance
             //          ou créer un objet pour faire la conversion de type
+            //          ou utiliser la génériciter.
             List<char> defaultColumn = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
-            chessBoardBuilder.SetDimensions(8, defaultColumn);
+            chessBoardBuilder.SetSize(8, defaultColumn);
             //---------------------------------------------------------------- set pieces
             PiecesColor pc = PiecesColor.white;
             chessBoardBuilder.SetPieceAtCoord(new King(pc, new List<Directions>() { Directions.horizontal,
@@ -112,7 +113,7 @@ namespace chessGame.model.board
 
     public interface IChessBoardBuilder
     {
-        void SetDimensions(int rows, List<char> columns);
+        void SetSize(int rows, List<char> columns);
         void SetPieceAtCoord(Piece piece, Coord coord);
         ChessBoard GetChessBoard();
     }

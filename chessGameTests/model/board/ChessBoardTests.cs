@@ -173,7 +173,7 @@ namespace chessGame.model.Tests
         [TestMethod()]
         public void AddPiecesTest()
         {
-            chessBoardBuilder.SetDimensions(4, new List<char>() { 'a', 'b', 'c' });
+            chessBoardBuilder.SetSize(4, new List<char>() { 'a', 'b', 'c' });
             chessBoard = chessBoardBuilder.GetChessBoard();
 
             Assert.AreEqual(0, chessBoard.getNumberOfPieces);

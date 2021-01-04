@@ -60,6 +60,8 @@ namespace chessGame.game
             return move;
         }
 
-        //public static Pieces
+        //public static bool IsPawnCanMoveForSecondTime(Pawn pa) { }
+        
+        //todo : implémenter les autres règle, roque, promotion, prise en passant.
     }
 }
