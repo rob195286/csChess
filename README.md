@@ -1,29 +1,15 @@
 # csChess
 
-Cahier des charges : 
-- implémentation des pièces.
-- immplémentation des règles.
-- immplémentation du board.
-- implémentation (si possible) via UI, sinon affichage sous forme STR.
-- partir du principe que le jeu peut fortement évoluer (ajout de pièces, 
-							déplacements, nouvelles règles,
-							 niveaux du plateau 1,2,3 etc).
-- à partir du principe plus haut, faire un design ouvert (par ex. : design pattern MVC etc).
-- test des différentes parties principal du code.
-- gestion des erreurs, voir redéfinir ==> doit arriver très peu souvent, 	
-							uniquement pour des cas fort (pas pour 
-									des cases vide par ex).
+Le but du projet :
 
+Le but est de créer un jeu d'échec qui soit extensible au niveau de ses règles, du plateau, des pièces etc.
+L'architecture sera donc pensée pour être ouverte à l'extension.
 
+Caractéristiques :
 
-
-------------------------------------------------------------
-- mode multi joueur
-
-	unity :
-- implémenter vers la fin si possible
-
-------------------------------------------------------------
-Site utile :
-https://alternativeto.net/list/6695/list-of-c-and-net-game-engines-and-frameworks
-https://docs.microsoft.com/en-us/visualstudio/test/unit-test-your-code?view=vs-2019
+Le projet est divisé en deux dossiers :
+	- utils : qui contiend et est destiné à contenir des classes ayant des tâches utilitaire pour l'ensemble du projet 
+			(comme stocker l'ensemble des messages qui devront être affichés et éviter que cela ne soit hardcodé).
+	- model : contient l'ensemble du model, c'est à dire des classes permettant de créer les objets à afficher, qui feront
+			partie du jeu.
+Des pièces peuvent êtres ajoutées grâce à une classe abstraite se trouvan dans .
