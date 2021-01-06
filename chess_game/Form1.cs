@@ -59,7 +59,8 @@ namespace chess_game
 
                     boardPanel.Controls.Add(buttons[i, j]);
                     // règle l'espacement entre les boutons sur l'axe des x et y.
-                    buttons[i, j].Location = new Point(i * buttonCoord, j * buttonCoord);
+                    buttons[i, j].Location = new Point((i * buttonCoord), (j * buttonCoord));
+                    buttons[i, j].Tag = new Point(i , j);
                     //buttons[i, j].Location = new Point(i * boardPanel.Width/5, j * boardPanel.Width/10);
                     
                     //buttons[i, j].Text = String.Format("{0}|{1}", buttonHeight, buttonHeight);
@@ -86,7 +87,13 @@ namespace chess_game
 
         private void _Grid_Button_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Button clickedButton = (Button)sender;
+            Point location = (Point)clickedButton.Tag;
+
+            int x = location.X;
+            int y = location.Y;
+            //Cell currentCelle = 
+            DataGridCell currentCelle = chessBoard.
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -94,9 +101,8 @@ namespace chess_game
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void boardPanel_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void PiecesList_SelectedIndexChanged(object sender, EventArgs e)

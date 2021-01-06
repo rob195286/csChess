@@ -41,7 +41,7 @@ namespace chess_game
             this.boardPanel.Name = "boardPanel";
             this.boardPanel.Size = new System.Drawing.Size(719, 583);
             this.boardPanel.TabIndex = 0;
-            this.boardPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.boardPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.boardPanel_Paint);
             // 
             // PiecesList
             // 

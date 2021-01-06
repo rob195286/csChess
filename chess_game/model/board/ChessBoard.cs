@@ -42,7 +42,7 @@ namespace chessGame.model
         /// </summary>
         public Dictionary<Coord, Piece> getAllPiecesAtCoord { get; }
         public List<Piece> getPieces { get => getAllPiecesAtCoord.Select(getPieceAtCoord => getPieceAtCoord.Value).ToList(); }
-
+        public List<Coord> getCoord { get => getAllPiecesAtCoord.Select(getPieceAtCoord => getPieceAtCoord.Key).ToList(); }
         public int getNumberOfPieces { get => getAllPiecesAtCoord.Count; }
 
 
