@@ -83,7 +83,6 @@ namespace chessGame.model.Tests
             {
                 if (i <= 16)
                 {
-                    // todo : faire un switch case
                     if (kv.Value is King)
                         p = new King(piecesColor, new List<Directions>() { Directions.horizontal,
                                                                                    Directions.vertical,
@@ -168,7 +167,7 @@ namespace chessGame.model.Tests
             // Vérification que les coord sont ok.
             Assert.AreEqual(true, chessBoard.pieceAtCoord.ContainsKey(coord1));
             // Doit retourner une execption.
-            chessBoard.MovePiece(coord1, badCoord4);          
+            chessBoard.MovePiece(coord1, badCoord4);
         }
 
         [TestMethod()]
@@ -227,6 +226,17 @@ namespace chessGame.model.Tests
             // Doit retourner une exception.
             chessBoard.GetPieceAtCoord(coord1);
         }
+
+        [TestMethod()]
+        public void GetSizeTest()
+        {
+            ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
+            chessBoard = chessBoardBuilder.GetChessBoard();
+            
+            Assert.AreEqual(8, chessBoard.getSize[0]);
+            Assert.AreEqual(8, chessBoard.getSize[1]);
+        }
+
     }
 
 }

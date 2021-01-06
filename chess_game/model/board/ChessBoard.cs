@@ -13,6 +13,17 @@ namespace chessGame.model
         /// Retourne les dimensions du board (lignes et colonnes).
         /// </summary>
         public Dictionary<int, List<char>> board { get; set; }
+        /// <summary>
+        /// Obtiens la taille du board, le nombre de ligne en premier et les colonnes en second.
+        /// </summary>
+        public int[] getSize { 
+            get 
+            {
+                // todo : faire en sorte que ca renvois des nombres pour chaque colonne et que ca tienne 
+                //          compte d'une taille dynamqiue.
+                int[] arr = new int[2] { board.Count, board.First().Value.Count };
+                return arr;
+            }}
         /*
         public List<Coord> coordAvailable
         { 
