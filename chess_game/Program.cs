@@ -25,19 +25,19 @@ namespace chess_game
                 { new Coord(2, 'a'), new Pawn() }};
             */
 
-
+            /*
             foreach(List<char> c in cb.board.Values)
             {
                 Console.WriteLine(c);
                 Console.WriteLine("-------------------------------------");
 
             }
-
+            */
             //Console.WriteLine(cb.board.);
-            /*
+            
              Application.EnableVisualStyles();
              Application.SetCompatibleTextRenderingDefault(false);
-             Application.Run(new Form1());*/
+             Application.Run(new Form1());
         }
     }
 }

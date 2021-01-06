@@ -12,7 +12,7 @@ namespace chessGame.pieces
         black
     }
     /// <summary>
-    /// Contient toutes les directions que peuvent avoir les pieceAtCoord.
+    /// Contient toutes les directions que peuvent avoir les getAllPiecesAtCoord.
     /// </summary>
     public enum Directions
     {
@@ -29,6 +29,10 @@ namespace chessGame.pieces
         public List<Directions> moves { get; }
         public int id { get; set; }
         public PiecesColor color { get; }
+        /// <summary>
+        /// Retourne le type de la piece en string pour pouvoir être afficher dans l'interface.
+        /// </summary>
+        public string getType { get => this.GetType().ToString().Replace("chessGame.pieces.", ""); }
 
 
         protected Piece() : this(PiecesColor.white, new List<Directions>() {})

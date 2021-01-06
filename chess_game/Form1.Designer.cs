@@ -29,24 +29,35 @@ namespace chess_game
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.boardPanel = new System.Windows.Forms.Panel();
+            this.PiecesList = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // panel1
+            // boardPanel
             // 
-            this.panel1.Font = new System.Drawing.Font("Microsoft Uighur", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(14, 32);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(659, 408);
-            this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.boardPanel.Font = new System.Drawing.Font("Microsoft Uighur", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.boardPanel.Location = new System.Drawing.Point(14, 32);
+            this.boardPanel.Name = "boardPanel";
+            this.boardPanel.Size = new System.Drawing.Size(719, 583);
+            this.boardPanel.TabIndex = 0;
+            this.boardPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // PiecesList
+            // 
+            this.PiecesList.FormattingEnabled = true;
+            this.PiecesList.Location = new System.Drawing.Point(764, 32);
+            this.PiecesList.Name = "PiecesList";
+            this.PiecesList.Size = new System.Drawing.Size(190, 69);
+            this.PiecesList.TabIndex = 1;
+            this.PiecesList.SelectedIndexChanged += new System.EventHandler(this.PiecesList_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1011, 781);
+            this.Controls.Add(this.PiecesList);
+            this.Controls.Add(this.boardPanel);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -56,7 +67,8 @@ namespace chess_game
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel boardPanel;
+        private System.Windows.Forms.ListBox PiecesList;
     }
 }
 

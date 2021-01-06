@@ -79,7 +79,7 @@ namespace chessGame.model.Tests
 
             int i = 1;
             Piece p = null;
-            foreach (KeyValuePair<Coord, Piece> kv in chessBoard.pieceAtCoord)
+            foreach (KeyValuePair<Coord, Piece> kv in chessBoard.getAllPiecesAtCoord)
             {
                 if (i <= 16)
                 {
@@ -142,11 +142,11 @@ namespace chessGame.model.Tests
 
             Pawn p = (Pawn)chessBoard.GetPieceAtCoord(coord1);
 
-            Assert.AreEqual(true, chessBoard.pieceAtCoord.ContainsKey(coord1));
+            Assert.AreEqual(true, chessBoard.getAllPiecesAtCoord.ContainsKey(coord1));
 
             chessBoard.MovePiece(coord1, coord2);
             Assert.AreEqual(p, chessBoard.GetPieceAtCoord(coord2));
-            Assert.AreEqual(false, chessBoard.pieceAtCoord.ContainsKey(coord1));
+            Assert.AreEqual(false, chessBoard.getAllPiecesAtCoord.ContainsKey(coord1));
         }
 
         [TestMethod()]
@@ -165,7 +165,7 @@ namespace chessGame.model.Tests
             // Vérification que la piece n'as pas bougé.
             Assert.AreEqual(p, chessBoard.GetPieceAtCoord(coord1));
             // Vérification que les coord sont ok.
-            Assert.AreEqual(true, chessBoard.pieceAtCoord.ContainsKey(coord1));
+            Assert.AreEqual(true, chessBoard.getAllPiecesAtCoord.ContainsKey(coord1));
             // Doit retourner une execption.
             chessBoard.MovePiece(coord1, badCoord4);
         }
@@ -202,10 +202,10 @@ namespace chessGame.model.Tests
             chessBoard = chessBoardBuilder.GetChessBoard();
 
             Pawn p = (Pawn)chessBoard.GetPieceAtCoord(coord1);
-            Assert.AreEqual(false, chessBoard.pieceAtCoord.ContainsKey(badCoord1));
-            Assert.AreEqual(false, chessBoard.pieceAtCoord.ContainsKey(badCoord2));
-            Assert.AreEqual(false, chessBoard.pieceAtCoord.ContainsKey(badCoord3));
-            Assert.AreEqual(false, chessBoard.pieceAtCoord.ContainsKey(badCoord4));
+            Assert.AreEqual(false, chessBoard.getAllPiecesAtCoord.ContainsKey(badCoord1));
+            Assert.AreEqual(false, chessBoard.getAllPiecesAtCoord.ContainsKey(badCoord2));
+            Assert.AreEqual(false, chessBoard.getAllPiecesAtCoord.ContainsKey(badCoord3));
+            Assert.AreEqual(false, chessBoard.getAllPiecesAtCoord.ContainsKey(badCoord4));
             // Doit retourner une execption.
             Assert.AreEqual(null, chessBoard.GetPieceAtCoord(badCoord1));
             Assert.AreEqual(null, chessBoard.GetPieceAtCoord(badCoord2));
@@ -232,11 +232,19 @@ namespace chessGame.model.Tests
         {
             ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
             chessBoard = chessBoardBuilder.GetChessBoard();
-            
+
             Assert.AreEqual(8, chessBoard.getSize[0]);
             Assert.AreEqual(8, chessBoard.getSize[1]);
         }
 
+        [TestMethod()]
+        public void GetPieces()
+        {
+            ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
+            chessBoard = chessBoardBuilder.GetChessBoard();
+            
+            Assert.AreEqual(32, chessBoard.getPieces.Count);
+        }
     }
 
 }

@@ -40,14 +40,15 @@ namespace chessGame.model
         /// Retourne un dictinnaire contenant toutes les pièces dans le board,
         ///     avec comme clé les coordonnées et comme valeur la pièce correspondante. 
         /// </summary>
-        public Dictionary<Coord, Piece> pieceAtCoord { get; }
+        public Dictionary<Coord, Piece> getAllPiecesAtCoord { get; }
+        public List<Piece> getPieces { get => getAllPiecesAtCoord.Select(getPieceAtCoord => getPieceAtCoord.Value).ToList(); }
 
-        public int getNumberOfPieces { get => pieceAtCoord.Count; }
+        public int getNumberOfPieces { get => getAllPiecesAtCoord.Count; }
 
 
         public ChessBoard()
         {
-            pieceAtCoord = new Dictionary<Coord, Piece>() { };
+            getAllPiecesAtCoord = new Dictionary<Coord, Piece>() { };
             board = new Dictionary<int, List<char>>() { };
         }
 
@@ -70,17 +71,17 @@ namespace chessGame.model
 
         private void _ChangeCoordPiece(Coord oldc, Coord newc)
         {
-            Piece p = pieceAtCoord[oldc];
-            pieceAtCoord.Add(newc, p);
-            pieceAtCoord.Remove(oldc);
+            Piece p = getAllPiecesAtCoord[oldc];
+            getAllPiecesAtCoord.Add(newc, p);
+            getAllPiecesAtCoord.Remove(oldc);
         }
         
         public bool RemovePieceAtCoord(Coord c)
         {
             bool flag = false;
-            if (pieceAtCoord.ContainsKey(c))
+            if (getAllPiecesAtCoord.ContainsKey(c))
             {
-                pieceAtCoord.Remove(c);
+                getAllPiecesAtCoord.Remove(c);
                 flag = true;
             }
             return flag;
@@ -91,10 +92,10 @@ namespace chessGame.model
             // todo RE : cr&er propre except
             _AreCoordInBoardRange(c);
             // Si on ajoute une pièce à une coordoonnée qui existe déja, alors une exception se lève.
-            if(pieceAtCoord.Keys.Contains(c))
+            if(getAllPiecesAtCoord.Keys.Contains(c))
                 throw new InvalidOperationException(Texts.pieceAlreadyInCase + c);
             p.id = getNumberOfPieces + 1;
-            pieceAtCoord.Add(c, p);
+            getAllPiecesAtCoord.Add(c, p);
         }
         /// <summary>
         /// Ajoute des coordonnées et des pièces dans le board. La fonction prend
@@ -114,10 +115,6 @@ namespace chessGame.model
         /// </summary>
         /// <param name="piece"> Pièce à chercher dans le board. </param>
         /// <returns> Retourne true si elle se trouve dans le board, false sinon. </returns>
-        public bool PieceExist(Piece p)
-        {
-            return pieceAtCoord.ContainsValue(p);
-        }
         /// <summary>
         /// Retourne la piece correspondante à l'id donné.
         /// </summary>
@@ -126,18 +123,18 @@ namespace chessGame.model
         public Piece GetPieceByID(int id)
         {
             Piece piece = null;
-            foreach (Piece p in pieceAtCoord.Values)
+            foreach (Piece p in getAllPiecesAtCoord.Values)
             {
                 if (p.id == id)
                 {
                     piece = p;
                     break;
-                }                
+                }
             }
-            if(piece == null)// todo RE : refaire exception
+            if (piece == null)// todo RE : refaire exception
                 throw new IndexOutOfRangeException(Texts.pieceByIDNotFound + id);
             return piece;
-        }             
+        }
         /// <summary>
         /// Retourne la piece correspondante aux coordonnées donné.
         /// </summary>
@@ -146,17 +143,21 @@ namespace chessGame.model
         public Piece GetPieceAtCoord(Coord c)
         {
             Piece p = null;
-            foreach (Coord coord in pieceAtCoord.Keys)
+            foreach (Coord coord in getAllPiecesAtCoord.Keys)
             {
                 if (coord == c)
                 {
-                    p = pieceAtCoord[coord];
+                    p = getAllPiecesAtCoord[coord];
                     break;
                 }
             }
             if (p == null)// todo RE : refaire exception
                 throw new NullReferenceException(Texts.pieceAtCoordNotFound + c);
             return p;
+        }
+        public bool PieceExist(Piece p)
+        {
+            return getAllPiecesAtCoord.ContainsValue(p);
         }
         /// <summary>
         /// Déplace une pièce d'une ancienne coordonnées à de nouvelle.
@@ -175,8 +176,8 @@ namespace chessGame.model
             return base.ToString() + " : \n"
                 + "    keys/rows : " + String.Join(", ", board.Keys) + "\n"
                 + "    values/columns : " + String.Join(", ", board.Values.ElementAt(0)) + "\n"
-                + "    pieceAtCoord : " + String.Join(", ", pieceAtCoord.Values) + "\n"
-                + "    coord take : " + String.Join(", ", pieceAtCoord.Keys) + "\n";
+                + "    getAllPiecesAtCoord : " + String.Join(", ", getAllPiecesAtCoord.Values) + "\n"
+                + "    coord take : " + String.Join(", ", getAllPiecesAtCoord.Keys) + "\n";
         }
     }
 }

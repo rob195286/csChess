@@ -1,10 +1,10 @@
-A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chess_game\obj\Debug\chess_game.Properties.Resources.resources
-A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chess_game\obj\Debug\chess_game.csproj.GenerateResource.cache
-A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chess_game\obj\Debug\chess_game.csproj.CoreCompileInputs.cache
 A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chess_game\bin\Debug\chess_game.exe.config
 A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chess_game\bin\Debug\chess_game.exe
 A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chess_game\bin\Debug\chess_game.pdb
+A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chess_game\obj\Debug\chess_game.Form1.resources
+A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chess_game\obj\Debug\chess_game.Properties.Resources.resources
+A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chess_game\obj\Debug\chess_game.csproj.GenerateResource.cache
+A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chess_game\obj\Debug\chess_game.csproj.CoreCompileInputs.cache
 A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chess_game\obj\Debug\chess_game.exe
 A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chess_game\obj\Debug\chess_game.pdb
 A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chess_game\obj\Debug\chess_game.csprojAssemblyReference.cache
-A:\3)_Bibliotheque\Documents\Ecam\Anne4\Q1\SA\ProjetLabo\csChess\chess_game\obj\Debug\chess_game.Form1.resources
