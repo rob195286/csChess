@@ -19,6 +19,7 @@ namespace chess_game
         ChessBoard chessBoard;
         public Button[,] buttons;
 
+
         public Form1()
         {
             ChessBoardBuilder cbb = new ChessBoardBuilder();
@@ -31,8 +32,13 @@ namespace chess_game
             InitializeComponent();
             _PopulateGrid();
             _PopulatePiecesList();
+
         }
 
+
+        /// <summary>
+        /// Remplit le board de cases où seront mise les pièces.
+        /// </summary>
         private void _PopulateGrid()
         {
             // dimensionne les block des bouttons.
@@ -60,14 +66,20 @@ namespace chess_game
                 }
             }
         }
-
+        /// <summary>
+        /// Remplit la liste des pièces qui seront jouable.
+        /// </summary>
         private void _PopulatePiecesList()
         {
-            PiecesList.ClearSelected();
             PiecesList.BeginUpdate();
+            List<string> psl = new List<string>() { };
             foreach(Piece p in chessBoard.getPieces)
             {
-                PiecesList.Items.Add(p.getType);
+                if (!psl.Contains(p.getType))
+                {
+                    PiecesList.Items.Add(p.getType);
+                    psl.Add(p.getType);
+                }
             }           
             PiecesList.EndUpdate();
         }

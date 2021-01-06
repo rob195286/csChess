@@ -30,11 +30,12 @@ namespace chess_game
         private void InitializeComponent()
         {
             this.boardPanel = new System.Windows.Forms.Panel();
-            this.PiecesList = new System.Windows.Forms.ListBox();
+            this.PiecesList = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // boardPanel
             // 
+            this.boardPanel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.boardPanel.Font = new System.Drawing.Font("Microsoft Uighur", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boardPanel.Location = new System.Drawing.Point(14, 32);
             this.boardPanel.Name = "boardPanel";
@@ -44,11 +45,12 @@ namespace chess_game
             // 
             // PiecesList
             // 
+            this.PiecesList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PiecesList.FormattingEnabled = true;
-            this.PiecesList.Location = new System.Drawing.Point(764, 32);
+            this.PiecesList.Location = new System.Drawing.Point(763, 32);
             this.PiecesList.Name = "PiecesList";
-            this.PiecesList.Size = new System.Drawing.Size(190, 69);
-            this.PiecesList.TabIndex = 1;
+            this.PiecesList.Size = new System.Drawing.Size(121, 21);
+            this.PiecesList.TabIndex = 2;
             this.PiecesList.SelectedIndexChanged += new System.EventHandler(this.PiecesList_SelectedIndexChanged);
             // 
             // Form1
@@ -68,7 +70,7 @@ namespace chess_game
         #endregion
 
         private System.Windows.Forms.Panel boardPanel;
-        private System.Windows.Forms.ListBox PiecesList;
+        private System.Windows.Forms.ComboBox PiecesList;
     }
 }
 

@@ -15,17 +15,12 @@ namespace chess_game
         //[STAThread]
         static void Main()
         {
+            /*
             ChessBoardDirector cbd = new ChessBoardDirector();
             ChessBoardBuilder cbb = new ChessBoardBuilder();
             cbd.ConstructDefaultChessBoard(cbb);
             ChessBoard cb = cbb.GetChessBoard();
-            /*
-            Dictionary<Coord, Piece> pi = new Dictionary<Coord, Piece>() { { new Coord(2, 'e'), new King() } , 
-                { new Coord(20, 'a'), new Pawn() }  ,
-                { new Coord(2, 'a'), new Pawn() }};
-            */
 
-            /*
             foreach(List<char> c in cb.board.Values)
             {
                 Console.WriteLine(c);
