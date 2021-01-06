@@ -42,8 +42,26 @@ namespace chessGame.model
         /// </summary>
         public Dictionary<Coord, Piece> getAllPiecesAtCoord { get; }
         public List<Piece> getPieces { get => getAllPiecesAtCoord.Select(getPieceAtCoord => getPieceAtCoord.Value).ToList(); }
-        public List<Coord> getCoord { get => getAllPiecesAtCoord.Select(getPieceAtCoord => getPieceAtCoord.Key).ToList(); }
         public int getNumberOfPieces { get => getAllPiecesAtCoord.Count; }
+        /// <summary>
+        /// Retourne une liste de toutes les coordonnées se trouvant dans le board.
+        /// </summary>
+        public List<Coord> getCoord
+        {
+            get
+            {
+                List<Coord> tempCoordL = new List<Coord>() { };
+                foreach (KeyValuePair<int, List<char>> rowColumnPair in board)
+                {
+                    foreach (char column in rowColumnPair.Value)
+                    {
+                        tempCoordL.Add(new Coord(rowColumnPair.Key, column));
+                    }
+                }
+                return tempCoordL;
+            }
+        }
+        public List<Coord> getUsedCoord { get => getAllPiecesAtCoord.Select(getPieceAtCoord => getPieceAtCoord.Key).ToList(); }
 
 
         public ChessBoard()

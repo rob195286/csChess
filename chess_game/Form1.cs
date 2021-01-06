@@ -33,6 +33,8 @@ namespace chess_game
             _PopulateGrid();
             _PopulatePiecesList();
 
+            foreach(Coord c in chessBoard.getCoord)
+            MessageBox.Show(c.ToString());
         }
 
 
@@ -93,7 +95,7 @@ namespace chess_game
             int x = location.X;
             int y = location.Y;
             //Cell currentCelle = 
-            DataGridCell currentCelle = chessBoard.
+            //DataGridCell currentCelle = chessBoard.
         }
 
         private void Form1_Load(object sender, EventArgs e)
