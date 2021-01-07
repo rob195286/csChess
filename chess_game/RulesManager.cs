@@ -1,4 +1,5 @@
-﻿using chessGame.pieces;
+﻿using chessGame.model.board;
+using chessGame.pieces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -63,5 +64,37 @@ namespace chessGame.game
         //public static bool IsPawnCanMoveForSecondTime(Pawn pa) { }
         
         //todo : implémenter les autres règle, roque, promotion, prise en passant.
+        
+        public static List<Coord> GetNexLegalMoves(Piece pieceToCheck, Coord currentCoord, int[] boardSize)
+        {
+            // Le boardSize en 0 est le nombre de ligne, et en 1 le nombre de colonnes.
+            for(int i = 0; i < boardSize[0]; i++)
+            {
+                for (int j = 0; j < boardSize[1]; j++)
+                {
+
+                }
+            }
+            // todo : implémenter une enum avec tous les type de piece pour pas avoir qlq chose d'ardcodé.
+            switch (pieceToCheck.getType)
+            {
+                case "Knight":
+                    break;
+                case "King":
+                    break;
+                case "Rook":
+                    break;
+                case "Queen":
+                    break;
+                case "Pawn":
+                    break;
+                case "Bishop":
+                    break;
+                default:
+                    break;
+            }
+
+                return null;
+        }
     }
 }

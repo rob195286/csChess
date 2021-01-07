@@ -188,6 +188,15 @@ namespace chessGame.model
             _AreCoordInBoardRange(newc);
             _ChangeCoordPiece(oldc, newc);
         }
+        /// <summary>
+        /// Cette fonction se charge de récupérer toutes les colonnes à une ligne données.
+        /// </summary>
+        /// <param name="row"> Ligne à laquelle on veut récupérer les colonnes. </param>
+        /// <returns> Retourne la liste de colonnes à la ligne données. </returns>
+        public List<char> GetColumnsAtRow(int row)
+        {
+            return board[row];
+        }
 
         public override string ToString()
         {

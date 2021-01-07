@@ -30,7 +30,7 @@ namespace chessGame.pieces
         public int id { get; set; }
         public PiecesColor color { get; }
         /// <summary>
-        /// Retourne le type de la piece en string pour pouvoir être afficher dans l'interface.
+        /// Retourne le type de la piece en string pour pouvoir être afficher en tant que string.
         /// </summary>
         public string getType { get => this.GetType().ToString().Replace("chessGame.pieces.", ""); }
 

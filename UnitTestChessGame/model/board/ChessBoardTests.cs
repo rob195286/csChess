@@ -238,12 +238,48 @@ namespace chessGame.model.Tests
         }
 
         [TestMethod()]
-        public void GetPieces()
+        public void GetPiecesTest()
         {
             ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
             chessBoard = chessBoardBuilder.GetChessBoard();
             
             Assert.AreEqual(32, chessBoard.getPieces.Count);
+        }
+
+        [TestMethod()]
+        public void GetColumnsAtRowTest()
+        {
+            ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
+            chessBoard = chessBoardBuilder.GetChessBoard();
+            int row = 2;
+            bool checkCharEquality = true;
+            List<char> referenceList = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
+
+            foreach(char c in chessBoard.GetColumnsAtRow(row))
+            {
+                checkCharEquality = referenceList.Contains(c);
+            }
+            Assert.AreEqual(true, checkCharEquality);
+            
+            
+            referenceList = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g' };
+            foreach(char c in chessBoard.GetColumnsAtRow(row))
+            {
+                checkCharEquality = referenceList.Contains(c);
+            }
+            Assert.AreEqual(false, checkCharEquality);
+
+
+            referenceList = new List<char>() { 'a', 'b', 'c', 'e', 'f', 'g' };
+
+            ChessBoardBuilder cbb = new ChessBoardBuilder();
+            cbb.SetSize(8, new List<char>() { 'a', 'b', 'c', 'e', 'f', 'g' });
+            chessBoard = cbb.GetChessBoard();
+            foreach (char c in chessBoard.GetColumnsAtRow(row))            
+            {
+                checkCharEquality = referenceList.Contains(c);
+            }
+            Assert.AreEqual(true, checkCharEquality);
         }
     }
 

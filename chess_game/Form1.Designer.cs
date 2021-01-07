@@ -1,7 +1,7 @@
 ﻿
 namespace chess_game
 {
-    partial class Form1
+    partial class ChessGame
     {
         /// <summary>
         /// Required designer variable.
@@ -37,9 +37,9 @@ namespace chess_game
             // 
             this.boardPanel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.boardPanel.Font = new System.Drawing.Font("Microsoft Uighur", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boardPanel.Location = new System.Drawing.Point(14, 32);
+            this.boardPanel.Location = new System.Drawing.Point(0, 32);
             this.boardPanel.Name = "boardPanel";
-            this.boardPanel.Size = new System.Drawing.Size(719, 583);
+            this.boardPanel.Size = new System.Drawing.Size(863, 748);
             this.boardPanel.TabIndex = 0;
             this.boardPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.boardPanel_Paint);
             // 
@@ -47,21 +47,21 @@ namespace chess_game
             // 
             this.PiecesList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PiecesList.FormattingEnabled = true;
-            this.PiecesList.Location = new System.Drawing.Point(763, 32);
+            this.PiecesList.Location = new System.Drawing.Point(878, 32);
             this.PiecesList.Name = "PiecesList";
             this.PiecesList.Size = new System.Drawing.Size(121, 21);
             this.PiecesList.TabIndex = 2;
             this.PiecesList.SelectedIndexChanged += new System.EventHandler(this.PiecesList_SelectedIndexChanged);
             // 
-            // Form1
+            // ChessGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1011, 781);
             this.Controls.Add(this.PiecesList);
             this.Controls.Add(this.boardPanel);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "ChessGame";
+            this.Text = "Chess Game";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
