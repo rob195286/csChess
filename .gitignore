@@ -1,14 +1,22 @@
-chessGame/.vs*
-chessGame/bin*
-chessGame/obj*
-chessGame/chessGame.csproj
-chessGame/chessGame.sln
+chess_game/.vs*
+chess_game/bin*
+chess_game/obj*
+chess_game/packages*
+chess_game/Properties*
+chess_game/TestResults*
+TestResults*
+chess_game/chess_game.csproj
+chess_game/chess_game.sln
+chess_game/App.config
+chess_game/Form1.resx
 
-chessGameTests/bin*
-chessGameTests/obj*
-chessGameTests/chessGameTests.csproj
 
+UnitTestChessGame/bin*
+UnitTestChessGame/obj*
+UnitTestChessGame/Properties*
+UnitTestChessGame/UnitTestChessGame.csproj
 
+.vs*
 
 
 
