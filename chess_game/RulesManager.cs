@@ -18,7 +18,7 @@ namespace chessGame.game
         /// <param name="widthDimension"> Prend la taille en largeur du board. </param>
         /// <returns> Retourne un dictionnaire avec pour chaque type de direction (longueur, largeur, horizontal etc)
         ///     la valeur à laquel la pièce peut se déplacer. </returns>
-        public static Dictionary<Directions, int> GetMoveOfPiece(Piece p, 
+        public static Dictionary<Directions, int> MovesOfPiece(Piece p, 
                                                                 int lengthDimension, 
                                                                 int widthDimension)
         {
@@ -65,7 +65,7 @@ namespace chessGame.game
         
         //todo : implémenter les autres règle, roque, promotion, prise en passant.
         
-        public static List<Coord> GetNexLegalMoves(Piece pieceToCheck, Coord currentCoord, int[] boardSize)
+        public static List<Coord> NexLegalMoves(Piece pieceToCheck, Coord currentCoord, int[] boardSize)
         {
             // Le boardSize en 0 est le nombre de ligne, et en 1 le nombre de colonnes.
             for(int i = 0; i < boardSize[0]; i++)

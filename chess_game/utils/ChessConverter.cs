@@ -15,7 +15,7 @@ namespace chess_game.utils
         /// <param name="columnInt"> Numéro sous forme d'int de la colonne que l'on veut convertir. </param>
         /// <param name="listOfCharColumn"> Liste de char dans laquelle on veut convertir l'entier en entrée. </param>
         /// <returns> Retourne le char qui est le résultat converti de l'entier fournit en entrée. </returns>
-        public static char IntToCharCoordConverter(int columnInt, List<char> listOfCharColumn)
+        public static char IntToCharColumnConverter(int columnInt, List<char> listOfCharColumn)
         {
             return listOfCharColumn.ElementAt(columnInt);
         }

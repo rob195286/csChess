@@ -24,18 +24,6 @@ namespace chessGame.model
                 int[] arr = new int[2] { board.Count, board.First().Value.Count };
                 return arr;
             }}
-        /*
-        public List<Coord> coordAvailable
-        { 
-            get 
-            {
-                List<Coord> coord = new List<Coord>() { };
-                foreach (KeyValuePair<int, List<char>> rowsAndColumns in board)
-                    foreach (char column in rowsAndColumns.Value)
-                        coord.Add(new Coord(rowsAndColumns.Key, column));
-                return coord; 
-            }
-        }*/
         /// <summary>
         /// Retourne un dictinnaire contenant toutes les pièces dans le board,
         ///     avec comme clé les coordonnées et comme valeur la pièce correspondante. 
@@ -61,7 +49,10 @@ namespace chessGame.model
                 return tempCoordL;
             }
         }
-        public List<Coord> getUsedCoord { get => getAllPiecesAtCoord.Select(getPieceAtCoord => getPieceAtCoord.Key).ToList(); }
+        /// <summary>
+        /// Retourne une liste de toutes les coordonnées occupé par une pièces.
+        /// </summary>
+        public List<Coord> getOccupiedCoord { get => getAllPiecesAtCoord.Select(getPieceAtCoord => getPieceAtCoord.Key).ToList(); }
 
 
         public ChessBoard()
@@ -195,6 +186,7 @@ namespace chessGame.model
         /// <returns> Retourne la liste de colonnes à la ligne données. </returns>
         public List<char> GetColumnsAtRow(int row)
         {
+            // todo : except lorsqu'il ne la trouve pas
             return board[row];
         }
 
