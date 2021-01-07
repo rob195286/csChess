@@ -1,8 +1,6 @@
-﻿using chessGame.model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace chessGame.pieces
 {
@@ -12,7 +10,7 @@ namespace chessGame.pieces
         black
     }
     /// <summary>
-    /// Contient toutes les directions que peuvent avoir les getAllPiecesAtCoord.
+    /// Contient toutes les directions que peuvent avoir les getPiecesFromCoord.
     /// </summary>
     public enum Directions
     {
@@ -35,7 +33,7 @@ namespace chessGame.pieces
         public string getType { get => this.GetType().ToString().Replace("chessGame.pieces.", ""); }
 
 
-        protected Piece() : this(PiecesColor.white, new List<Directions>() {})
+        protected Piece() : this(PiecesColor.white, new List<Directions>() { })
         {
         }
         protected Piece(PiecesColor pieceColor, List<Directions> directions)
@@ -64,7 +62,7 @@ namespace chessGame.pieces
 
             Piece p = (Piece)obj;
 
-            if (id == p.id && 
+            if (id == p.id &&
                         this.GetType() == p.GetType() &&
                         color == p.color &&
                         Enumerable.SequenceEqual(moves, p.moves))

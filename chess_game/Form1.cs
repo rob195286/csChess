@@ -1,13 +1,11 @@
-﻿using chessGame.model;
+﻿using chess_game.utils;
+using chessGame.model;
 using chessGame.model.board;
 using chessGame.pieces;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using chess_game.utils;
 
 namespace chess_game
 {
@@ -15,7 +13,6 @@ namespace chess_game
     {
         ChessBoard chessBoard;
         public Button[,] buttonsGrid;
-
 
         public ChessGame()
         {
@@ -31,7 +28,7 @@ namespace chess_game
             _SetPieceOnGrid();
             _PopulatePiecesList();
 
-            //MessageBox.Show("erreur");
+            //MessageBox.Show("");
         }
 
 
@@ -43,12 +40,12 @@ namespace chess_game
             // Dimensionne les blocks des bouttons.
             int buttonHeight = (boardPanel.Height / chessBoard.getSize[0]);
             //int buttonWidth = (boardPanel.Width / chessBoard.getSize[1]);
-            
+
             int buttonCoord = (boardPanel.Height / chessBoard.getSize[0]);
 
             for (int row = 0; row < chessBoard.getSize[0]; row++)
             {
-                for(int column = 0; column < chessBoard.getSize[1]; column++)
+                for (int column = 0; column < chessBoard.getSize[1]; column++)
                 {
                     buttonsGrid[row, column] = new Button();
                     buttonsGrid[row, column].Height = buttonHeight;
@@ -60,7 +57,7 @@ namespace chess_game
                     boardPanel.Controls.Add(buttonsGrid[row, column]);
                     // règle l'espacement entre les boutons sur l'axe des x et y.
                     buttonsGrid[row, column].Location = new Point((row * buttonCoord), (column * buttonCoord));
-                    buttonsGrid[row, column].Tag = new Point(row , column);
+                    buttonsGrid[row, column].Tag = new Point(row, column);
                     //buttonsGrid[i, j].Location = new Point(i * boardPanel.Width/5, j * boardPanel.Width/10);
                 }
             }
@@ -73,9 +70,9 @@ namespace chess_game
             Coord coord;
             for (int row = 0; row < chessBoard.getSize[0]; row++)
             {
-                for(int column = 0; column < chessBoard.getSize[1]; column++)
-                {                  
-                    coord = new Coord(row+1, ChessConverter.IntToCharColumnConverter(column, chessBoard.GetColumnsAtRow(row + 1)));
+                for (int column = 0; column < chessBoard.getSize[1]; column++)
+                {
+                    coord = new Coord(row + 1, ChessConverter.IntToCharColumnConverter(column, chessBoard.GetColumnsAtRow(row + 1)));
                     if (chessBoard.getOccupiedCoord.Contains(coord))
                     {
                         buttonsGrid[column, row].Text = chessBoard.GetPieceAtCoord(coord).getType;
@@ -90,14 +87,15 @@ namespace chess_game
         {
             PiecesList.BeginUpdate();
             List<string> psl = new List<string>() { };
-            foreach(Piece p in chessBoard.getPieces)
+            foreach (Piece p in chessBoard.getPieces)
             {
+                // évite la duplication dans la fenêtre de pièces qui ont déjà été ajoutées.
                 if (!psl.Contains(p.getType))
                 {
                     PiecesList.Items.Add(p.getType);
                     psl.Add(p.getType);
                 }
-            }           
+            }
             PiecesList.EndUpdate();
         }
         /// <summary>
@@ -107,17 +105,15 @@ namespace chess_game
         /// <param name="e"></param>
         private void _Grid_Button_Click(object sender, EventArgs e)
         {
-            /*
             Button clickedButton = (Button)sender;
             Point location = (Point)clickedButton.Tag;
-            
-            int column = location.X+1;
-            int row = location.Y+1;
+
+            int column = location.X;
+            int row = location.Y + 1;
             // On enlève 1 à row car dans la liste on commence de 0 à la taille max., hors on a ajouté +1 en haut afin 
             //      d'être fidèle à la représentation du board.
-            Coord currentCoord = new Coord(row, ChessConverter.IntToCharColumnConverter(column-1, chessBoard.GetColumnsAtRow(row)));
-
-            buttonsGrid[location.X, location.Y].Text = chessBoard.GetPieceAtCoord(currentCoord).getType;*/
+            Coord currentCoord = new Coord(row, ChessConverter.IntToCharColumnConverter(column, chessBoard.GetColumnsAtRow(row)));
+            MessageBox.Show(currentCoord.ToString());
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -133,5 +129,6 @@ namespace chess_game
         {
 
         }
+               
     }
 }

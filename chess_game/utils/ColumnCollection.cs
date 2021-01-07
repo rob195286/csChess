@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 namespace chessGame.model.board
 {
@@ -13,7 +12,7 @@ namespace chessGame.model.board
         public bool IsReadOnly { get => false; }
         public char this[int index]
         {
-            get => (char) _columnCollection[index];
+            get => (char)_columnCollection[index];
             set => _columnCollection[index] = value;
         }
 
@@ -27,7 +26,7 @@ namespace chessGame.model.board
         {
             _columnCollection = new List<char>() { };
 
-            for (int i = 0; i<columnNumber; i++)
+            for (int i = 0; i < columnNumber; i++)
                 _columnCollection.Add(char.Parse(((char)(i + 65)).ToString().ToLower()));
         }
 
@@ -99,7 +98,7 @@ namespace chessGame.model.board
         }
     }
 
-    
+
     public class ColumnEnumerator : IEnumerator<char>
     {
         private ColumnCollection _columnCollection;
@@ -140,6 +139,6 @@ namespace chessGame.model.board
         object IEnumerator.Current
         {
             get { return Current; }
-        }    
+        }
     }
 }

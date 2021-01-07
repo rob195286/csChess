@@ -1,9 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using chessGame.pieces;
-using System;
 using System.Collections.Generic;
-using System.Text;
-using chessGame.model;
 
 namespace chessGame.pieces.Tests
 {
@@ -21,10 +17,10 @@ namespace chessGame.pieces.Tests
             queen = new Queen();
             queen2 = new Queen(PiecesColor.white, new List<Directions>());
         }
-        
+
         [TestMethod()]
         public void PiecesCreationTest()
-        {            
+        {
             Assert.AreEqual(PiecesColor.white, king.color);
 
             king = new King(PiecesColor.black, new List<Directions>() { Directions.horizontal,
@@ -41,13 +37,13 @@ namespace chessGame.pieces.Tests
         [TestMethod()]
         public void ObjectsComparaisonTest()
         {
-            Assert.AreEqual(true, queen==queen2);
+            Assert.AreEqual(true, queen == queen2);
             queen.id = 5;
             queen2.id = 5;
-            Assert.AreEqual(true, queen==queen2);
+            Assert.AreEqual(true, queen == queen2);
             queen.id = 0;
             queen2.id = 5;
-            Assert.AreEqual(false, queen==queen2);
+            Assert.AreEqual(false, queen == queen2);
         }
     }
 }

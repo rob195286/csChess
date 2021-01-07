@@ -1,7 +1,4 @@
 ﻿using chessGame.pieces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace chessGame.model
 {
@@ -23,7 +20,7 @@ namespace chessGame.model
         {
             return base.ToString() + " : \n"
                 + "    id : " + id
-                + "    getAllPiecesAtCoord color : " + piecesColor;
+                + "    getPiecesFromCoord color : " + piecesColor;
         }
 
         public override bool Equals(object obj)

@@ -1,21 +1,18 @@
-﻿using chessGame.model;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace chessGame.pieces
 {
     public class King : Piece
     {
         public King() : base()
-        {           
+        {
         }
         public King(PiecesColor pieceColor, List<Directions> directions) : base(pieceColor, directions)
         {
         }
 
     }
-    
+
     public class Queen : Piece
     {
         public Queen() : base()
@@ -66,9 +63,9 @@ namespace chessGame.pieces
         {
         }
         public Pawn(PiecesColor pieceColor, List<Directions> directions) : base(pieceColor, directions)
-        { 
+        {
         }
 
     }
-    
+
 }

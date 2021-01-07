@@ -1,9 +1,4 @@
-﻿using chessGame.model;
-using chessGame.model.board;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace chess_game
 {
@@ -29,10 +24,10 @@ namespace chess_game
             }
             */
             //Console.WriteLine(cb.board.);
-            
-             Application.EnableVisualStyles();
-             Application.SetCompatibleTextRenderingDefault(false);
-             Application.Run(new ChessGame());
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new ChessGame());
         }
     }
 }

@@ -15,6 +15,7 @@ UnitTestChessGame/bin*
 UnitTestChessGame/obj*
 UnitTestChessGame/Properties*
 UnitTestChessGame/UnitTestChessGame.csproj
+UnitTestChessGame/packages.config
 
 .vs*
 

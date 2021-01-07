@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace chessGame.model.board
+﻿namespace chessGame.model.board
 {
     public class Coord
     {
@@ -11,7 +7,7 @@ namespace chessGame.model.board
         public char column { get; set; }
 
 
-        public Coord():this(0 , '?')
+        public Coord() : this(0, '?')
         {
         }
         public Coord(int row, char column)
@@ -52,7 +48,7 @@ namespace chessGame.model.board
 
         public override string ToString()
         {
-            return string.Format(" [{0}{1}]",row, column);
+            return string.Format(" [{0}{1}]", row, column);
         }
 
         public override int GetHashCode()

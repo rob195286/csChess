@@ -1,9 +1,9 @@
-﻿using chessGame.model.board;
+﻿using chessGame.game;
+using chessGame.model.board;
 using chessGame.pieces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace chessGame.model
 {
@@ -16,21 +16,23 @@ namespace chessGame.model
         /// <summary>
         /// Obtiens la taille du board, le nombre de ligne en premier et les colonnes en second.
         /// </summary>
-        public int[] getSize { 
-            get 
+        public int[] getSize
+        {
+            get
             {
                 // todo : faire en sorte que ca renvois des nombres pour chaque colonne et que ca tienne 
                 //          compte d'une taille dynamqiue.
                 int[] arr = new int[2] { board.Count, board.First().Value.Count };
                 return arr;
-            }}
+            }
+        }
         /// <summary>
         /// Retourne un dictinnaire contenant toutes les pièces dans le board,
         ///     avec comme clé les coordonnées et comme valeur la pièce correspondante. 
         /// </summary>
-        public Dictionary<Coord, Piece> getAllPiecesAtCoord { get; }
-        public List<Piece> getPieces { get => getAllPiecesAtCoord.Select(getPieceAtCoord => getPieceAtCoord.Value).ToList(); }
-        public int getNumberOfPieces { get => getAllPiecesAtCoord.Count; }
+        public Dictionary<Coord, Piece> getPiecesFromCoord { get; }
+        public List<Piece> getPieces { get => getPiecesFromCoord.Select(getPieceAtCoord => getPieceAtCoord.Value).ToList(); }
+        public int getNumberOfPieces { get => getPiecesFromCoord.Count; }
         /// <summary>
         /// Retourne une liste de toutes les coordonnées se trouvant dans le board.
         /// </summary>
@@ -52,12 +54,12 @@ namespace chessGame.model
         /// <summary>
         /// Retourne une liste de toutes les coordonnées occupé par une pièces.
         /// </summary>
-        public List<Coord> getOccupiedCoord { get => getAllPiecesAtCoord.Select(getPieceAtCoord => getPieceAtCoord.Key).ToList(); }
+        public List<Coord> getOccupiedCoord { get => getPiecesFromCoord.Select(getPieceAtCoord => getPieceAtCoord.Key).ToList(); }
 
 
         public ChessBoard()
         {
-            getAllPiecesAtCoord = new Dictionary<Coord, Piece>() { };
+            getPiecesFromCoord = new Dictionary<Coord, Piece>() { };
             board = new Dictionary<int, List<char>>() { };
         }
 
@@ -80,17 +82,17 @@ namespace chessGame.model
 
         private void _ChangeCoordPiece(Coord oldc, Coord newc)
         {
-            Piece p = getAllPiecesAtCoord[oldc];
-            getAllPiecesAtCoord.Add(newc, p);
-            getAllPiecesAtCoord.Remove(oldc);
+            Piece p = getPiecesFromCoord[oldc];
+            getPiecesFromCoord.Add(newc, p);
+            getPiecesFromCoord.Remove(oldc);
         }
-        
+
         public bool RemovePieceAtCoord(Coord c)
         {
             bool flag = false;
-            if (getAllPiecesAtCoord.ContainsKey(c))
+            if (getPiecesFromCoord.ContainsKey(c))
             {
-                getAllPiecesAtCoord.Remove(c);
+                getPiecesFromCoord.Remove(c);
                 flag = true;
             }
             return flag;
@@ -101,10 +103,10 @@ namespace chessGame.model
             // todo RE : cr&er propre except
             _AreCoordInBoardRange(c);
             // Si on ajoute une pièce à une coordoonnée qui existe déja, alors une exception se lève.
-            if(getAllPiecesAtCoord.Keys.Contains(c))
+            if (getPiecesFromCoord.Keys.Contains(c))
                 throw new InvalidOperationException(Texts.pieceAlreadyInCase + c);
             p.id = getNumberOfPieces + 1;
-            getAllPiecesAtCoord.Add(c, p);
+            getPiecesFromCoord.Add(c, p);
         }
         /// <summary>
         /// Ajoute des coordonnées et des pièces dans le board. La fonction prend
@@ -116,7 +118,7 @@ namespace chessGame.model
         public void AddPieces(List<Coord> c, List<Piece> ps)
         {
             int i = 0;
-            foreach(Piece p in ps)
+            foreach (Piece p in ps)
                 AddPiece(p, c.ElementAt(i++));
         }
         /// <summary>
@@ -132,7 +134,7 @@ namespace chessGame.model
         public Piece GetPieceByID(int id)
         {
             Piece piece = null;
-            foreach (Piece p in getAllPiecesAtCoord.Values)
+            foreach (Piece p in getPiecesFromCoord.Values)
             {
                 if (p.id == id)
                 {
@@ -152,11 +154,11 @@ namespace chessGame.model
         public Piece GetPieceAtCoord(Coord c)
         {
             Piece p = null;
-            foreach (Coord coord in getAllPiecesAtCoord.Keys)
+            foreach (Coord coord in getPiecesFromCoord.Keys)
             {
                 if (coord == c)
                 {
-                    p = getAllPiecesAtCoord[coord];
+                    p = getPiecesFromCoord[coord];
                     break;
                 }
             }
@@ -166,7 +168,7 @@ namespace chessGame.model
         }
         public bool PieceExist(Piece p)
         {
-            return getAllPiecesAtCoord.ContainsValue(p);
+            return getPiecesFromCoord.ContainsValue(p);
         }
         /// <summary>
         /// Déplace une pièce d'une ancienne coordonnées à de nouvelle.
@@ -189,14 +191,35 @@ namespace chessGame.model
             // todo : except lorsqu'il ne la trouve pas
             return board[row];
         }
+        /// <summary>
+        /// Fonction permettant de retourner une list de coordonées possible en fonction de l'endroit ou elle se trouve
+        ///     et du type de la pièce.
+        /// </summary>
+        /// <param name="p"> Pièce dont il faut checker les movements possible. </param>
+        /// <param name="c"> Coordonnées où se trouve la pièce. </param>
+        /// <returns> Retourne une liste de coordonnées ou la pièce peut se déplacer. </returns>
+        public List<Coord> LegalMoves(Piece p, Coord c)
+        {
+            List<Coord> coordList = new List<Coord>() { };
+            Dictionary<Directions, int> moves = RulesManager.PossibleMovesOfPiece(p, getSize[0], getSize[1]);
+
+            foreach (KeyValuePair<Directions, int> move in moves)
+            {
+                for (int row = 1; row <= move.Value; row++)
+                {
+                    //coordList.Add(new Coord(row, ));
+                }
+            }
+            return coordList;
+        }
 
         public override string ToString()
         {
             return base.ToString() + " : \n"
                 + "    keys/rows : " + String.Join(", ", board.Keys) + "\n"
                 + "    values/columns : " + String.Join(", ", board.Values.ElementAt(0)) + "\n"
-                + "    getAllPiecesAtCoord : " + String.Join(", ", getAllPiecesAtCoord.Values) + "\n"
-                + "    coord take : " + String.Join(", ", getAllPiecesAtCoord.Keys) + "\n";
+                + "    getPiecesFromCoord : " + String.Join(", ", getPiecesFromCoord.Values) + "\n"
+                + "    coord take : " + String.Join(", ", getPiecesFromCoord.Keys) + "\n";
         }
     }
 }

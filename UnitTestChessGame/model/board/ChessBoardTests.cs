@@ -1,5 +1,4 @@
-﻿using chessGame.model;
-using chessGame.model.board;
+﻿using chessGame.model.board;
 using chessGame.pieces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -79,7 +78,7 @@ namespace chessGame.model.Tests
 
             int i = 1;
             Piece p = null;
-            foreach (KeyValuePair<Coord, Piece> kv in chessBoard.getAllPiecesAtCoord)
+            foreach (KeyValuePair<Coord, Piece> kv in chessBoard.getPiecesFromCoord)
             {
                 if (i <= 16)
                 {
@@ -142,11 +141,11 @@ namespace chessGame.model.Tests
 
             Pawn p = (Pawn)chessBoard.GetPieceAtCoord(coord1);
 
-            Assert.AreEqual(true, chessBoard.getAllPiecesAtCoord.ContainsKey(coord1));
+            Assert.AreEqual(true, chessBoard.getPiecesFromCoord.ContainsKey(coord1));
 
             chessBoard.MovePiece(coord1, coord2);
             Assert.AreEqual(p, chessBoard.GetPieceAtCoord(coord2));
-            Assert.AreEqual(false, chessBoard.getAllPiecesAtCoord.ContainsKey(coord1));
+            Assert.AreEqual(false, chessBoard.getPiecesFromCoord.ContainsKey(coord1));
         }
 
         [TestMethod()]
@@ -165,7 +164,7 @@ namespace chessGame.model.Tests
             // Vérification que la piece n'as pas bougé.
             Assert.AreEqual(p, chessBoard.GetPieceAtCoord(coord1));
             // Vérification que les coord sont ok.
-            Assert.AreEqual(true, chessBoard.getAllPiecesAtCoord.ContainsKey(coord1));
+            Assert.AreEqual(true, chessBoard.getPiecesFromCoord.ContainsKey(coord1));
             // Doit retourner une execption.
             chessBoard.MovePiece(coord1, badCoord4);
         }
@@ -202,10 +201,10 @@ namespace chessGame.model.Tests
             chessBoard = chessBoardBuilder.GetChessBoard();
 
             Pawn p = (Pawn)chessBoard.GetPieceAtCoord(coord1);
-            Assert.AreEqual(false, chessBoard.getAllPiecesAtCoord.ContainsKey(badCoord1));
-            Assert.AreEqual(false, chessBoard.getAllPiecesAtCoord.ContainsKey(badCoord2));
-            Assert.AreEqual(false, chessBoard.getAllPiecesAtCoord.ContainsKey(badCoord3));
-            Assert.AreEqual(false, chessBoard.getAllPiecesAtCoord.ContainsKey(badCoord4));
+            Assert.AreEqual(false, chessBoard.getPiecesFromCoord.ContainsKey(badCoord1));
+            Assert.AreEqual(false, chessBoard.getPiecesFromCoord.ContainsKey(badCoord2));
+            Assert.AreEqual(false, chessBoard.getPiecesFromCoord.ContainsKey(badCoord3));
+            Assert.AreEqual(false, chessBoard.getPiecesFromCoord.ContainsKey(badCoord4));
             // Doit retourner une execption.
             Assert.AreEqual(null, chessBoard.GetPieceAtCoord(badCoord1));
             Assert.AreEqual(null, chessBoard.GetPieceAtCoord(badCoord2));
@@ -242,7 +241,7 @@ namespace chessGame.model.Tests
         {
             ChessBoardDirector.ConstructDefaultChessBoard(chessBoardBuilder);
             chessBoard = chessBoardBuilder.GetChessBoard();
-            
+
             Assert.AreEqual(32, chessBoard.getPieces.Count);
         }
 
@@ -255,15 +254,15 @@ namespace chessGame.model.Tests
             bool checkCharEquality = true;
             List<char> referenceList = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
 
-            foreach(char c in chessBoard.GetColumnsAtRow(row))
+            foreach (char c in chessBoard.GetColumnsAtRow(row))
             {
                 checkCharEquality = referenceList.Contains(c);
             }
             Assert.AreEqual(true, checkCharEquality);
-            
-            
+
+
             referenceList = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g' };
-            foreach(char c in chessBoard.GetColumnsAtRow(row))
+            foreach (char c in chessBoard.GetColumnsAtRow(row))
             {
                 checkCharEquality = referenceList.Contains(c);
             }
@@ -275,7 +274,7 @@ namespace chessGame.model.Tests
             ChessBoardBuilder cbb = new ChessBoardBuilder();
             cbb.SetSize(8, new List<char>() { 'a', 'b', 'c', 'e', 'f', 'g' });
             chessBoard = cbb.GetChessBoard();
-            foreach (char c in chessBoard.GetColumnsAtRow(row))            
+            foreach (char c in chessBoard.GetColumnsAtRow(row))
             {
                 checkCharEquality = referenceList.Contains(c);
             }
